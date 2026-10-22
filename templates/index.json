@@ -144,7 +144,7 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<p>For dogs and cats</p>",
-                "width": "fill",
+                "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
@@ -197,7 +197,7 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<p>Soft silicone tips</p>",
-                "width": "fill",
+                "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
@@ -250,7 +250,7 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<p>Rinses clean under water</p>",
-                "width": "fill",
+                "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
@@ -303,7 +303,7 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<p>Less fur on your clothes</p>",
-                "width": "fill",
+                "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
