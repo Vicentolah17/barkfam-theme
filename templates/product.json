@@ -17,13 +17,9 @@
           "static": true,
           "settings": {
             "media_presentation": "carousel",
-            "media_columns": "one",
             "image_gap": 8,
-            "large_first_image": false,
-            "icons_style": "arrow",
             "slideshow_controls_style": "thumbnails",
             "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "bottom",
             "thumbnail_width": 56,
             "thumbnail_radius": 12,
             "aspect_ratio": "1",
@@ -31,13 +27,7 @@
             "media_fit": "contain",
             "media_radius": 24,
             "extend_media": false,
-            "zoom": true,
-            "video_loop": false,
-            "hide_variants": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "hide_variants": true
           },
           "blocks": {}
         },
@@ -45,43 +35,17 @@
           "type": "_product-details",
           "static": true,
           "settings": {
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "details_position": "flex-start",
             "gap": 24,
             "sticky_details_desktop": true,
-            "background_media": "none",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
             "padding-block-start": 24,
-            "padding-block-end": 24,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-block-end": 24
           },
           "blocks": {
             "header": {
               "type": "group",
               "name": "t:names.header",
               "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 8,
-                "width": "fill",
-                "width_mobile": "fill",
-                "height": "fit",
-                "background_media": "none",
-                "border": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "gap": 8
               },
               "blocks": {
                 "title": {
@@ -90,32 +54,16 @@
                   "settings": {
                     "text": "<h1>{{ closest.product.title }}</h1>",
                     "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
                     "type_preset": "h3",
-                    "wrap": "pretty",
-                    "background": false,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "wrap": "pretty"
                   },
                   "blocks": {}
                 },
                 "price": {
                   "type": "price",
-                  "name": "t:names.product_price",
                   "settings": {
-                    "show_sale_price_first": true,
                     "show_installments": true,
-                    "show_tax_info": false,
-                    "type_preset": "h5",
-                    "width": "100%",
-                    "alignment": "left",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "type_preset": "h5"
                   },
                   "blocks": {}
                 }
@@ -127,55 +75,31 @@
             },
             "divider_top": {
               "type": "_divider",
-              "name": "t:names.divider",
               "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "divider_color": "{{ settings.color_palette.color2 }}",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
+                "divider_color": "{{ settings.color_palette.color2 }}"
               },
               "blocks": {}
             },
             "variant_picker": {
               "type": "variant-picker",
-              "name": "t:names.product_variant_picker",
               "settings": {
-                "variant_style": "buttons",
                 "show_swatches": false,
-                "variant_style_class": "default",
-                "selected_variant_style_class": "default",
-                "alignment": "left",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-block-end": 0
               },
               "blocks": {}
             },
             "buy_buttons": {
               "type": "buy-buttons",
-              "name": "t:names.product_buy_buttons",
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
-                "gift_card_form": true,
-                "input_style": "default",
-                "border_width": 1,
-                "border_radius": 50,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "border_radius": 50
               },
               "blocks": {
                 "quantity": {
                   "type": "quantity",
                   "static": true,
                   "settings": {
-                    "input_style": "default",
-                    "border_width": 1,
                     "border_radius": 50
                   },
                   "blocks": {}
@@ -203,53 +127,29 @@
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "wrap": "pretty",
-                "background": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "wrap": "pretty"
               },
               "blocks": {}
             },
             "details": {
               "type": "accordion",
-              "name": "t:names.accordion",
               "settings": {
                 "icon": "plus",
-                "dividers": true,
-                "divider_color": "{{ settings.color_palette.color2 }}",
-                "type_preset": "h6",
-                "border": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "divider_color": "{{ settings.color_palette.color2 }}"
               },
               "blocks": {
                 "row_use": {
                   "type": "_accordion-row",
-                  "name": "t:names.accordion_row",
                   "settings": {
-                    "heading": "How to use",
-                    "open_by_default": false,
-                    "icon": "none"
+                    "heading": "How to use"
                   },
                   "blocks": {
                     "answer": {
                       "type": "text",
-                      "name": "t:names.text",
                       "settings": {
                         "text": "<p>Slide the glove on and pull the strap snug. Run your hand over your pet the way you normally would, then peel the collected fur off in one piece.</p>",
                         "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "wrap": "pretty",
-                        "background": false
+                        "wrap": "pretty"
                       },
                       "blocks": {}
                     }
@@ -260,24 +160,16 @@
                 },
                 "row_care": {
                   "type": "_accordion-row",
-                  "name": "t:names.accordion_row",
                   "settings": {
-                    "heading": "Care and cleaning",
-                    "open_by_default": false,
-                    "icon": "none"
+                    "heading": "Care and cleaning"
                   },
                   "blocks": {
                     "answer": {
                       "type": "text",
-                      "name": "t:names.text",
                       "settings": {
                         "text": "<p>Rinse the glove under warm water and let it air dry. No special cleaning products needed.</p>",
                         "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "wrap": "pretty",
-                        "background": false
+                        "wrap": "pretty"
                       },
                       "blocks": {}
                     }
@@ -288,24 +180,16 @@
                 },
                 "row_shipping": {
                   "type": "_accordion-row",
-                  "name": "t:names.accordion_row",
                   "settings": {
-                    "heading": "Shipping and delivery",
-                    "open_by_default": false,
-                    "icon": "none"
+                    "heading": "Shipping and delivery"
                   },
                   "blocks": {
                     "answer": {
                       "type": "text",
-                      "name": "t:names.text",
                       "settings": {
                         "text": "<p>Orders are packed within 1 to 3 business days, and delivery inside the United States usually takes another 7 to 15 business days. Timing can vary with carrier volume, so treat it as an estimate rather than a guaranteed date.</p>",
                         "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "wrap": "pretty",
-                        "background": false
+                        "wrap": "pretty"
                       },
                       "blocks": {}
                     }
@@ -334,12 +218,8 @@
       },
       "block_order": [],
       "settings": {
-        "content_width": "content-center-aligned",
-        "desktop_media_position": "left",
-        "equal_columns": false,
         "limit_details_width": true,
         "gap": 48,
-        "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 24,
         "padding-block-end": 56
@@ -350,48 +230,24 @@
       "blocks": {
         "benefit_pets": {
           "type": "group",
-          "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "gap": 12,
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
-            "background_media": "none",
-            "border": "none",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "vertical_on_mobile": false
           },
           "blocks": {
             "icon": {
               "type": "icon",
-              "name": "t:names.icon",
               "settings": {
-                "icon": "paw_print",
-                "width": 24
+                "icon": "paw_print"
               },
               "blocks": {}
             },
             "label": {
               "type": "text",
-              "name": "t:names.text",
               "settings": {
                 "text": "<p>For dogs and cats</p>",
                 "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "wrap": "pretty",
-                "background": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "wrap": "pretty"
               },
               "blocks": {}
             }
@@ -403,48 +259,24 @@
         },
         "benefit_silicone": {
           "type": "group",
-          "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "gap": 12,
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
-            "background_media": "none",
-            "border": "none",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "vertical_on_mobile": false
           },
           "blocks": {
             "icon": {
               "type": "icon",
-              "name": "t:names.icon",
               "settings": {
-                "icon": "heart",
-                "width": 24
+                "icon": "heart"
               },
               "blocks": {}
             },
             "label": {
               "type": "text",
-              "name": "t:names.text",
               "settings": {
                 "text": "<p>Soft silicone tips</p>",
                 "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "wrap": "pretty",
-                "background": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "wrap": "pretty"
               },
               "blocks": {}
             }
@@ -456,48 +288,24 @@
         },
         "benefit_rinse": {
           "type": "group",
-          "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "gap": 12,
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
-            "background_media": "none",
-            "border": "none",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "vertical_on_mobile": false
           },
           "blocks": {
             "icon": {
               "type": "icon",
-              "name": "t:names.icon",
               "settings": {
-                "icon": "washing",
-                "width": 24
+                "icon": "washing"
               },
               "blocks": {}
             },
             "label": {
               "type": "text",
-              "name": "t:names.text",
               "settings": {
                 "text": "<p>Rinses clean under water</p>",
                 "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "wrap": "pretty",
-                "background": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "wrap": "pretty"
               },
               "blocks": {}
             }
@@ -509,48 +317,24 @@
         },
         "benefit_clothes": {
           "type": "group",
-          "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "gap": 12,
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
-            "background_media": "none",
-            "border": "none",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "vertical_on_mobile": false
           },
           "blocks": {
             "icon": {
               "type": "icon",
-              "name": "t:names.icon",
               "settings": {
-                "icon": "shirt",
-                "width": 24
+                "icon": "shirt"
               },
               "blocks": {}
             },
             "label": {
               "type": "text",
-              "name": "t:names.text",
               "settings": {
                 "text": "<p>Less fur on your clothes</p>",
                 "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "wrap": "pretty",
-                "background": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "wrap": "pretty"
               },
               "blocks": {}
             }
@@ -570,17 +354,9 @@
       "name": "t:names.section",
       "settings": {
         "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
         "gap": 28,
-        "section_width": "page-width",
-        "section_height": "",
-        "background_media": "none",
         "background_color": "{{ settings.color_palette.color3 }}",
         "toggle_overlay": false,
-        "border": "none",
         "padding-block-start": 32,
         "padding-block-end": 32
       }
@@ -594,81 +370,40 @@
           "name": "t:names.header",
           "settings": {
             "text": "<h3>You may also like</h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
             "type_preset": "h4",
-            "wrap": "pretty",
-            "background": false,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "wrap": "pretty"
           },
           "blocks": {}
         },
         "static-product-card": {
           "type": "_product-card",
-          "name": "t:names.product_card",
           "static": true,
           "settings": {
             "product_card_gap": 8,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-block-end": 8
           },
           "blocks": {
             "product_card_gallery_DNizbJ": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "square",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "image_ratio": "square"
               },
               "blocks": {}
             },
             "product_title_M7MJkb": {
               "type": "product-title",
-              "name": "t:names.product_title",
               "settings": {
                 "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
                 "wrap": "pretty",
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-block-start": 4
               },
               "blocks": {}
             },
             "price_gLWgA6": {
               "type": "price",
-              "name": "t:names.product_price",
               "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "type_preset": "h6"
               },
               "blocks": {}
             }
@@ -686,17 +421,8 @@
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
         "columns_gap": 12,
         "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
         "gap": 28,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
