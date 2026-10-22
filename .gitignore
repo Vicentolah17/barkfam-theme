@@ -1,0 +1,10 @@
+# Local reference material (mockups, logo source, palette) — never ship
+_referencias/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Shopify CLI
+.shopify/

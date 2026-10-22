@@ -1,0 +1,8 @@
+# Local reference material (mockups, logo source, palette) — never upload
+_referencias/
+
+# Repo-only files
+AGENTS.md
+.gitignore
+.shopifyignore
+README.md
