@@ -30,6 +30,8 @@
     "text": "ٹیکسٹ"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "visible_if_collection_has_more_products": "اگر کلیکشن میں دکھائے گئے پروڈکٹ سے زیادہ پروڈکٹ ہوں تو ظاہر ہوتا ہے",
     "advanced": "ایڈوانسڈ",
     "appearance": "ظاہری شکل",
@@ -158,6 +160,9 @@
     "navigation": "نیویگیشن"
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "join_our_email_list": "<h2>ہماری ای میل لسٹ میں شامل ہوں</h2>",
     "get_exclusive_deals_and_early_access_to_new_products": "<p>نئی پروڈکٹ پر خصوصی ڈیل اور ابتدائی رسائی حاصل کریں۔</p>",
     "artistry_in_action": "<p>فنکاری عملی شکل میں </p>",
@@ -215,6 +220,8 @@
     "work_quickly_to_ship": "<p>ہم جلد از جلد آپ کا آرڈر شپ کرنے کے لیے تیزی سے کام کریں گے۔ آپ کا آرڈر شپ ہونے کے بعد، آپ کو مزید معلومات کے ساتھ ایک ای میل موصول ہوگی۔ آپ کے مقام کے لحاظ سے ترسیل کے اوقات مختلف ہو سکتے ہیں۔</p>"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "actions_display_style": "موبائل پر ہمیشہ آئیکن استعمال ہوتے ہیں",
     "applies_on_image_only": "صرف تصاویر پر لاگو ہوتا ہے",
     "aspect_ratio_adjusted": "کچھ لے آؤٹ میں ایڈجسٹ کیا گیا",
@@ -244,6 +251,7 @@
     "media_type_info": "خصوصیات آپ کے مینو کے لنک سے پُر کی گئی ہیں"
   },
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "column": "کالم",
     "product_title": "پروڈکٹ کا ٹائٹل",
     "custom_liquid": "کسٹم Liquid",
@@ -688,6 +696,10 @@
     "below_media": "میڈیا کے نیچے"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "accordion": "ایکارڈین",
     "account": "اکاؤنٹ",
     "actions_display_style": "مینو کا اسٹائل",
@@ -1104,6 +1116,7 @@
     "customer_account_menu": "کسٹمر اکاؤنٹ مینو"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "accordion_heading": "ایکارڈین کی سرخی",
     "are_purchases_final_sale": "کیا کوئی بھی خریداری حتمی سیل ہے؟",
     "be_bold": "نڈر بنیں۔",

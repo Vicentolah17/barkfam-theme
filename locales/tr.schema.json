@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "404": "404",
     "custom_section": "Özel bölüm",
     "icon": "Simge",
@@ -171,6 +172,10 @@
     "disclosures": "Bildirimler"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "autoplay": "Otomatik oynatma",
     "background": "Arka plan",
     "border_radius": "Köşe yarıçapı",
@@ -869,6 +874,8 @@
     "input_field": "Giriş alanı"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "background_video": "Arka plan videosu",
     "describe_the_video_for": "Ekran okuyucu kullanan müşteriler için videoyu açıklayın. [Daha fazla bilgi edinin](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
     "width_is_automatically_optimized": "Genişlik, mobil cihazlar için otomatik olarak optimize edilir.",
@@ -997,6 +1004,9 @@
     "page_text_color_contrast_info": "Özel arka plan rengine sahip bölümler, yalnızca yeterli renk kontrastı olduğunda bu metin rengini kullanır."
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>Markanızla ilgili bilgileri müşterilerinizle paylaşın. Bir ürünü açıklayın, duyurular yapın veya mağazanıza gelen müşterileri karşılayın.</p>",
     "bestseller_h2": "<h2>Çok satanlar</h2>",
     "bestseller_h3": "<h3>Çok satanlar</h3>",
@@ -1054,6 +1064,7 @@
     "introducing_p": "<p><em>Karşınızda</em></p>"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "collapsible_row": "Daraltılabilir satır",
     "button_label": "Hemen alışveriş yap",
     "heading": "Başlık",
@@ -1092,6 +1103,8 @@
     "disclosures": "Bildirimler"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "video_alt_text": "Yardımcı teknoloji kullanıcıları için videoyu açıklayın",
     "video_autoplay": "Videolar varsayılan olarak sessize alınır",
     "video_external": "Bir YouTube veya Vimeo URL'si kullanın",

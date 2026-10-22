@@ -30,6 +30,8 @@
     "text": "טקסט"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "visible_if_collection_has_more_products": "גלוי אם באוסף יש יותר מוצרים ממה שמוצג",
     "advanced": "מתקדם",
     "appearance": "מראה",
@@ -158,6 +160,9 @@
     "navigation": "ניווט"
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "join_our_email_list": "<h2>הצטרף לרשימת הדיוור שלנו</h2>",
     "get_exclusive_deals_and_early_access_to_new_products": "<p>קבל מבצעים בלעדיים וגישה מוקדמת למוצרים חדשים.</p>",
     "artistry_in_action": "<p>אומנות בפעולה </p>",
@@ -215,6 +220,8 @@
     "work_quickly_to_ship": "<p>נעבוד מהר כדי לשלוח את ההזמנה שלך בהקדם האפשרי. לאחר שההזמנה שלך תישלח, תקבל דוא&quot;ל עם מידע נוסף. זמני האספקה משתנים בהתאם למיקומך.</p>"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "actions_display_style": "תמיד נעשה שימוש בסמלים בנייד",
     "applies_on_image_only": "חל על תמונות בלבד",
     "aspect_ratio_adjusted": "מותאם בחלק מהפריסות",
@@ -244,6 +251,7 @@
     "media_type_info": "התכונות מאוכלסות מקישורי התפריט שלך"
   },
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "column": "עמודה",
     "product_title": "כותרת מוצר",
     "custom_liquid": "Custom Liquid",
@@ -688,6 +696,10 @@
     "direction_top_start": "למעלה, התחלה"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "accordion": "אקורדיון",
     "account": "חשבון",
     "actions_display_style": "סגנון תפריט",
@@ -1104,6 +1116,7 @@
     "customer_account_menu": "תפריט חשבון לקוח"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "accordion_heading": "כותרת אקורדיון",
     "are_purchases_final_sale": "האם יש רכישות שהן מכירה סופית?",
     "be_bold": "להיות נועזים.",

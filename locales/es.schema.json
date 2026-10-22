@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "404": "404",
     "colors": "Paleta de colores",
     "custom_section": "Sección personalizada",
@@ -171,6 +172,10 @@
     "disclosures": "Divulgaciones"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "alignment": "Alineación",
     "autoplay": "Reproducción automática",
     "background": "Fondo",
@@ -869,6 +874,8 @@
     "input_field": "Campo de entrada"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "advanced": "Avanzado",
     "background_image": "Imagen de fondo",
     "background_video": "Video de fondo",
@@ -997,6 +1004,9 @@
     "page_text_color_contrast_info": "Las secciones con un color de fondo personalizado usarán este color del texto solo cuando haya suficiente contraste de color."
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>Comparte información sobre tu marca con tus clientes. Describe un producto, anuncia novedades o da la bienvenida a quienes visitan tu tienda.</p>",
     "bestseller_h2": "<h2>Más vendidos</h2>",
     "bestseller_h3": "<h3>Más vendidos</h3>",
@@ -1054,6 +1064,7 @@
     "shop_collection": "<p>Descubre nuestra colección seleccionada con favoritos seleccionados a mano que combinan estilo y calidad.</p>"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "button_label": "Comprar ahora",
     "collapsible_row": "Fila plegable",
     "heading": "Título",
@@ -1092,6 +1103,8 @@
     "disclosures": "Divulgaciones"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "carousel_layout_on_mobile": "En dispositivos móviles siempre se usa el carrusel",
     "video_alt_text": "Describe el video para personas usuarias de tecnologías de asistencia",
     "video_autoplay": "Los videos estarán silenciados de forma predeterminada",

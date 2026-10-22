@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "404": "404",
     "custom_section": "Sekcja niestandardowa",
     "icon": "Ikona",
@@ -171,6 +172,10 @@
     "disclosures": "Informacje prawne"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "autoplay": "Autoodtwarzanie",
     "background": "Tło",
     "border_radius": "Promień narożnika",
@@ -869,6 +874,8 @@
     "direction_top_start": "Góra po lewej"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "background_video": "Wideo w tle",
     "describe_the_video_for": "Opisz film dla klientów korzystających z czytników ekranu. [Dowiedz się więcej](https://help.shopify.com/manual/online-store/themes/theme-structure/theme-features#video-block)",
     "width_is_automatically_optimized": "Szerokość jest automatycznie optymalizowana pod kątem urządzeń mobilnych.",
@@ -997,6 +1004,9 @@
     "page_text_color_contrast_info": "Sekcje z niestandardowym kolorem tła będą używać tego koloru tekstu tylko w przypadku wystarczającego kontrastu kolorów."
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>Podziel się informacjami o swojej marce z klientami. Opisz produkt, ogłaszaj nowości lub witaj klientów w swoim sklepie.</p>",
     "bestseller_h2": "<h2>Bestsellery</h2>",
     "bestseller_h3": "<h3>Bestsellery</h3>",
@@ -1054,6 +1064,7 @@
     "featured_collection_h3": "<h3>Polecana kolekcja</h3>"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "collapsible_row": "Wiersz zwijany",
     "button_label": "Kup teraz",
     "heading": "Nagłówek",
@@ -1092,6 +1103,8 @@
     "disclosures": "Informacje prawne"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "video_alt_text": "Opisz wideo dla użytkowników technologii wspomagających",
     "video_autoplay": "Domyślnie filmy będą wyciszone",
     "video_external": "Użyj adresu URL z YouTube lub Vimeo",

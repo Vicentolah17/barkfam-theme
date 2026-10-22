@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "404": "404",
     "colors": "Färgpalett",
     "custom_section": "Anpassad sektion",
@@ -171,6 +172,10 @@
     "disclosures": "Upplysningar"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "alignment": "Justering",
     "autoplay": "Autouppspelning",
     "background": "Bakgrund",
@@ -869,6 +874,8 @@
     "direction_top_start": "Uppe till vänster"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "advanced": "Avancerat",
     "background_image": "Bakgrundsbild",
     "background_video": "Bakgrundsvideo",
@@ -997,6 +1004,9 @@
     "page_text_color_contrast_info": "Sektioner med anpassad bakgrundsfärg använder endast den här textfärgen om färgkontrasten är tillräcklig."
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>Dela information om ditt varumärke med dina kunder. Beskriv en produkt, gör tillkännagivanden eller välkomna kunder till din butik.</p>",
     "bestseller_h2": "<h2>Bästsäljare</h2>",
     "bestseller_h3": "<h3>Bästsäljare</h3>",
@@ -1054,6 +1064,7 @@
     "featured_collection_h3": "<h3>Utvald kollektion</h3>"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "button_label": "Handla nu",
     "collapsible_row": "Komprimerbar rad",
     "heading": "Rubrik",
@@ -1092,6 +1103,8 @@
     "disclosures": "Upplysningar"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "video_alt_text": "Beskriv videon för användare av hjälpmedelsteknik",
     "video_autoplay": "Videor kommer att vara tystade som standard",
     "video_external": "Använd en URL från YouTube eller Vimeo",

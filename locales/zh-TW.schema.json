@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "404": "404",
     "colors": "調色盤",
     "custom_section": "自訂區段",
@@ -171,6 +172,10 @@
     "disclosures": "資訊揭露"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "alignment": "對齊",
     "autoplay": "自動播放",
     "background": "背景",
@@ -869,6 +874,8 @@
     "direction_top_start": "左上"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "advanced": "進階",
     "background_image": "背景圖片",
     "background_video": "背景影片",
@@ -997,6 +1004,9 @@
     "page_text_color_contrast_info": "具有自訂背景顏色的區段，僅在色彩對比度充足時才會使用此文字顏色。"
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>向顧客分享您的品牌故事。可用來敘述產品、發布公告，或歡迎顧客造訪您的商店。</p>",
     "bestseller_h2": "<h2>熱銷商品</h2>",
     "bestseller_h3": "<h3>熱銷商品</h3>",
@@ -1054,6 +1064,7 @@
     "introducing_p": "<p><em>全新推出</em></p>"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "button_label": "立即選購",
     "collapsible_row": "可摺疊列",
     "heading": "標題",
@@ -1092,6 +1103,8 @@
     "disclosures": "資訊揭露"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "carousel_layout_on_mobile": "在行動裝置上一律使用輪播",
     "video_alt_text": "為使用輔助技術的使用者描述影片",
     "video_autoplay": "影片預設為靜音播放",

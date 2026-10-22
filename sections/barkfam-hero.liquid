@@ -1,0 +1,551 @@
+{% comment %}
+  Section contract.
+  Landing hero for a single-product store: an oversized word clipped behind the
+  product image, a merchant-composed content column, and an optional small card
+  that pulls its title and price from a real product.
+
+  The backdrop word reuses `snippets/jumbo-text.liquid`, so the settings it reads
+  from `block_settings` (text, font, alignment, line_height, letter_spacing,
+  case, text_color) keep those exact IDs here.
+
+  @example
+  <!-- Added to templates/index.json as the first section, above the fold -->
+{% endcomment %}
+
+{% liquid
+  assign backdrop_text = section.settings.text | escape
+  assign card_product = section.settings.card_product
+  assign image = section.settings.image
+  assign image_mobile = section.settings.image_mobile
+
+  assign image_loading = 'lazy'
+  assign image_priority = 'auto'
+  if section.index == 1
+    assign image_loading = 'eager'
+    assign image_priority = 'high'
+  endif
+
+  assign image_widths = '400, 600, 800, 1000, 1200, 1440'
+  assign image_sizes = '(min-width: 750px) min(50vw, 720px), 100vw'
+  assign mobile_image_widths = '400, 600, 800, 1000'
+  assign mobile_image_widths_array = mobile_image_widths | split: ', '
+
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+%}
+
+<div class="section-background color-custom-{{ section.id }}"></div>
+<div
+  class="section section--page-width barkfam-hero color-custom-{{ section.id }}"
+  {% if request.visual_preview_mode %}
+    data-shopify-visual-preview
+  {% endif %}
+>
+  <div
+    class="barkfam-hero__inner spacing-style"
+    style="
+      {% render 'spacing-style', settings: section.settings %}
+      --barkfam-hero-image-width: {{ section.settings.image_width }}%;
+      --barkfam-hero-card-radius: {{ settings.card_corner_radius }}px;
+    "
+  >
+    <div class="barkfam-hero__content">
+      {% content_for 'blocks' %}
+    </div>
+
+    <div class="barkfam-hero__media">
+      {%- if backdrop_text != blank -%}
+        <div class="barkfam-hero__backdrop-clip" aria-hidden="true">
+          <div
+            class="barkfam-hero__backdrop"
+            style="
+              --barkfam-hero-backdrop-opacity: {{ section.settings.backdrop_opacity | divided_by: 100.0 }};
+              --barkfam-hero-backdrop-width: {{ section.settings.backdrop_width }}%;
+              --barkfam-hero-backdrop-offset: {{ section.settings.backdrop_offset }}%;
+            "
+          >
+            {% render 'jumbo-text', text: backdrop_text, block_settings: section.settings %}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="barkfam-hero__figure">
+        {%- if image != blank and image_mobile != blank -%}
+          <picture class="barkfam-hero__image">
+            <source
+              media="(max-width: 749px)"
+              srcset="
+                {%- for mobile_width in mobile_image_widths_array -%}
+                  {{ image_mobile | image_url: width: mobile_width }} {{ mobile_width }}w
+                  {%- unless forloop.last %}, {% endunless -%}
+                {%- endfor -%}
+              "
+              sizes="100vw"
+              width="{{ image_mobile.width }}"
+              height="{{ image_mobile.height }}"
+            >
+            {{
+              image
+              | image_url: width: 1440
+              | image_tag:
+                class: 'barkfam-hero__image',
+                width: image.width,
+                height: image.height,
+                widths: image_widths,
+                sizes: image_sizes,
+                alt: image.alt,
+                loading: image_loading,
+                fetchpriority: image_priority
+            }}
+          </picture>
+        {%- elsif image != blank -%}
+          {{
+            image
+            | image_url: width: 1440
+            | image_tag:
+              class: 'barkfam-hero__image',
+              width: image.width,
+              height: image.height,
+              widths: image_widths,
+              sizes: image_sizes,
+              alt: image.alt,
+              loading: image_loading,
+              fetchpriority: image_priority
+          }}
+        {%- else -%}
+          {{ 'product-apparel-1' | placeholder_svg_tag: 'barkfam-hero__image barkfam-hero__image--placeholder' }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_card and card_product != blank -%}
+        <a class="barkfam-hero__card" href="{{ card_product.url }}">
+          <span class="barkfam-hero__card-media">
+            {%- if card_product.featured_media != blank -%}
+              {{
+                card_product.featured_media.preview_image
+                | image_url: width: 240
+                | image_tag:
+                  class: 'barkfam-hero__card-image',
+                  widths: '80, 160, 240',
+                  sizes: '80px',
+                  alt: '',
+                  loading: image_loading
+              }}
+            {%- endif -%}
+          </span>
+          <span class="barkfam-hero__card-text">
+            <span class="barkfam-hero__card-title">{{ card_product.title | escape }}</span>
+            {% render 'price', product_resource: card_product %}
+          </span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .barkfam-hero__inner {
+    display: grid;
+    gap: var(--gap-2xl);
+    align-items: center;
+    min-width: 0;
+  }
+
+  .barkfam-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-lg);
+    min-width: 0;
+  }
+
+  .barkfam-hero__content:empty {
+    display: none;
+  }
+
+  .barkfam-hero__media {
+    position: relative;
+    min-width: 0;
+    display: grid;
+    justify-items: center;
+    gap: var(--gap-xl);
+  }
+
+  /* Clips the oversized word so it never widens the page. */
+  .barkfam-hero__backdrop-clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: var(--layer-base);
+    pointer-events: none;
+  }
+
+  .barkfam-hero__backdrop {
+    position: absolute;
+    inset-block-start: 50%;
+
+    /* Symmetric inset keeps the oversized word centred in both LTR and RTL,
+       so only the vertical nudge needs a translation. */
+    inset-inline-start: calc((100% - var(--barkfam-hero-backdrop-width, 130%)) / 2);
+    width: var(--barkfam-hero-backdrop-width, 130%);
+    translate: 0 calc(-50% + var(--barkfam-hero-backdrop-offset, 0%));
+    opacity: var(--barkfam-hero-backdrop-opacity, 0.12);
+  }
+
+  .barkfam-hero__figure {
+    position: relative;
+    z-index: var(--layer-flat);
+    width: var(--barkfam-hero-image-width, 100%);
+    max-width: 100%;
+  }
+
+  .barkfam-hero__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .barkfam-hero__image--placeholder {
+    aspect-ratio: 1;
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+    border-radius: var(--barkfam-hero-card-radius, 16px);
+  }
+
+  .barkfam-hero__card {
+    position: relative;
+    z-index: var(--layer-raised);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-md);
+    max-width: 18rem;
+    padding: var(--padding-xs);
+    padding-inline-end: var(--padding-xl);
+    border: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-10));
+    border-radius: var(--barkfam-hero-card-radius, 16px);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .barkfam-hero__card-media {
+    flex: none;
+    display: block;
+    width: 3.5rem;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: calc(var(--barkfam-hero-card-radius, 16px) - var(--padding-xs));
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-5));
+  }
+
+  .barkfam-hero__card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .barkfam-hero__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3xs);
+    min-width: 0;
+  }
+
+  .barkfam-hero__card-title {
+    font-size: var(--font-size--sm);
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+  }
+
+  @media screen and (min-width: 750px) {
+    .barkfam-hero__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-3xl);
+    }
+
+    .barkfam-hero__card {
+      position: absolute;
+      inset-block-end: var(--padding-xl);
+      inset-inline-end: 0;
+      margin: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .barkfam-hero__card {
+      transition: transform var(--animation-speed-slow) var(--animation-easing);
+    }
+
+    .barkfam-hero__card:hover {
+      transform: translateY(-2px);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_hero",
+  "tag": "section",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.backdrop_word"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:settings.text",
+      "info": "t:info.barkfam_backdrop_word",
+      "default": "t:text_defaults.barkfam_hero_word"
+    },
+    {
+      "type": "select",
+      "id": "font",
+      "label": "t:settings.font",
+      "options": [
+        {
+          "value": "body",
+          "label": "t:options.body"
+        },
+        {
+          "value": "subheading",
+          "label": "t:options.subheading"
+        },
+        {
+          "value": "heading",
+          "label": "t:options.heading"
+        },
+        {
+          "value": "accent",
+          "label": "t:options.accent"
+        }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "case",
+      "label": "t:settings.text_case",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:options.none"
+        },
+        {
+          "value": "uppercase",
+          "label": "t:options.uppercase"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "letter_spacing",
+      "label": "t:settings.letter_spacing",
+      "options": [
+        {
+          "value": "-0.03em",
+          "label": "t:options.tight"
+        },
+        {
+          "value": "normal",
+          "label": "t:options.normal"
+        },
+        {
+          "value": "0.03em",
+          "label": "t:options.loose"
+        }
+      ],
+      "default": "-0.03em"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:settings.alignment",
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "default": "{{ settings.color_palette.foreground }}"
+    },
+    {
+      "type": "range",
+      "id": "backdrop_opacity",
+      "label": "t:settings.opacity",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "%",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "backdrop_width",
+      "label": "t:settings.barkfam_backdrop_width",
+      "min": 100,
+      "max": 220,
+      "step": 5,
+      "unit": "%",
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "backdrop_offset",
+      "label": "t:settings.barkfam_backdrop_offset",
+      "min": -40,
+      "max": 40,
+      "step": 1,
+      "unit": "%",
+      "default": -10
+    },
+    {
+      "type": "header",
+      "content": "t:content.media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:settings.barkfam_mobile_image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "t:settings.width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "t:content.barkfam_floating_card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_card",
+      "label": "t:settings.barkfam_show_card",
+      "default": true
+    },
+    {
+      "type": "product",
+      "id": "card_product",
+      "label": "t:settings.product",
+      "info": "t:info.barkfam_floating_card"
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "{{ settings.color_palette.background }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_hero",
+      "category": "t:categories.banners",
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "t:html_defaults.barkfam_hero_eyebrow",
+            "width": "fit-content",
+            "alignment": "left",
+            "type_preset": "h6",
+            "background": true,
+            "background_color": "{{ settings.color_palette.color3 }}",
+            "corner_radius": 40,
+            "padding-block-start": 6,
+            "padding-block-end": 6,
+            "padding-inline-start": 14,
+            "padding-inline-end": 14
+          }
+        },
+        "heading": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "t:html_defaults.barkfam_hero_heading",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h1",
+            "wrap": "pretty"
+          }
+        },
+        "body": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "t:html_defaults.barkfam_hero_text",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "wrap": "pretty"
+          }
+        },
+        "cta": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "t:text_defaults.button_label",
+            "style_class": "button",
+            "width": "fit-content"
+          }
+        }
+      },
+      "block_order": ["eyebrow", "heading", "body", "cta"]
+    }
+  ]
+}
+{% endschema %}

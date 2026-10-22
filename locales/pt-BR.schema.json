@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_hero": "Hero com palavra de fundo",
     "404": "404",
     "colors": "Paleta de cores",
     "custom_section": "Seção personalizada",
@@ -171,6 +172,10 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_backdrop_width": "Largura da palavra",
+    "barkfam_backdrop_offset": "Deslocamento vertical da palavra",
+    "barkfam_mobile_image": "Imagem no celular",
+    "barkfam_show_card": "Mostrar card",
     "alignment": "Alinhamento",
     "autoplay": "Reprodução automática",
     "background": "Plano de fundo",
@@ -869,6 +874,8 @@
     "direction_top_start": "Superior à esquerda"
   },
   "content": {
+    "backdrop_word": "Palavra de fundo",
+    "barkfam_floating_card": "Card flutuante do produto",
     "advanced": "Avançado",
     "background_image": "Imagem de fundo",
     "background_video": "Vídeo de fundo",
@@ -997,6 +1004,9 @@
     "page_text_color_contrast_info": "Seções com uma cor de fundo personalizada usarão esta cor do texto apenas quando houver contraste de cor suficiente."
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>Compartilhe informações sobre sua marca com seus clientes. Descreva um produto, faça anúncios ou dê as boas-vindas aos clientes em sua loja.</p>",
     "bestseller_h2": "<h2>Mais vendidos</h2>",
     "bestseller_h3": "<h3>Mais vendidos</h3>",
@@ -1054,6 +1064,7 @@
     "introducing_p": "<p><em>Apresentando</em></p>"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "button_label": "Compre agora",
     "collapsible_row": "Linha expansível",
     "heading": "Título",
@@ -1092,6 +1103,8 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_backdrop_word": "Fica atrás da imagem do produto e é cortada nas duas bordas. Uma palavra curta funciona melhor.",
+    "barkfam_floating_card": "O título e o preço vêm do produto que você selecionar.",
     "video_alt_text": "Descreva o vídeo para usuários de tecnologia assistiva",
     "video_autoplay": "Os vídeos ficarão sem som por padrão",
     "video_external": "Use um URL do YouTube ou do Vimeo",

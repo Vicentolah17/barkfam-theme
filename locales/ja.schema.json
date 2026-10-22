@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "404": "404",
     "colors": "カラーパレット",
     "custom_section": "カスタムセクション",
@@ -171,6 +172,10 @@
     "disclosures": "開示情報"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "alignment": "配置",
     "autoplay": "自動再生",
     "background": "背景",
@@ -869,6 +874,8 @@
     "input_field": "入力フィールド"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "advanced": "高度な設定",
     "background_image": "背景画像",
     "background_video": "背景動画",
@@ -997,6 +1004,9 @@
     "page_text_color_contrast_info": "カスタム背景色を使用したセクションでは、色のコントラストが十分な場合にのみ、このテキストの配色が使用されます。"
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>ブランドに関する情報をお客様に伝えましょう。商品の説明、お知らせ、ストアへのお客様への歓迎メッセージなどに使用します。</p>",
     "bestseller_h2": "<h2>ベストセラー</h2>",
     "bestseller_h3": "<h3>ベストセラー</h3>",
@@ -1054,6 +1064,7 @@
     "introducing_p": "<p><em>新登場</em></p>"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "button_label": "今すぐ購入",
     "collapsible_row": "折りたたみ可能な行",
     "heading": "見出し",
@@ -1092,6 +1103,8 @@
     "disclosures": "開示情報"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "video_alt_text": "支援技術のユーザーのために動画の説明を記述します",
     "video_autoplay": "動画はデフォルトでミュートになります",
     "video_external": "YouTubeまたはVimeoのURLを使用します",

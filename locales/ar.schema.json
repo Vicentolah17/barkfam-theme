@@ -30,6 +30,8 @@
     "text": "نص"
   },
   "content": {
+    "backdrop_word": "Backdrop word",
+    "barkfam_floating_card": "Floating product card",
     "visible_if_collection_has_more_products": "مرئي إذا كانت المجموعة تحتوي على منتجات أكثر من المعروضة",
     "advanced": "متقدم",
     "appearance": "المظهر",
@@ -158,6 +160,9 @@
     "navigation": "التنقل"
   },
   "html_defaults": {
+    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
+    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
+    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "join_our_email_list": "<h2>انضم إلى قائمتنا البريدية</h2>",
     "get_exclusive_deals_and_early_access_to_new_products": "<p>احصل على صفقات حصرية ووصول مبكر إلى المنتجات الجديدة.</p>",
     "artistry_in_action": "<p>الفن في العمل </p>",
@@ -215,6 +220,8 @@
     "work_quickly_to_ship": "<p>سنعمل بسرعة لشحن طلبك في أقرب وقت ممكن. بمجرد شحن طلبك، ستتلقى رسالة بريد إلكتروني تحتوي على مزيد من المعلومات. تختلف أوقات التوصيل حسب موقعك.</p>"
   },
   "info": {
+    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_floating_card": "The title and price come from the product you select.",
     "actions_display_style": "تُستخدم الأيقونات دائماً على الهاتف المحمول",
     "applies_on_image_only": "ينطبق على الصور فقط",
     "aspect_ratio_adjusted": "معدل في بعض التخطيطات",
@@ -244,6 +251,7 @@
     "media_type_info": "تمت تعبئة الميزات من روابط القائمة الخاصة بك"
   },
   "names": {
+    "barkfam_hero": "Hero with backdrop word",
     "column": "عمود",
     "product_title": "عنوان المنتج",
     "custom_liquid": "Liquid مخصص",
@@ -688,6 +696,10 @@
     "below_media": "أسفل الوسائط"
   },
   "settings": {
+    "barkfam_backdrop_width": "Word width",
+    "barkfam_backdrop_offset": "Word vertical offset",
+    "barkfam_mobile_image": "Mobile image",
+    "barkfam_show_card": "Show card",
     "accordion": "أكورديون",
     "account": "حساب",
     "actions_display_style": "نمط القائمة",
@@ -1104,6 +1116,7 @@
     "customer_account_menu": "قائمة حساب العميل"
   },
   "text_defaults": {
+    "barkfam_hero_word": "BarkFam",
     "accordion_heading": "عنوان القائمة المنسدلة",
     "are_purchases_final_sale": "هل هناك أي مشتريات تعتبر بيعاً نهائياً؟",
     "be_bold": "كن جريئًا.",
