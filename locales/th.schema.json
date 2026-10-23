@@ -9,6 +9,11 @@
  */
 {
   "names": {
+    "barkfam_feature_step": "Step",
+    "barkfam_feature_steps": "How it works",
+    "barkfam_feature_problem": "Problem",
+    "barkfam_feature_problems": "Problems",
+    "barkfam_feature": "Featured product panel",
     "barkfam_products": "Product grid",
     "barkfam_banner": "Image banner",
     "barkfam_banners": "Image banners",
@@ -177,6 +182,7 @@
     "disclosures": "การเปิดเผยข้อมูล"
   },
   "settings": {
+    "barkfam_number": "Number",
     "barkfam_products_to_show": "Products to show",
     "barkfam_ghost_word": "Ghost word",
     "barkfam_card_product_2": "Second card",
@@ -1073,6 +1079,21 @@
     "featured_collection_h3": "<h3>คอลเลกชันแนะนำ</h3>"
   },
   "text_defaults": {
+    "barkfam_feature_step_3_text": "Pull the fur off the glove. Rinse with water when needed.",
+    "barkfam_feature_step_3_title": "Peel and rinse",
+    "barkfam_feature_step_2_text": "Stroke in the direction of the fur to collect loose hair.",
+    "barkfam_feature_step_2_title": "Pet as usual",
+    "barkfam_feature_step_text": "Put your hand in the glove. Either side works.",
+    "barkfam_feature_step_title": "Slip it on",
+    "barkfam_feature_problem_car_text": "Seats and floor mats collect it fast.",
+    "barkfam_feature_problem_car_title": "The car",
+    "barkfam_feature_problem_clothes_text": "Dark fabrics show every single hair.",
+    "barkfam_feature_problem_clothes_title": "Your clothes",
+    "barkfam_feature_problem_text": "Fur works into the fabric and stays there.",
+    "barkfam_feature_problem_title": "The couch",
+    "barkfam_feature_steps_heading": "How it works",
+    "barkfam_feature_heading": "Fur gets everywhere. Here's a simple fix.",
+    "barkfam_feature_pill": "Pet Hair Remover Glove",
     "barkfam_products_button": "Shop all",
     "barkfam_products_heading": "Best Sellers",
     "barkfam_products_pill": "Most loved",

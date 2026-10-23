@@ -1,0 +1,23 @@
+{%- doc -%}
+  Static container for the problem cards in the BarkFam feature panel: three
+  across on desktop, stacked on mobile. Styled by sections/barkfam-feature.liquid.
+
+  @example
+  {% content_for 'block', type: '_barkfam-feature-problems', id: 'problems' %}
+{%- enddoc -%}
+
+<ul class="bf-feature__problems" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</ul>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_feature_problems",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_barkfam-feature-problem"
+    }
+  ]
+}
+{% endschema %}

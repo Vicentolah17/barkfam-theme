@@ -1,0 +1,38 @@
+{%- doc -%}
+  Static container for the "How it works" list in the BarkFam feature panel: a
+  heading over an ordered list of step blocks. Styled by sections/barkfam-feature.liquid.
+
+  Block settings: heading.
+
+  @example
+  {% content_for 'block', type: '_barkfam-feature-steps', id: 'steps' %}
+{%- enddoc -%}
+
+<div class="bf-feature__steps" {{ block.shopify_attributes }}>
+  {%- if block.settings.heading != blank -%}
+    <h3 class="bf-feature__steps-heading">{{ block.settings.heading | escape }}</h3>
+  {%- endif -%}
+  <ol class="bf-feature__step-list">
+    {% content_for 'blocks' %}
+  </ol>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_feature_steps",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_barkfam-feature-step"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "t:text_defaults.barkfam_feature_steps_heading"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,368 @@
+{% comment %}
+  Section contract.
+  The featured product panel from the approved design (_referencias/design/Home.dc.html,
+  "Featured glove"): a rounded panel with the product image on one side and, on
+  the other, a pill, a heading, the problem cards, the "How it works" steps and
+  a button to the product with its price. Problems and steps are blocks inside
+  two static containers, so the merchant can add, edit or reorder them.
+
+  @example
+  <!-- templates/index.json, after Best Sellers, with the glove picked as the product -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+
+{%- liquid
+  assign feature_product = section.settings.product
+
+  # Same rule as the hero: an uploaded image keeps its own alt text, the product's image uses the title.
+  if section.settings.image != blank
+    assign feature_image = section.settings.image
+    assign feature_image_alt = section.settings.image.alt | default: feature_product.title | escape
+  else
+    assign feature_image = feature_product.featured_media.preview_image
+    assign feature_image_alt = feature_product.title | escape
+  endif
+
+  assign feature_link = section.settings.button_link | default: feature_product.url | default: routes.all_products_collection_url
+-%}
+
+<div class="bf-section bf-feature">
+  <div class="bf-container">
+    <div
+      class="bf-feature__panel"
+      style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+    >
+      <div class="bf-feature__media">
+        {%- if feature_image != blank -%}
+          {{
+            feature_image
+            | image_url: width: 960
+            | image_tag:
+              class: 'bf-feature__image',
+              widths: '320, 480, 640, 800, 960',
+              sizes: '(min-width: 750px) 480px, calc(100vw - 80px)',
+              alt: feature_image_alt,
+              loading: 'lazy'
+          }}
+        {%- else -%}
+          {{ 'product-apparel-1' | placeholder_svg_tag: 'bf-feature__image' }}
+        {%- endif -%}
+      </div>
+
+      <div class="bf-feature__content">
+        {%- if section.settings.pill != blank or section.settings.heading != blank -%}
+          <div class="bf-feature__intro">
+            {%- if section.settings.pill != blank -%}
+              <span class="bf-pill bf-pill--filled"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.heading != blank -%}
+              <h2 class="bf-heading">{{ section.settings.heading | escape }}</h2>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {% content_for 'block', type: '_barkfam-feature-problems', id: 'problems' %}
+
+        {% content_for 'block', type: '_barkfam-feature-steps', id: 'steps' %}
+
+        {%- if section.settings.button_label != blank -%}
+          <a class="bf-btn bf-btn--primary bf-feature__button" href="{{ feature_link }}">
+            {{- section.settings.button_label | escape -}}
+            {%- if section.settings.show_price and feature_product != blank %} · {{ feature_product.price | money }}{% endif -%}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-feature {
+    padding-block-start: var(--bf-py);
+  }
+
+  .bf-feature__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+    padding: 20px;
+    border-radius: var(--bf-r-lg);
+    background-color: var(--bf-surface-bg, var(--bf-alt));
+  }
+
+  .bf-feature__media {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--bf-r-card);
+    background-color: var(--bf-surface);
+  }
+
+  .bf-feature__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bf-feature__content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-width: 0;
+  }
+
+  .bf-feature__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .bf-feature__problems {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .bf-feature__problem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--bf-line);
+    border-radius: 16px;
+    background-color: var(--bf-bg);
+  }
+
+  .bf-feature__problem-title {
+    font-family: var(--bf-font-display);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .bf-feature__problem-text {
+    color: var(--bf-muted);
+    font-size: var(--bf-small);
+    line-height: 1.45;
+  }
+
+  .bf-feature__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .bf-feature__steps-heading {
+    margin: 0 0 8px;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h3);
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+  .bf-feature__step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .bf-feature__step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+    padding-block: 14px;
+    border-block-start: 1px solid var(--bf-line);
+  }
+
+  .bf-feature__step-number {
+    color: var(--bf-accent);
+    font-family: var(--bf-font-display);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .bf-feature__step-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .bf-feature__step-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .bf-feature__step-text {
+    color: var(--bf-muted);
+    font-size: var(--bf-small);
+  }
+
+  .bf-feature .bf-feature__button {
+    align-self: flex-start;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-feature__panel {
+      grid-template-columns: 1fr 1.1fr;
+      gap: 64px;
+      padding: 56px;
+    }
+
+    .bf-feature__problems {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_feature",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.barkfam_featured_product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product",
+      "info": "t:info.barkfam_hero_product"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image",
+      "info": "t:info.barkfam_hero_image"
+    },
+    {
+      "type": "header",
+      "content": "t:content.text"
+    },
+    {
+      "type": "text",
+      "id": "pill",
+      "label": "t:settings.barkfam_pill",
+      "default": "t:text_defaults.barkfam_feature_pill"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "t:text_defaults.barkfam_feature_heading"
+    },
+    {
+      "type": "header",
+      "content": "t:content.buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.barkfam_hero_primary"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:settings.link",
+      "info": "t:info.barkfam_primary_link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "t:settings.barkfam_show_price",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "{{ settings.color_palette.color4 }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_feature",
+      "category": "t:categories.products",
+      "blocks": {
+        "problems": {
+          "type": "_barkfam-feature-problems",
+          "static": true,
+          "blocks": {
+            "couch": {
+              "type": "_barkfam-feature-problem",
+              "settings": {
+                "title": "t:text_defaults.barkfam_feature_problem_title",
+                "text": "t:text_defaults.barkfam_feature_problem_text"
+              }
+            },
+            "clothes": {
+              "type": "_barkfam-feature-problem",
+              "settings": {
+                "title": "t:text_defaults.barkfam_feature_problem_clothes_title",
+                "text": "t:text_defaults.barkfam_feature_problem_clothes_text"
+              }
+            },
+            "car": {
+              "type": "_barkfam-feature-problem",
+              "settings": {
+                "title": "t:text_defaults.barkfam_feature_problem_car_title",
+                "text": "t:text_defaults.barkfam_feature_problem_car_text"
+              }
+            }
+          },
+          "block_order": ["couch", "clothes", "car"]
+        },
+        "steps": {
+          "type": "_barkfam-feature-steps",
+          "static": true,
+          "blocks": {
+            "step_1": {
+              "type": "_barkfam-feature-step",
+              "settings": {
+                "number": "01",
+                "title": "t:text_defaults.barkfam_feature_step_title",
+                "text": "t:text_defaults.barkfam_feature_step_text"
+              }
+            },
+            "step_2": {
+              "type": "_barkfam-feature-step",
+              "settings": {
+                "number": "02",
+                "title": "t:text_defaults.barkfam_feature_step_2_title",
+                "text": "t:text_defaults.barkfam_feature_step_2_text"
+              }
+            },
+            "step_3": {
+              "type": "_barkfam-feature-step",
+              "settings": {
+                "number": "03",
+                "title": "t:text_defaults.barkfam_feature_step_3_title",
+                "text": "t:text_defaults.barkfam_feature_step_3_text"
+              }
+            }
+          },
+          "block_order": ["step_1", "step_2", "step_3"]
+        }
+      }
+    }
+  ]
+}
+{% endschema %}

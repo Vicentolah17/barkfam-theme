@@ -1,0 +1,44 @@
+{%- doc -%}
+  Renders one problem card in the BarkFam feature panel: a short title and one
+  line of supporting text. Styled by sections/barkfam-feature.liquid.
+
+  Block settings: title, text.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<li class="bf-feature__problem" {{ block.shopify_attributes }}>
+  {%- if block.settings.title != blank -%}
+    <span class="bf-feature__problem-title">{{ block.settings.title | escape }}</span>
+  {%- endif -%}
+  {%- if block.settings.text != blank -%}
+    <span class="bf-feature__problem-text">{{ block.settings.text | escape }}</span>
+  {%- endif -%}
+</li>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_feature_problem",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title",
+      "default": "t:text_defaults.barkfam_feature_problem_title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:settings.text",
+      "default": "t:text_defaults.barkfam_feature_problem_text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_feature_problem"
+    }
+  ]
+}
+{% endschema %}

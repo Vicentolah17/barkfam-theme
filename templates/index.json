@@ -17,465 +17,6 @@
         "card_product_2": "dog-licking-mat-slow-feeder-premium-lick-pad-with-suction-cups-for-dog-anxiety-relief-slow-feeder-dog-bowls-pet-placemat"
       }
     },
-    "problem_solution": {
-      "type": "section",
-      "blocks": {
-        "media": {
-          "type": "group",
-          "settings": {},
-          "blocks": {
-            "image": {
-              "type": "image",
-              "settings": {
-                "image_ratio": "square",
-                "border_radius": 24
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "image"
-          ]
-        },
-        "copy": {
-          "type": "group",
-          "settings": {
-            "gap": 16
-          },
-          "blocks": {
-            "eyebrow": {
-              "type": "text",
-              "settings": {
-                "text": "<p>The problem</p>",
-                "type_preset": "h6",
-                "wrap": "pretty",
-                "background": true,
-                "background_color": "{{ settings.color_palette.color3 }}",
-                "corner_radius": 40,
-                "padding-block-start": 6,
-                "padding-block-end": 6,
-                "padding-inline-start": 14,
-                "padding-inline-end": 14
-              },
-              "blocks": {}
-            },
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>Fur gets everywhere</h2>",
-                "width": "100%",
-                "type_preset": "h3",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            },
-            "body": {
-              "type": "text",
-              "settings": {
-                "text": "<p>It ends up on the couch, on your clothes, and across the back seat of the car. Most brushes move the loose fur around instead of collecting it.</p><p>The glove grips it. You brush the way you already pet them, the fur gathers on the silicone tips, and you peel it off in one piece.</p>",
-                "width": "100%",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "eyebrow",
-            "heading",
-            "body"
-          ]
-        }
-      },
-      "block_order": [
-        "media",
-        "copy"
-      ],
-      "name": "t:names.section",
-      "settings": {
-        "content_direction": "row",
-        "gap": 48,
-        "background_color": "{{ settings.color_palette.background }}",
-        "toggle_overlay": false,
-        "padding-block-start": 64,
-        "padding-block-end": 64
-      }
-    },
-    "how_it_works": {
-      "type": "section",
-      "blocks": {
-        "header": {
-          "type": "group",
-          "name": "t:names.header",
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center"
-          },
-          "blocks": {
-            "eyebrow": {
-              "type": "text",
-              "settings": {
-                "text": "<p>In three steps</p>",
-                "alignment": "center",
-                "type_preset": "h6",
-                "wrap": "pretty",
-                "background": true,
-                "background_color": "{{ settings.color_palette.background }}",
-                "corner_radius": 40,
-                "padding-block-start": 6,
-                "padding-block-end": 6,
-                "padding-inline-start": 14,
-                "padding-inline-end": 14
-              },
-              "blocks": {}
-            },
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>How it works</h2>",
-                "alignment": "center",
-                "type_preset": "h3",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "eyebrow",
-            "heading"
-          ]
-        },
-        "steps": {
-          "type": "group",
-          "settings": {
-            "content_direction": "row",
-            "vertical_alignment": "flex-start",
-            "gap": 20
-          },
-          "blocks": {
-            "step_1": {
-              "type": "group",
-              "settings": {
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 8,
-                "height": "fill",
-                "background_color": "{{ settings.color_palette.background }}",
-                "border": "solid",
-                "border_opacity": 15,
-                "border_radius": 24,
-                "padding-block-start": 28,
-                "padding-block-end": 28,
-                "padding-inline-start": 24,
-                "padding-inline-end": 24
-              },
-              "blocks": {
-                "number": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>01</p>",
-                    "type_preset": "h4",
-                    "text_color": "{{ settings.color_palette.color1 }}",
-                    "padding-block-end": 4
-                  },
-                  "blocks": {}
-                },
-                "title": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<h3>Put it on</h3>",
-                    "width": "100%",
-                    "type_preset": "h5",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                },
-                "body": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Slide the glove on and pull the strap snug around your wrist.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "number",
-                "title",
-                "body"
-              ]
-            },
-            "step_2": {
-              "type": "group",
-              "settings": {
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 8,
-                "height": "fill",
-                "background_color": "{{ settings.color_palette.background }}",
-                "border": "solid",
-                "border_opacity": 15,
-                "border_radius": 24,
-                "padding-block-start": 28,
-                "padding-block-end": 28,
-                "padding-inline-start": 24,
-                "padding-inline-end": 24
-              },
-              "blocks": {
-                "number": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>02</p>",
-                    "type_preset": "h4",
-                    "text_color": "{{ settings.color_palette.color1 }}",
-                    "padding-block-end": 4
-                  },
-                  "blocks": {}
-                },
-                "title": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<h3>Pet as usual</h3>",
-                    "width": "100%",
-                    "type_preset": "h5",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                },
-                "body": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Run your hand over your dog or cat. Loose fur gathers on the silicone tips.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "number",
-                "title",
-                "body"
-              ]
-            },
-            "step_3": {
-              "type": "group",
-              "settings": {
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 8,
-                "height": "fill",
-                "background_color": "{{ settings.color_palette.background }}",
-                "border": "solid",
-                "border_opacity": 15,
-                "border_radius": 24,
-                "padding-block-start": 28,
-                "padding-block-end": 28,
-                "padding-inline-start": 24,
-                "padding-inline-end": 24
-              },
-              "blocks": {
-                "number": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>03</p>",
-                    "type_preset": "h4",
-                    "text_color": "{{ settings.color_palette.color1 }}",
-                    "padding-block-end": 4
-                  },
-                  "blocks": {}
-                },
-                "title": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<h3>Peel and rinse</h3>",
-                    "width": "100%",
-                    "type_preset": "h5",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                },
-                "body": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Peel the layer of fur off in one piece, then rinse the glove under water.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "number",
-                "title",
-                "body"
-              ]
-            }
-          },
-          "block_order": [
-            "step_1",
-            "step_2",
-            "step_3"
-          ]
-        }
-      },
-      "block_order": [
-        "header",
-        "steps"
-      ],
-      "name": "t:names.section",
-      "settings": {
-        "horizontal_alignment_flex_direction_column": "center",
-        "gap": 40,
-        "background_color": "{{ settings.color_palette.color3 }}",
-        "toggle_overlay": false,
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
-    },
-    "product_highlight": {
-      "type": "featured-product-information",
-      "blocks": {
-        "media-gallery": {
-          "type": "_featured-product-information-carousel",
-          "static": true,
-          "settings": {
-            "aspect_ratio": "1",
-            "constrain_to_viewport": true,
-            "media_fit": "contain",
-            "media_radius": 24,
-            "extend_media": false,
-            "hide_variants": true,
-            "slideshow_controls_style": "counter",
-            "slideshow_mobile_controls_style": "dots",
-            "thumbnail_width": 44,
-            "thumbnail_radius": 12
-          },
-          "blocks": {}
-        },
-        "product-details": {
-          "type": "_product-details",
-          "static": true,
-          "settings": {
-            "details_position": "center",
-            "gap": 24,
-            "padding-block-start": 24,
-            "padding-block-end": 24
-          },
-          "blocks": {
-            "eyebrow": {
-              "type": "text",
-              "settings": {
-                "text": "<p>The product</p>",
-                "type_preset": "h6",
-                "wrap": "pretty",
-                "background": true,
-                "background_color": "{{ settings.color_palette.color3 }}",
-                "corner_radius": 40,
-                "padding-block-start": 6,
-                "padding-block-end": 6,
-                "padding-inline-start": 14,
-                "padding-inline-end": 14
-              },
-              "blocks": {}
-            },
-            "header": {
-              "type": "group",
-              "name": "t:names.header",
-              "settings": {
-                "gap": 8
-              },
-              "blocks": {
-                "title": {
-                  "type": "product-title",
-                  "settings": {
-                    "type_preset": "h3",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                },
-                "price": {
-                  "type": "price",
-                  "settings": {
-                    "show_installments": true,
-                    "type_preset": "h5"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "title",
-                "price"
-              ]
-            },
-            "description": {
-              "type": "text",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            },
-            "variant_picker": {
-              "type": "variant-picker",
-              "settings": {
-                "show_swatches": false,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "buy_buttons": {
-              "type": "buy-buttons",
-              "settings": {
-                "stacking": true,
-                "show_pickup_availability": false
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                }
-              },
-              "block_order": []
-            }
-          },
-          "block_order": [
-            "eyebrow",
-            "header",
-            "description",
-            "variant_picker",
-            "buy_buttons"
-          ]
-        }
-      },
-      "name": "t:names.featured_product_information",
-      "settings": {
-        "equal_columns": true,
-        "gap": 48,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 64,
-        "padding-block-end": 64
-      }
-    },
     "reviews": {
       "type": "section",
       "disabled": true,
@@ -957,6 +498,82 @@
       "settings": {
         "collection": "all"
       }
+    },
+    "feature": {
+      "type": "barkfam-feature",
+      "blocks": {
+        "problems": {
+          "type": "_barkfam-feature-problems",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "couch": {
+              "type": "_barkfam-feature-problem",
+              "settings": {
+                "title": "The couch",
+                "text": "Fur works into the fabric and stays there."
+              }
+            },
+            "clothes": {
+              "type": "_barkfam-feature-problem",
+              "settings": {
+                "title": "Your clothes",
+                "text": "Dark fabrics show every single hair."
+              }
+            },
+            "car": {
+              "type": "_barkfam-feature-problem",
+              "settings": {
+                "title": "The car",
+                "text": "Seats and floor mats collect it fast."
+              }
+            }
+          },
+          "block_order": [
+            "couch",
+            "clothes",
+            "car"
+          ]
+        },
+        "steps": {
+          "type": "_barkfam-feature-steps",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "step_1": {
+              "type": "_barkfam-feature-step",
+              "settings": {
+                "title": "Slip it on",
+                "text": "Put your hand in the glove. Either side works."
+              }
+            },
+            "step_2": {
+              "type": "_barkfam-feature-step",
+              "settings": {
+                "number": "02",
+                "title": "Pet as usual",
+                "text": "Stroke in the direction of the fur to collect loose hair."
+              }
+            },
+            "step_3": {
+              "type": "_barkfam-feature-step",
+              "settings": {
+                "number": "03",
+                "title": "Peel and rinse",
+                "text": "Pull the fur off the glove. Rinse with water when needed."
+              }
+            }
+          },
+          "block_order": [
+            "step_1",
+            "step_2",
+            "step_3"
+          ]
+        }
+      },
+      "settings": {
+        "product": "pet-hair-remover-mitt-pet-hair-remover-gloves-deshedding-brush-glove-for-dog-cat-rabbit-with-long-short-curly-hair"
+      }
     }
   },
   "order": [
@@ -964,9 +581,7 @@
     "categories",
     "banners",
     "best_sellers",
-    "problem_solution",
-    "how_it_works",
-    "product_highlight",
+    "feature",
     "reviews",
     "faq",
     "shipping"

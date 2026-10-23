@@ -1,0 +1,55 @@
+{%- doc -%}
+  Renders one "How it works" step in the BarkFam feature panel: a step number
+  in the accent colour, a title and a line of text. The list it sits in already
+  carries the order, so the printed number is hidden from screen readers.
+  Styled by sections/barkfam-feature.liquid.
+
+  Block settings: number, title, text.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<li class="bf-feature__step" {{ block.shopify_attributes }}>
+  <span class="bf-feature__step-number" aria-hidden="true">{{ block.settings.number | escape }}</span>
+  <span class="bf-feature__step-body">
+    {%- if block.settings.title != blank -%}
+      <span class="bf-feature__step-title">{{ block.settings.title | escape }}</span>
+    {%- endif -%}
+    {%- if block.settings.text != blank -%}
+      <span class="bf-feature__step-text">{{ block.settings.text | escape }}</span>
+    {%- endif -%}
+  </span>
+</li>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_feature_step",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "number",
+      "label": "t:settings.barkfam_number",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title",
+      "default": "t:text_defaults.barkfam_feature_step_title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:settings.text",
+      "default": "t:text_defaults.barkfam_feature_step_text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_feature_step"
+    }
+  ]
+}
+{% endschema %}
