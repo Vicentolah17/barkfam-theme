@@ -18,63 +18,18 @@
       }
     },
     "reviews": {
-      "type": "section",
+      "type": "barkfam-reviews",
       "disabled": true,
       "blocks": {
-        "header": {
-          "type": "group",
-          "name": "t:names.header",
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center"
-          },
-          "blocks": {
-            "eyebrow": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Reviews</p>",
-                "alignment": "center",
-                "type_preset": "h6",
-                "wrap": "pretty",
-                "background": true,
-                "background_color": "{{ settings.color_palette.color3 }}",
-                "corner_radius": 40,
-                "padding-block-start": 6,
-                "padding-block-end": 6,
-                "padding-inline-start": 14,
-                "padding-inline-end": 14
-              },
-              "blocks": {}
-            },
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>What pet owners say</h2>",
-                "alignment": "center",
-                "type_preset": "h3",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "eyebrow",
-            "heading"
-          ]
+        "slider": {
+          "type": "_barkfam-reviews-slider",
+          "static": true,
+          "settings": {},
+          "blocks": {},
+          "block_order": []
         }
       },
-      "block_order": [
-        "header"
-      ],
-      "name": "t:names.section",
-      "settings": {
-        "horizontal_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "background_color": "{{ settings.color_palette.background }}",
-        "toggle_overlay": false,
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
+      "settings": {}
     },
     "faq": {
       "type": "section",

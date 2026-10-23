@@ -9,6 +9,9 @@
  */
 {
   "names": {
+    "barkfam_review": "Review",
+    "barkfam_reviews_slider": "Review slider",
+    "barkfam_reviews": "Reviews",
     "barkfam_feature_step": "Step",
     "barkfam_feature_steps": "How it works",
     "barkfam_feature_problem": "Problem",
@@ -182,6 +185,11 @@
     "disclosures": "Prohlášení"
   },
   "settings": {
+    "barkfam_reviewer_avatar": "Photo",
+    "barkfam_reviewer_detail": "Detail line",
+    "barkfam_reviewer_name": "Name",
+    "barkfam_quote": "Review text",
+    "barkfam_rating": "Rating",
     "barkfam_number": "Number",
     "barkfam_products_to_show": "Products to show",
     "barkfam_ghost_word": "Ghost word",
@@ -1079,6 +1087,9 @@
     "featured_collection_h3": "<h3>Doporučená kolekce</h3>"
   },
   "text_defaults": {
+    "barkfam_reviews_heading": "What Pet Parents Say",
+    "barkfam_reviews_pill": "Reviews",
+    "barkfam_reviews_ghost": "woof",
     "barkfam_feature_step_3_text": "Pull the fur off the glove. Rinse with water when needed.",
     "barkfam_feature_step_3_title": "Peel and rinse",
     "barkfam_feature_step_2_text": "Stroke in the direction of the fur to collect loose hair.",
@@ -1156,6 +1167,7 @@
     "disclosures": "Prohlášení"
   },
   "info": {
+    "barkfam_reviewer_detail": "For example: Verified buyer · product name",
     "barkfam_products_button_link": "Leave empty to link to the collection.",
     "barkfam_products_collection": "Cards follow this collection's sort order. Sort it by best selling for a real best-seller list.",
     "barkfam_category_image": "Leave empty to use the collection's featured image.",

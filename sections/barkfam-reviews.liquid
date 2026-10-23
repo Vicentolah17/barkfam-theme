@@ -1,0 +1,356 @@
+{% comment %}
+  Section contract.
+  "What Pet Parents Say" from the approved design (_referencias/design/Home.dc.html,
+  "Reviews"): a photo beside a ghost word, pill, heading and a review slider.
+  Ships disabled and without reviews. Reviews are entered as blocks in the
+  static slider, and a reviews app block can be added below it.
+
+  @example
+  <!-- templates/index.json, disabled until real reviews exist -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+
+<div
+  class="bf-section bf-reviews"
+  style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+>
+  <div class="bf-container bf-reviews__inner">
+    <div class="bf-reviews__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            class: 'bf-reviews__image',
+            widths: '400, 600, 800, 1200',
+            sizes: '(min-width: 750px) 568px, calc(100vw - 40px)',
+            alt: section.settings.image.alt,
+            loading: 'lazy'
+        }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'bf-reviews__image bf-reviews__image--placeholder' }}
+      {%- endif -%}
+    </div>
+
+    <div class="bf-reviews__content">
+      {%- if section.settings.ghost_text != blank -%}
+        <span
+          class="bf-ghost bf-reviews__ghost"
+          style="--bf-reviews-ghost-opacity: {{ section.settings.ghost_opacity | divided_by: 100.0 }};"
+          aria-hidden="true"
+        >
+          {{- section.settings.ghost_text | escape -}}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.pill != blank -%}
+        <span class="bf-pill bf-pill--filled"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="bf-heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      {% content_for 'block', type: '_barkfam-reviews-slider', id: 'slider' %}
+
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-reviews {
+    --bf-reviews-ghost-top: -70px;
+
+    margin-block-start: var(--bf-py);
+    background-color: var(--bf-surface-bg, var(--bf-alt));
+  }
+
+  .bf-reviews__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+    padding-block: var(--bf-py);
+  }
+
+  .bf-reviews__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--bf-r-lg);
+    background-color: var(--bf-ink);
+  }
+
+  .bf-reviews__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bf-reviews__image--placeholder {
+    fill: rgb(var(--bf-surface-rgb) / 0.25);
+  }
+
+  .bf-reviews__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    min-width: 0;
+  }
+
+  .bf-reviews__content > :not(.bf-reviews__ghost) {
+    position: relative;
+  }
+
+  .bf-reviews__ghost {
+    position: absolute;
+    inset-block-start: var(--bf-reviews-ghost-top);
+    inset-inline-start: -8px;
+    color: var(--bf-surface);
+    font-size: var(--bf-ghost-sm);
+    opacity: var(--bf-reviews-ghost-opacity, 0.75);
+  }
+
+  /* Slider: hidden with no review, buttons hidden with one */
+  .bf-reviews__slider {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .bf-reviews__slider:not(:has(.bf-review)) {
+    display: none;
+  }
+
+  .bf-reviews__track {
+    display: grid;
+    grid-auto-columns: 100%;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .bf-reviews__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bf-reviews__track:focus-visible {
+    outline: 2px solid var(--bf-accent);
+    outline-offset: 4px;
+  }
+
+  .bf-review {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  .bf-review__stars {
+    gap: 3px;
+  }
+
+  .bf-review__stars svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bf-review__quote {
+    margin: 0;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-quote);
+    font-weight: 500;
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .bf-review__quote p {
+    margin: 0;
+  }
+
+  /* Leaves room on the right for the two 44px buttons, which sit on this row */
+  .bf-review__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding-inline-end: 112px;
+  }
+
+  .bf-reviews__slider:not(:has(.bf-review + .bf-review)) .bf-review__author {
+    padding-inline-end: 0;
+  }
+
+  .bf-review__avatar {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border: 1px solid var(--bf-line);
+    border-radius: 999px;
+    background-color: var(--bf-bg);
+  }
+
+  .bf-review__avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bf-review__who {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .bf-review__name {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .bf-review__detail {
+    color: var(--bf-muted);
+    font-size: 13px;
+  }
+
+  .bf-reviews__nav {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    display: flex;
+    gap: 8px;
+  }
+
+  .bf-reviews__slider:not(:has(.bf-review + .bf-review)) .bf-reviews__nav {
+    display: none;
+  }
+
+  .bf-reviews__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--bf-ink);
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--bf-ink);
+    cursor: pointer;
+  }
+
+  .bf-reviews__arrow--next {
+    border-color: var(--bf-accent);
+    background-color: var(--bf-accent);
+    color: var(--bf-bg);
+  }
+
+  /* Arrows point the other way when the page reads right to left */
+  [dir='rtl'] .bf-reviews__arrow svg {
+    transform: scaleX(-1);
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-reviews {
+      --bf-reviews-ghost-top: -150px;
+    }
+
+    .bf-reviews__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .bf-reviews__media {
+      aspect-ratio: 4 / 5;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_reviews",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "header",
+      "content": "t:content.backdrop_word"
+    },
+    {
+      "type": "text",
+      "id": "ghost_text",
+      "label": "t:settings.text",
+      "default": "t:text_defaults.barkfam_reviews_ghost"
+    },
+    {
+      "type": "range",
+      "id": "ghost_opacity",
+      "label": "t:settings.opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 75
+    },
+    {
+      "type": "header",
+      "content": "t:content.text"
+    },
+    {
+      "type": "text",
+      "id": "pill",
+      "label": "t:settings.barkfam_pill",
+      "default": "t:text_defaults.barkfam_reviews_pill"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "t:text_defaults.barkfam_reviews_heading"
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "{{ settings.color_palette.color4 }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_reviews",
+      "category": "t:categories.storytelling",
+      "blocks": {
+        "slider": {
+          "type": "_barkfam-reviews-slider",
+          "static": true
+        }
+      }
+    }
+  ]
+}
+{% endschema %}

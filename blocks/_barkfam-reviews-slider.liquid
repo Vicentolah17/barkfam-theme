@@ -1,0 +1,63 @@
+{%- doc -%}
+  Static slider for the BarkFam reviews section. The track is a native
+  scroll-snap row of review blocks, so it can be swiped without JavaScript;
+  assets/barkfam-reviews.js adds the previous and next buttons. The slider hides
+  itself while it holds no review, and the buttons hide while it holds one.
+  Styled by sections/barkfam-reviews.liquid.
+
+  @example
+  {% content_for 'block', type: '_barkfam-reviews-slider', id: 'slider' %}
+{%- enddoc -%}
+
+<script
+  src="{{ 'barkfam-reviews.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<barkfam-reviews-component class="bf-reviews__slider" {{ block.shopify_attributes }}>
+  <div
+    class="bf-reviews__track"
+    ref="track"
+    role="region"
+    aria-label="{{ 'accessibility.slideshow' | t }}"
+    tabindex="0"
+  >
+    {% content_for 'blocks' %}
+  </div>
+
+  <div class="bf-reviews__nav">
+    <button
+      type="button"
+      class="bf-reviews__arrow bf-reviews__arrow--previous"
+      aria-label="{{ 'accessibility.slideshow_previous' | t }}"
+      on:click="/previous"
+    >
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M11 6l-6 6 6 6"/>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="bf-reviews__arrow bf-reviews__arrow--next"
+      aria-label="{{ 'accessibility.slideshow_next' | t }}"
+      on:click="/next"
+    >
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </button>
+  </div>
+</barkfam-reviews-component>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_reviews_slider",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_barkfam-review"
+    }
+  ]
+}
+{% endschema %}
