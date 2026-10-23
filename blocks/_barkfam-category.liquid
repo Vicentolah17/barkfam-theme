@@ -1,0 +1,66 @@
+{%- doc -%}
+  Renders one "Shop by Category" card: the category name over a 4:3 image,
+  linking to the chosen collection. Without a collection it links to all
+  products; without an image it shows the collection's featured image.
+
+  Block settings: title, collection, image.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- liquid
+  assign category_collection = block.settings.collection
+  assign category_link = category_collection.url | default: routes.all_products_collection_url
+  assign category_image = block.settings.image | default: category_collection.featured_image
+-%}
+
+<a class="bf-category" href="{{ category_link }}" {{ block.shopify_attributes }}>
+  <span class="bf-category__title">{{ block.settings.title | escape }}</span>
+  {%- if category_image != blank -%}
+    {{
+      category_image
+      | image_url: width: 640
+      | image_tag:
+        class: 'bf-category__image',
+        widths: '160, 240, 320, 480, 640',
+        sizes: '(min-width: 750px) 240px, calc(50vw - 40px)',
+        alt: '',
+        loading: 'lazy'
+    }}
+  {%- else -%}
+    {{ 'collection-1' | placeholder_svg_tag: 'bf-category__image bf-category__image--placeholder' }}
+  {%- endif -%}
+</a>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_category",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title",
+      "default": "t:text_defaults.barkfam_category_title"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:settings.collection",
+      "info": "t:info.barkfam_category_collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image",
+      "info": "t:info.barkfam_category_image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_category"
+    }
+  ]
+}
+{% endschema %}

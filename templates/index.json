@@ -890,10 +890,51 @@
         "padding-block-start": 72,
         "padding-block-end": 72
       }
+    },
+    "categories": {
+      "type": "barkfam-categories",
+      "blocks": {
+        "grooming": {
+          "type": "_barkfam-category",
+          "settings": {
+            "title": "grooming & cleanup",
+            "collection": "all"
+          }
+        },
+        "food": {
+          "type": "_barkfam-category",
+          "settings": {
+            "title": "food & water",
+            "collection": "all"
+          }
+        },
+        "walks": {
+          "type": "_barkfam-category",
+          "settings": {
+            "title": "walks & wear",
+            "collection": "all"
+          }
+        },
+        "rest": {
+          "type": "_barkfam-category",
+          "settings": {
+            "title": "rest & comfort",
+            "collection": "all"
+          }
+        }
+      },
+      "block_order": [
+        "grooming",
+        "food",
+        "walks",
+        "rest"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "hero",
+    "categories",
     "problem_solution",
     "how_it_works",
     "product_highlight",

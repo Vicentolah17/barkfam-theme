@@ -228,6 +228,8 @@
     "work_quickly_to_ship": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>"
   },
   "info": {
+    "barkfam_category_image": "Leave empty to use the collection's featured image.",
+    "barkfam_category_collection": "Where the card links. Leave empty to link to all products.",
     "barkfam_primary_link": "Leave empty to link to the featured product.",
     "barkfam_hero_image": "Leave empty to use the product's featured image.",
     "barkfam_hero_product": "Fills the price and is where the primary button links by default.",
@@ -263,6 +265,8 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "barkfam_category": "Category",
+    "barkfam_categories": "Shop by category",
     "barkfam_hero": "Hero with backdrop word",
     "column": "Column",
     "product_title": "Product title",
@@ -1219,6 +1223,13 @@
     "bottom_row_text": "Bottom row text"
   },
   "text_defaults": {
+    "barkfam_category_rest": "rest & comfort",
+    "barkfam_category_walks": "walks & wear",
+    "barkfam_category_food": "food & water",
+    "barkfam_category_grooming": "grooming & cleanup",
+    "barkfam_category_title": "Category",
+    "barkfam_categories_heading": "Shop by Category",
+    "barkfam_categories_pill": "Find what they need",
     "barkfam_hero_meta": "Estimated delivery in 5–10 days",
     "barkfam_hero_secondary": "Shop all",
     "barkfam_hero_primary": "Shop the glove",
