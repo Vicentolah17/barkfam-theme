@@ -1,0 +1,126 @@
+{%- doc -%}
+  Style owner that brings Horizon's announcement bar and header to the approved
+  BarkFam design (_referencias/design/Header.dc.html). It only adjusts sizes and
+  spacing the section settings cannot express; colours, fonts and logo height
+  stay in the header settings.
+
+  Rendered from both header sections so the rules ship with whichever is on the page.
+
+  @example
+  {% render 'barkfam-header-styles' %}
+{%- enddoc -%}
+
+{% stylesheet %}
+  /* Announcement: 13px, 0.04em tracking (the font picker stops at 12 and 14px) */
+  .announcement-bar .announcement-bar__text {
+    font-size: 13px;
+    line-height: 1.55;
+    letter-spacing: 0.04em;
+  }
+
+  /* Row height: 44px tap targets plus padding gives 60px on mobile and 76px on desktop */
+  .header .header__columns {
+    --header-padding: 8px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .header .header__columns {
+      --header-padding: 16px;
+    }
+
+    /* Logo, nav and icons are spaced like flex space-between, so the nav sits midway
+       between the logo and the icons rather than at the page centre */
+    .header .header__columns:has(.header__column--center header-menu) {
+      --header-left: auto;
+      --header-right: auto;
+
+      justify-content: space-between;
+    }
+
+    /* The icon group overhangs the content edge by 10px so the cart glyph lines up with it */
+    .header .header__column--right {
+      margin-inline-end: -10px;
+    }
+
+    /* Primary nav: 15px links with 36px between them */
+    .header .header-menu .menu-list {
+      --menu-horizontal-gap: 36px;
+    }
+
+    .header .header-menu .menu-list__link {
+      font-size: 15px;
+    }
+
+    .header .header-menu .menu-list__link-title {
+      padding-inline: 18px;
+    }
+  }
+
+  /* Icon glyphs: menu 22px, search 20px, cart 21px inside 44px targets */
+  .header .header__icon--menu .header-drawer-icon,
+  .header .header__icon--menu svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Mobile, without the account icon: the design's [menu] [logo] [search cart] row.
+     Targets sit 10px past the gutter, so glyphs centred in them land on the content edge,
+     and the logo is centred between the menu and the icon pair.
+     The id matches Horizon's touch-mode rule (#header-component[data-menu-style='drawer']). */
+  @media screen and (max-width: 749px) {
+    /* The menu toggle is a 44px square with the glyph centred, not 16px of padding around it */
+    .header .header__drawer .header__icon--menu {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      justify-content: center;
+    }
+
+    #header-component.header .header__columns:not(:has(shopify-account)) {
+      --header-template-columns: 44px 0 1fr 44px 48px;
+
+      padding-inline: calc(var(--page-margin) - 10px);
+    }
+
+    #header-component.header .header__columns:not(:has(shopify-account)) .header-logo {
+      justify-self: center;
+    }
+  }
+
+  .header .header__columns .search-action .header-actions__action svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header .header__columns .header-actions__cart-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  /* Search and cart sit 4px apart */
+  .header .header__column--right {
+    gap: 4px;
+  }
+
+  .header .header__column--right header-actions {
+    margin-inline-start: 0;
+  }
+
+  /* Cart count: 17px pill, 6px from the top and 5px from the end of the target */
+  .header .header__columns .header-actions__cart-icon {
+    --cart-bubble-size: 17px;
+    --cart-bubble-top: 6px;
+    --cart-bubble-right: 5px;
+  }
+
+  .header .header__columns .header-actions__cart-icon .cart-bubble__text {
+    font-family: var(--bf-font-body);
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  /* The design lets the count overlap the bag instead of cutting a ring out of it */
+  .header .header__columns .header-actions__cart-icon.header-actions__cart-icon--has-cart svg {
+    mask: none;
+  }
+{% endstylesheet %}
