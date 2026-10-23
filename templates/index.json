@@ -930,11 +930,33 @@
         "rest"
       ],
       "settings": {}
+    },
+    "banners": {
+      "type": "barkfam-banners",
+      "blocks": {
+        "cozy": {
+          "type": "_barkfam-banner",
+          "settings": {
+            "ghost_text": "cozy",
+            "tag": "Cold-weather wear",
+            "title": "Holiday Hoodies for Dogs"
+          }
+        },
+        "walk": {
+          "type": "_barkfam-banner",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "cozy",
+        "walk"
+      ]
     }
   },
   "order": [
     "hero",
     "categories",
+    "banners",
     "problem_solution",
     "how_it_works",
     "product_highlight",

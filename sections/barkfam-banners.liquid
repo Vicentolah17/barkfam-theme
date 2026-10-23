@@ -1,0 +1,173 @@
+{% comment %}
+  Section contract.
+  The pair of image banners from the approved design (_referencias/design/Home.dc.html,
+  "Banners"): side by side on desktop, stacked on mobile. Each banner is a
+  _barkfam-banner block with its own image, ghost word, tag, title and link.
+
+  @example
+  <!-- templates/index.json, after "Shop by Category", with two banner blocks -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+
+<div class="bf-section bf-banners">
+  <div class="bf-container bf-banners__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-banners {
+    padding-block-start: var(--bf-py);
+  }
+
+  .bf-banners__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--bf-gap);
+  }
+
+  .bf-banners .bf-banner {
+    --bf-banner-pad: 20px;
+
+    position: relative;
+    display: block;
+    height: 380px;
+    overflow: hidden;
+    border-radius: var(--bf-r-lg);
+    background-color: var(--bf-ink);
+    color: var(--bf-surface);
+    text-decoration: none;
+  }
+
+  .bf-banner__image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bf-banner__image--placeholder {
+    fill: rgb(var(--bf-surface-rgb) / 0.25);
+  }
+
+  /* rgba(20, 20, 20) in the design; the shade follows the ink token so it tracks the palette */
+  .bf-banner__shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(var(--bf-ink-rgb) / 0.15) 0%,
+      rgb(var(--bf-ink-rgb) / 0) 35%,
+      rgb(var(--bf-ink-rgb) / 0.6) 100%
+    );
+  }
+
+  .bf-banner__ghost {
+    position: absolute;
+    inset-block-start: 4px;
+    inset-inline-start: var(--bf-px);
+    margin-inline-start: -8px;
+    color: var(--bf-surface);
+    font-size: var(--bf-ghost-sm);
+    opacity: var(--bf-banner-ghost-opacity, 0.55);
+  }
+
+  .bf-banner__content {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: var(--bf-banner-pad);
+  }
+
+  .bf-banner__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .bf-banner__tag {
+    padding: 6px 14px;
+    border: 1px solid rgb(var(--bf-surface-rgb) / 0.6);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .bf-banner__title {
+    max-width: 360px;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h2);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .bf-banner__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-banners__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bf-banners .bf-banner {
+      --bf-banner-pad: 32px;
+
+      height: 520px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_banners",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "_barkfam-banner"
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "t:names.barkfam_banners",
+      "category": "t:categories.banners",
+      "blocks": {
+        "cozy": {
+          "type": "_barkfam-banner",
+          "settings": {
+            "ghost_text": "t:text_defaults.barkfam_banner_cozy_ghost",
+            "tag": "t:text_defaults.barkfam_banner_cozy_tag",
+            "title": "t:text_defaults.barkfam_banner_cozy_title"
+          }
+        },
+        "walk": {
+          "type": "_barkfam-banner"
+        }
+      },
+      "block_order": ["cozy", "walk"]
+    }
+  ]
+}
+{% endschema %}

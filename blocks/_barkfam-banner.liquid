@@ -1,0 +1,131 @@
+{%- doc -%}
+  Renders one image banner from the approved design: a full-bleed photo with a
+  top-to-bottom shade, an oversized ghost word in the top corner, and a tag,
+  title and "Explore" link along the bottom. The whole banner is the link.
+
+  Block settings: image, ghost_text, ghost_opacity, tag, title, link_label, link.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- liquid
+  assign banner_link = block.settings.link | default: routes.all_products_collection_url
+-%}
+
+<a class="bf-banner" href="{{ banner_link }}" {{ block.shopify_attributes }}>
+  {%- if block.settings.image != blank -%}
+    {{
+      block.settings.image
+      | image_url: width: 1600
+      | image_tag:
+        class: 'bf-banner__image',
+        widths: '400, 580, 800, 1160, 1600',
+        sizes: '(min-width: 750px) 580px, calc(100vw - 40px)',
+        alt: '',
+        loading: 'lazy'
+    }}
+  {%- else -%}
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'bf-banner__image bf-banner__image--placeholder' }}
+  {%- endif -%}
+
+  <span class="bf-banner__shade"></span>
+
+  {%- if block.settings.ghost_text != blank -%}
+    <span
+      class="bf-ghost bf-banner__ghost"
+      style="--bf-banner-ghost-opacity: {{ block.settings.ghost_opacity | divided_by: 100.0 }};"
+      aria-hidden="true"
+    >
+      {{- block.settings.ghost_text | escape -}}
+    </span>
+  {%- endif -%}
+
+  <span class="bf-banner__content">
+    <span class="bf-banner__text">
+      {%- if block.settings.tag != blank -%}
+        <span class="bf-banner__tag">{{ block.settings.tag | escape }}</span>
+      {%- endif -%}
+      {%- if block.settings.title != blank -%}
+        <span class="bf-banner__title">{{ block.settings.title | escape }}</span>
+      {%- endif -%}
+    </span>
+    {%- if block.settings.link_label != blank -%}
+      <span class="bf-banner__cta">
+        {{- block.settings.link_label | escape -}}
+        <svg
+          aria-hidden="true"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </span>
+    {%- endif -%}
+  </span>
+</a>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "ghost_text",
+      "label": "t:settings.barkfam_ghost_word",
+      "default": "t:text_defaults.barkfam_banner_ghost"
+    },
+    {
+      "type": "range",
+      "id": "ghost_opacity",
+      "label": "t:settings.opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "t:settings.barkfam_pill",
+      "default": "t:text_defaults.barkfam_banner_tag"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title",
+      "default": "t:text_defaults.barkfam_banner_title"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.barkfam_banner_link_label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_banner"
+    }
+  ]
+}
+{% endschema %}

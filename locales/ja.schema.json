@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "barkfam_banner": "Image banner",
+    "barkfam_banners": "Image banners",
     "barkfam_category": "Category",
     "barkfam_categories": "Shop by category",
     "barkfam_hero": "Hero with backdrop word",
@@ -174,6 +176,7 @@
     "disclosures": "開示情報"
   },
   "settings": {
+    "barkfam_ghost_word": "Ghost word",
     "barkfam_card_product_2": "Second card",
     "barkfam_card_product_1": "First card",
     "barkfam_meta": "Text after the price",
@@ -1068,6 +1071,13 @@
     "introducing_p": "<p><em>新登場</em></p>"
   },
   "text_defaults": {
+    "barkfam_banner_cozy_title": "Holiday Hoodies for Dogs",
+    "barkfam_banner_cozy_tag": "Cold-weather wear",
+    "barkfam_banner_cozy_ghost": "cozy",
+    "barkfam_banner_link_label": "Explore",
+    "barkfam_banner_title": "Everyday Walking Gear",
+    "barkfam_banner_tag": "Out and about",
+    "barkfam_banner_ghost": "walk",
     "barkfam_category_rest": "rest & comfort",
     "barkfam_category_walks": "walks & wear",
     "barkfam_category_food": "food & water",
