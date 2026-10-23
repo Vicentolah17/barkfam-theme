@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "barkfam_faq_item": "Question",
+    "barkfam_faq": "FAQ",
     "barkfam_review": "Review",
     "barkfam_reviews_slider": "Review slider",
     "barkfam_reviews": "Reviews",
@@ -185,6 +187,8 @@
     "disclosures": "Informative"
   },
   "settings": {
+    "barkfam_answer": "Answer",
+    "barkfam_question": "Question",
     "barkfam_reviewer_avatar": "Photo",
     "barkfam_reviewer_detail": "Detail line",
     "barkfam_reviewer_name": "Name",
@@ -1030,6 +1034,8 @@
     "page_text_color_contrast_info": "Le sezioni con un colore di sfondo personalizzato useranno questo colore del testo solo quando il contrasto cromatico è sufficiente."
   },
   "html_defaults": {
+    "barkfam_faq_text": "Can't find what you need? Email us at <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a>.",
+    "barkfam_faq_answer": "<p>We ship across the United States. Estimated delivery is 5–10 days after your order is placed. You’ll get a tracking link by email as soon as it ships.</p>",
     "share_information_about_your": "<p>Condividi informazioni sul tuo brand con i clienti. Descrivi un prodotto, fai annunci o dai il benvenuto ai clienti nel tuo negozio.</p>",
     "bestseller_h2": "<h2>Bestseller</h2>",
     "bestseller_h3": "<h3>Bestseller</h3>",
@@ -1087,6 +1093,9 @@
     "featured_collection_h3": "<h3>Collezione in primo piano</h3>"
   },
   "text_defaults": {
+    "barkfam_faq_question": "How long does shipping take?",
+    "barkfam_faq_heading": "Questions, answered",
+    "barkfam_faq_pill": "FAQ",
     "barkfam_reviews_heading": "What Pet Parents Say",
     "barkfam_reviews_pill": "Reviews",
     "barkfam_reviews_ghost": "woof",

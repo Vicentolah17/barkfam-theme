@@ -1,0 +1,65 @@
+{%- doc -%}
+  Renders one question in the BarkFam FAQ as a native <details> element. Items
+  in the same section share a name built from the section ID, so opening one
+  closes the others, as in the design. The +/− glyph is decorative. Styled by
+  sections/barkfam-faq.liquid.
+
+  Block settings: question, answer, open_by_default.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- if block.settings.question != blank -%}
+  <details
+    class="bf-faq__item"
+    name="bf-faq-{{ section.id }}"
+    {% if block.settings.open_by_default %}
+      open
+    {% endif %}
+    {{ block.shopify_attributes }}
+  >
+    <summary class="bf-faq__question">
+      <span>{{ block.settings.question | escape }}</span>
+      <span class="bf-faq__icon" aria-hidden="true">
+        <span class="bf-faq__icon-plus">+</span>
+        <span class="bf-faq__icon-minus">−</span>
+      </span>
+    </summary>
+    {%- if block.settings.answer != blank -%}
+      <div class="bf-faq__answer">{{ block.settings.answer }}</div>
+    {%- endif -%}
+  </details>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_faq_item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "question",
+      "label": "t:settings.barkfam_question",
+      "default": "t:text_defaults.barkfam_faq_question"
+    },
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "t:settings.barkfam_answer",
+      "default": "t:html_defaults.barkfam_faq_answer"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_by_default",
+      "label": "t:settings.open_by_default",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_faq_item"
+    }
+  ]
+}
+{% endschema %}

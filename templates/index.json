@@ -32,160 +32,61 @@
       "settings": {}
     },
     "faq": {
-      "type": "section",
+      "type": "barkfam-faq",
       "blocks": {
-        "header": {
-          "type": "group",
-          "name": "t:names.header",
+        "shipping": {
+          "type": "_barkfam-faq-item",
           "settings": {
-            "horizontal_alignment_flex_direction_column": "center"
-          },
-          "blocks": {
-            "eyebrow": {
-              "type": "text",
-              "settings": {
-                "text": "<p>FAQ</p>",
-                "alignment": "center",
-                "type_preset": "h6",
-                "wrap": "pretty",
-                "background": true,
-                "background_color": "{{ settings.color_palette.background }}",
-                "corner_radius": 40,
-                "padding-block-start": 6,
-                "padding-block-end": 6,
-                "padding-inline-start": 14,
-                "padding-inline-end": 14
-              },
-              "blocks": {}
-            },
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>Questions, answered</h2>",
-                "alignment": "center",
-                "type_preset": "h3",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "eyebrow",
-            "heading"
-          ]
+            "question": "How long does shipping take?",
+            "answer": "<p>We ship across the United States. Estimated delivery is 5–10 days after your order is placed. You’ll get a tracking link by email as soon as it ships.</p>",
+            "open_by_default": true
+          }
         },
-        "questions": {
-          "type": "accordion",
+        "returns": {
+          "type": "_barkfam-faq-item",
           "settings": {
-            "icon": "plus",
-            "divider_color": "{{ settings.color_palette.color2 }}",
-            "type_preset": "h5"
-          },
-          "blocks": {
-            "q_pets": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "Does it work on both dogs and cats?",
-                "open_by_default": true
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Yes. The silicone tips are soft enough for short and medium coats on both dogs and cats.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "q_comfort": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "Will it bother my pet?"
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>The tips are rounded silicone rather than bristles, so it feels closer to being petted than to being brushed. Start with short sessions and follow your pet's lead.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "q_clean": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "How do I clean the glove?"
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Peel the collected fur off by hand, rinse the glove under warm water, and let it air dry.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "q_delivery": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "When will my order arrive?"
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Orders are packed within 1 to 3 business days, and delivery inside the United States usually takes another 7 to 15 business days. Timing can vary with carrier volume, so treat it as an estimate rather than a guaranteed date.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            }
-          },
-          "block_order": [
-            "q_pets",
-            "q_comfort",
-            "q_clean",
-            "q_delivery"
-          ]
+            "question": "What is your return policy?",
+            "answer": "<p>If something isn’t right, email hello@barkfam.com within 30 days of delivery and we’ll walk you through the return.</p>"
+          }
+        },
+        "cats": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "Does the glove work on cats?",
+            "answer": "<p>Yes. It works on dogs and cats with loose, shedding fur. Results depend on coat type and length.</p>"
+          }
+        },
+        "cleaning": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "How do I clean the glove?",
+            "answer": "<p>Peel the collected fur off by hand, then rinse the glove with water and let it air dry.</p>"
+          }
+        },
+        "checkout": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "Is checkout secure?",
+            "answer": "<p>Yes. Payments go through an encrypted checkout, and we never see or store your full card details.</p>"
+          }
+        },
+        "tracking": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>Use the tracking link in your shipping confirmation email. If you can’t find it, email us and we’ll send it again.</p>"
+          }
         }
       },
       "block_order": [
-        "header",
-        "questions"
+        "shipping",
+        "returns",
+        "cats",
+        "cleaning",
+        "checkout",
+        "tracking"
       ],
-      "name": "t:names.section",
-      "settings": {
-        "horizontal_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "background_color": "{{ settings.color_palette.color3 }}",
-        "toggle_overlay": false,
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
+      "settings": {}
     },
     "shipping": {
       "type": "section",
