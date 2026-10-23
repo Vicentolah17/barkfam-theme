@@ -89,204 +89,38 @@
       "settings": {}
     },
     "shipping": {
-      "type": "section",
+      "type": "barkfam-trust",
       "blocks": {
-        "header": {
-          "type": "group",
-          "name": "t:names.header",
+        "delivery": {
+          "type": "_barkfam-trust-item",
           "settings": {
-            "horizontal_alignment_flex_direction_column": "center"
-          },
-          "blocks": {
-            "eyebrow": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Shipping</p>",
-                "alignment": "center",
-                "type_preset": "h6",
-                "wrap": "pretty",
-                "background": true,
-                "background_color": "{{ settings.color_palette.color3 }}",
-                "corner_radius": 40,
-                "padding-block-start": 6,
-                "padding-block-end": 6,
-                "padding-inline-start": 14,
-                "padding-inline-end": 14
-              },
-              "blocks": {}
-            },
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>Shipping and delivery</h2>",
-                "alignment": "center",
-                "type_preset": "h3",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "eyebrow",
-            "heading"
-          ]
+            "title": "Estimated delivery: 5–10 days",
+            "text": "Tracking sent by email"
+          }
         },
-        "facts": {
-          "type": "group",
+        "returns": {
+          "type": "_barkfam-trust-item",
           "settings": {
-            "content_direction": "row",
-            "vertical_alignment": "flex-start",
-            "gap": 20
-          },
-          "blocks": {
-            "fact_processing": {
-              "type": "group",
-              "settings": {
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 8
-              },
-              "blocks": {
-                "icon": {
-                  "type": "icon",
-                  "settings": {
-                    "icon": "box",
-                    "width": 26
-                  },
-                  "blocks": {}
-                },
-                "title": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<h3>Order processing</h3>",
-                    "width": "100%",
-                    "type_preset": "h5",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                },
-                "body": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Orders are packed and handed to the carrier within 1 to 3 business days.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "icon",
-                "title",
-                "body"
-              ]
-            },
-            "fact_window": {
-              "type": "group",
-              "settings": {
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 8
-              },
-              "blocks": {
-                "icon": {
-                  "type": "icon",
-                  "settings": {
-                    "icon": "truck",
-                    "width": 26
-                  },
-                  "blocks": {}
-                },
-                "title": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<h3>Delivery window</h3>",
-                    "width": "100%",
-                    "type_preset": "h5",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                },
-                "body": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Most orders reach U.S. addresses 7 to 15 business days after shipping. This is an estimate, not a guaranteed date.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "icon",
-                "title",
-                "body"
-              ]
-            },
-            "fact_where": {
-              "type": "group",
-              "settings": {
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 8
-              },
-              "blocks": {
-                "icon": {
-                  "type": "icon",
-                  "settings": {
-                    "icon": "map_pin",
-                    "width": 26
-                  },
-                  "blocks": {}
-                },
-                "title": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<h3>Where we ship</h3>",
-                    "width": "100%",
-                    "type_preset": "h5",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                },
-                "body": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>We currently ship to addresses in the United States.</p>",
-                    "width": "100%",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "icon",
-                "title",
-                "body"
-              ]
-            }
-          },
-          "block_order": [
-            "fact_processing",
-            "fact_window",
-            "fact_where"
-          ]
+            "icon": "return",
+            "title": "Easy returns",
+            "text": "Start a return by email"
+          }
+        },
+        "checkout": {
+          "type": "_barkfam-trust-item",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure checkout",
+            "text": "Encrypted payment"
+          }
         }
       },
       "block_order": [
-        "header",
-        "facts"
+        "delivery",
+        "returns",
+        "checkout"
       ],
-      "name": "t:names.section",
-      "settings": {
-        "horizontal_alignment_flex_direction_column": "center",
-        "gap": 40,
-        "background_color": "{{ settings.color_palette.background }}",
-        "toggle_overlay": false,
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
+      "settings": {}
     },
     "categories": {
       "type": "barkfam-categories",

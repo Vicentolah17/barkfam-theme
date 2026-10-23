@@ -1,0 +1,129 @@
+{% comment %}
+  Section contract.
+  The shipping and trust strip from the approved design (_referencias/design/Home.dc.html,
+  "Shipping strip"): a band between thin lines with up to four short
+  reassurance items, three across on desktop and stacked on mobile.
+
+  @example
+  <!-- templates/index.json, last section before the footer -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+
+<div
+  class="bf-section bf-trust"
+  style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+>
+  <div class="bf-container bf-trust__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-trust {
+    border-block: 1px solid var(--bf-line);
+    background-color: var(--bf-surface-bg, var(--bf-bg));
+  }
+
+  .bf-trust__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--bf-gap);
+    padding-block: 28px;
+  }
+
+  .bf-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .bf-trust__icon {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background-color: var(--bf-alt);
+    color: var(--bf-accent);
+  }
+
+  .bf-trust__text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .bf-trust__title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .bf-trust__subtitle {
+    color: var(--bf-muted);
+    font-size: 13px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-trust__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      padding-block: 32px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_trust",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "blocks": [
+    {
+      "type": "_barkfam-trust-item"
+    }
+  ],
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "{{ settings.color_palette.background }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_trust",
+      "category": "t:categories.text",
+      "blocks": {
+        "delivery": {
+          "type": "_barkfam-trust-item"
+        },
+        "returns": {
+          "type": "_barkfam-trust-item",
+          "settings": {
+            "icon": "return",
+            "title": "t:text_defaults.barkfam_trust_returns_title",
+            "text": "t:text_defaults.barkfam_trust_returns_text"
+          }
+        },
+        "checkout": {
+          "type": "_barkfam-trust-item",
+          "settings": {
+            "icon": "lock",
+            "title": "t:text_defaults.barkfam_trust_checkout_title",
+            "text": "t:text_defaults.barkfam_trust_checkout_text"
+          }
+        }
+      },
+      "block_order": ["delivery", "returns", "checkout"]
+    }
+  ]
+}
+{% endschema %}

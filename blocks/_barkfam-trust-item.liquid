@@ -1,0 +1,95 @@
+{%- doc -%}
+  Renders one item of the BarkFam trust strip: an icon in a tinted circle, a
+  title and a short line under it. The truck, return and lock icons are the
+  design's own. Styled by sections/barkfam-trust.liquid.
+
+  Block settings: icon, title, text.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<div class="bf-trust__item" {{ block.shopify_attributes }}>
+  {%- unless block.settings.icon == 'none' -%}
+    <span class="bf-trust__icon">
+      <svg
+        aria-hidden="true"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="var(--icon-stroke-width)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        {%- case block.settings.icon -%}
+          {%- when 'return' -%}
+            <path d="M4 9h11a5 5 0 0 1 0 10H9"/><path d="M8 5L4 9l4 4"/>
+          {%- when 'lock' -%}
+            <rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>
+          {%- else -%}
+            <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/>
+        {%- endcase -%}
+      </svg>
+    </span>
+  {%- endunless -%}
+  <span class="bf-trust__text">
+    {%- if block.settings.title != blank -%}
+      <span class="bf-trust__title">{{ block.settings.title | escape }}</span>
+    {%- endif -%}
+    {%- if block.settings.text != blank -%}
+      <span class="bf-trust__subtitle">{{ block.settings.text | escape }}</span>
+    {%- endif -%}
+  </span>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_trust_item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:settings.icon",
+      "options": [
+        {
+          "value": "truck",
+          "label": "t:options.truck"
+        },
+        {
+          "value": "return",
+          "label": "t:options.return"
+        },
+        {
+          "value": "lock",
+          "label": "t:options.lock"
+        },
+        {
+          "value": "none",
+          "label": "t:options.none"
+        }
+      ],
+      "default": "truck"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title",
+      "default": "t:text_defaults.barkfam_trust_title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:settings.text",
+      "default": "t:text_defaults.barkfam_trust_text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_trust_item"
+    }
+  ]
+}
+{% endschema %}

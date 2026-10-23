@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "barkfam_trust_item": "Trust item",
+    "barkfam_trust": "Trust strip",
     "barkfam_faq_item": "Question",
     "barkfam_faq": "FAQ",
     "barkfam_review": "Review",
@@ -1093,6 +1095,12 @@
     "featured_collection_h3": "<h3>Utvalgt samling</h3>"
   },
   "text_defaults": {
+    "barkfam_trust_checkout_text": "Encrypted payment",
+    "barkfam_trust_checkout_title": "Secure checkout",
+    "barkfam_trust_returns_text": "Start a return by email",
+    "barkfam_trust_returns_title": "Easy returns",
+    "barkfam_trust_text": "Tracking sent by email",
+    "barkfam_trust_title": "Estimated delivery: 5–10 days",
     "barkfam_faq_question": "How long does shipping take?",
     "barkfam_faq_heading": "Questions, answered",
     "barkfam_faq_pill": "FAQ",

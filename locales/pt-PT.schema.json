@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "barkfam_trust_item": "Item de confiança",
+    "barkfam_trust": "Faixa de confiança",
     "barkfam_faq_item": "Pergunta",
     "barkfam_faq": "Perguntas frequentes",
     "barkfam_review": "Avaliação",
@@ -1093,6 +1095,12 @@
     "shop_collection": "<p>Descubra a nossa coleção selecionada, com favoritos escolhidos a dedo que aliam estilo e qualidade.</p>"
   },
   "text_defaults": {
+    "barkfam_trust_checkout_text": "Encrypted payment",
+    "barkfam_trust_checkout_title": "Secure checkout",
+    "barkfam_trust_returns_text": "Start a return by email",
+    "barkfam_trust_returns_title": "Easy returns",
+    "barkfam_trust_text": "Tracking sent by email",
+    "barkfam_trust_title": "Estimated delivery: 5–10 days",
     "barkfam_faq_question": "How long does shipping take?",
     "barkfam_faq_heading": "Questions, answered",
     "barkfam_faq_pill": "FAQ",
