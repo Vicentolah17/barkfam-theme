@@ -228,6 +228,8 @@
     "work_quickly_to_ship": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>"
   },
   "info": {
+    "barkfam_products_button_link": "Leave empty to link to the collection.",
+    "barkfam_products_collection": "Cards follow this collection's sort order. Sort it by best selling for a real best-seller list.",
     "barkfam_category_image": "Leave empty to use the collection's featured image.",
     "barkfam_category_collection": "Where the card links. Leave empty to link to all products.",
     "barkfam_primary_link": "Leave empty to link to the featured product.",
@@ -265,6 +267,7 @@
     "media_type_info": "Features are populated from your menu links"
   },
   "names": {
+    "barkfam_products": "Product grid",
     "barkfam_banner": "Image banner",
     "barkfam_banners": "Image banners",
     "barkfam_category": "Category",
@@ -764,6 +767,7 @@
     "below_media": "Below media"
   },
   "settings": {
+    "barkfam_products_to_show": "Products to show",
     "barkfam_ghost_word": "Ghost word",
     "barkfam_card_product_2": "Second card",
     "barkfam_card_product_1": "First card",
@@ -1226,6 +1230,9 @@
     "bottom_row_text": "Bottom row text"
   },
   "text_defaults": {
+    "barkfam_products_button": "Shop all",
+    "barkfam_products_heading": "Best Sellers",
+    "barkfam_products_pill": "Most loved",
     "barkfam_banner_cozy_title": "Holiday Hoodies for Dogs",
     "barkfam_banner_cozy_tag": "Cold-weather wear",
     "barkfam_banner_cozy_ghost": "cozy",

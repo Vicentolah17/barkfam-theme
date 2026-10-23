@@ -951,12 +951,19 @@
         "cozy",
         "walk"
       ]
+    },
+    "best_sellers": {
+      "type": "barkfam-products",
+      "settings": {
+        "collection": "all"
+      }
     }
   },
   "order": [
     "hero",
     "categories",
     "banners",
+    "best_sellers",
     "problem_solution",
     "how_it_works",
     "product_highlight",

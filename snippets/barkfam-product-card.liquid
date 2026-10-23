@@ -1,0 +1,219 @@
+{%- doc -%}
+  Renders a product card from the approved design (_referencias/design/ProductCard.dc.html):
+  a framed square image, the star rating when the product has review
+  metafields, the title, the price, and a round add-to-cart button.
+
+  The button is Horizon's quick add, restyled: single-variant products go
+  straight to the cart drawer and the rest open the options modal, so the cart
+  and checkout flow stay native. Stars render only from the standard
+  reviews.rating metafield that review apps write; there is no default rating.
+
+  Owns the card CSS, so every consumer gets it by rendering this snippet.
+
+  @param {product} product - Product to render
+  @param {string} section_id - ID of the section rendering the card, for the quick add form
+  @param {string} [image_sizes] - sizes attribute for the image, matching the grid it sits in
+  @param {string} [image_loading] - 'lazy' (default) or 'eager'
+
+  @example
+  {% render 'barkfam-product-card', product: product, section_id: section.id %}
+{%- enddoc -%}
+
+{%- liquid
+  assign card_image = product.featured_media.preview_image
+  assign card_image_sizes = image_sizes | default: '(min-width: 750px) 278px, calc(50vw - 26px)'
+  assign card_image_loading = image_loading | default: 'lazy'
+
+  assign card_rating = product.metafields.reviews.rating.value
+  if card_rating != blank
+    assign card_scale = card_rating.scale_max | default: 5
+    assign card_stars = card_rating.rating | times: 5 | divided_by: card_scale | round
+  endif
+
+  if product.price_varies
+    assign card_min_price = product.price_min | money
+    assign card_price = 'content.price_from' | t: price: card_min_price
+  else
+    assign card_price = product.price | money
+  endif
+-%}
+
+{%- comment -%}
+  Horizon's product-card element gives quick add the product URL it needs to open the
+  options modal. No id on the link, so clicks outside the links and button do nothing,
+  as in the design.
+{%- endcomment -%}
+<product-card class="bf-card" data-product-id="{{ product.id }}">
+  <a class="bf-card__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    {%- if card_image != blank -%}
+      {{
+        card_image
+        | image_url: width: 640
+        | image_tag:
+          class: 'bf-card__image',
+          widths: '200, 300, 400, 560, 640',
+          sizes: card_image_sizes,
+          alt: '',
+          loading: card_image_loading
+      }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'bf-card__image' }}
+    {%- endif -%}
+  </a>
+
+  <div class="bf-card__body">
+    <div class="bf-card__info">
+      {%- if card_rating != blank -%}
+        <div class="bf-stars bf-card__stars">
+          <span class="visually-hidden">{{ 'accessibility.rating' | t: rating: card_rating.rating }}</span>
+          {%- for star in (1..5) -%}
+            <svg
+              class="{% if star > card_stars %}bf-stars__empty{% endif %}"
+              aria-hidden="true"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/>
+            </svg>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      <a class="bf-card__title" href="{{ product.url }}" ref="productCardLink">{{ product.title | escape }}</a>
+      <span class="bf-card__price">{{ card_price }}</span>
+    </div>
+
+    <div class="bf-card__action">
+      {% render 'quick-add', product: product, section_id: section_id %}
+    </div>
+  </div>
+</product-card>
+
+{% stylesheet %}
+  .bf-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+  }
+
+  .bf-card__media {
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--bf-line);
+    border-radius: var(--bf-r-card);
+    background-color: var(--bf-surface);
+  }
+
+  .bf-card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bf-card__body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .bf-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .bf-card__stars svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .bf-stars__empty {
+    opacity: 0.3;
+  }
+
+  .bf-card__title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: var(--bf-small);
+    font-weight: 500;
+    line-height: 1.35;
+    text-decoration: none;
+    text-wrap: pretty;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .bf-card__price {
+    font-size: var(--bf-small);
+    font-weight: 600;
+  }
+
+  .bf-card__action {
+    flex: none;
+  }
+
+  /* Horizon's quick add, turned from an image overlay into the design's 36px round button */
+  .bf-card .quick-add {
+    --quick-add-background: var(--bf-bg);
+    --quick-add-foreground: var(--bf-ink);
+
+    position: static;
+    pointer-events: auto;
+  }
+
+  .bf-card .quick-add__product-form-component,
+  .bf-card .quick-add__product-form-component .shopify-product-form {
+    display: block;
+    height: auto;
+  }
+
+  /* relative, not static: the "added" burst inside is absolutely positioned and must stay in the button */
+  .bf-card button.quick-add__button {
+    --quick-add-collapsed-width: 36px;
+    --quick-add-expanded-width: 36px;
+
+    position: relative;
+    inset: auto;
+    display: flex;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--bf-line);
+    font-size: 0;
+    opacity: 1;
+    backdrop-filter: none;
+  }
+
+  .bf-card button.quick-add__button:is(:hover, :focus-visible) {
+    --quick-add-background: var(--bf-accent);
+    --quick-add-foreground: var(--bf-bg);
+
+    width: 36px;
+    padding: 0;
+    border-color: var(--bf-accent);
+    scale: 1;
+  }
+
+  .bf-card button.quick-add__button:disabled {
+    opacity: 0.5;
+  }
+
+  .bf-card .quick-add__button > .add-to-cart-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .bf-card .quick-add__button > .add-to-cart-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+{% endstylesheet %}
