@@ -26,6 +26,12 @@
         "info": "t:content.inverse_logo_info"
       },
       {
+        "type": "image_picker",
+        "id": "logo_footer",
+        "label": "t:settings.barkfam_footer_logo",
+        "info": "t:info.barkfam_footer_logo"
+      },
+      {
         "type": "range",
         "id": "logo_height",
         "label": "t:settings.desktop_height",
@@ -66,8 +72,12 @@
           "background": "#F7F6EF",
           "foreground": "#1E1E1E",
           "color1": "#435146",
-          "color2": "#E3E1D5",
-          "color3": "#8FA88F"
+          "color2": "#E2DFD4",
+          "color3": "#8FA88F",
+          "color4": "#E9ECE3",
+          "color5": "#2F3A32",
+          "color6": "#5C5B55",
+          "color7": "#FFFFFF"
         }
       }
     ]

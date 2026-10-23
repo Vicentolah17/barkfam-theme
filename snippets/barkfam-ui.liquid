@@ -1,0 +1,149 @@
+{%- doc -%}
+  Style owner for the primitives every BarkFam section shares: container, pill,
+  section heading, buttons, oversized ghost word and star rating. Render it from
+  each BarkFam section so stylesheet subsetting always ships these rules.
+
+  @example
+  {% render 'barkfam-ui' %}
+{%- enddoc -%}
+
+{% stylesheet %}
+  .bf-section {
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+    font-size: var(--bf-body);
+    line-height: 1.55;
+  }
+
+  .bf-section a {
+    color: inherit;
+  }
+
+  .bf-container {
+    width: 100%;
+    max-width: var(--bf-container);
+    margin-inline: auto;
+    padding-inline: var(--bf-px);
+  }
+
+  .bf-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid var(--bf-line);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.55;
+    white-space: nowrap;
+  }
+
+  .bf-pill--filled {
+    background-color: var(--bf-bg);
+  }
+
+  .bf-pill__dot {
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: var(--bf-accent-soft);
+  }
+
+  .bf-heading-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-block-end: var(--bf-title-gap);
+    text-align: center;
+  }
+
+  .bf-heading {
+    margin: 0;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h2);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .bf-muted {
+    color: var(--bf-muted);
+  }
+
+  .bf-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: var(--bf-btn-h);
+    padding-inline: 28px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-family: var(--bf-font-body);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .bf-btn--primary {
+    border-color: var(--bf-accent);
+    background-color: var(--bf-accent);
+    color: var(--bf-bg);
+  }
+
+  .bf-section .bf-btn--primary {
+    color: var(--bf-bg);
+  }
+
+  .bf-btn--outline {
+    border-color: var(--bf-ink);
+    background-color: transparent;
+    color: var(--bf-ink);
+  }
+
+  .bf-ghost {
+    font-family: var(--bf-font-display);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .bf-stars {
+    display: flex;
+    gap: 2px;
+    color: var(--bf-accent-soft);
+  }
+
+  .bf-stars svg {
+    display: block;
+  }
+
+  .bf-section a:hover,
+  .bf-btn:hover {
+    opacity: 0.8;
+  }
+
+  .bf-section a:focus-visible,
+  .bf-section button:focus-visible,
+  .bf-btn:focus-visible {
+    outline: 2px solid var(--bf-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bf-section a,
+    .bf-btn {
+      transition: opacity var(--animation-speed) var(--animation-easing);
+    }
+  }
+{% endstylesheet %}

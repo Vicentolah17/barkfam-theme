@@ -1,0 +1,93 @@
+{%- doc -%}
+  Outputs the BarkFam design tokens as CSS custom properties.
+
+  Colours come from the palette roles in theme settings, so switching the theme
+  preset repaints every BarkFam section. The spacing and type scale are the
+  approved design's mobile (390) and desktop (1440) values, switching at the
+  theme's 750px breakpoint. Also aligns Horizon's narrow page width with the
+  design's 1280px container so native sections line up with BarkFam ones.
+
+  @example
+  {% render 'barkfam-tokens' %}
+{%- enddoc -%}
+
+{%- liquid
+  # The design sets buttons, prices and labels in Inter 600, which Horizon does not load.
+  assign bf_body_semibold = settings.type_body_font | font_modify: 'weight', '600'
+-%}
+
+{% style %}
+  {% if bf_body_semibold %}
+    {{ bf_body_semibold | font_face: font_display: 'swap' }}
+  {% endif %}
+
+  :root {
+    --bf-bg: {{ settings.color_palette.background }};
+    --bf-bg-rgb: {{ settings.color_palette.background.rgb }};
+    --bf-ink: {{ settings.color_palette.foreground }};
+    --bf-ink-rgb: {{ settings.color_palette.foreground.rgb }};
+    --bf-accent: {{ settings.color_palette.color1 }};
+    --bf-accent-rgb: {{ settings.color_palette.color1.rgb }};
+    --bf-line: {{ settings.color_palette.color2 }};
+    --bf-accent-soft: {{ settings.color_palette.color3 }};
+    --bf-alt: {{ settings.color_palette.color4 }};
+    --bf-footer: {{ settings.color_palette.color5 }};
+    --bf-footer-rgb: {{ settings.color_palette.color5.rgb }};
+    --bf-muted: {{ settings.color_palette.color6 }};
+    --bf-surface: {{ settings.color_palette.color7 }};
+    --bf-surface-rgb: {{ settings.color_palette.color7.rgb }};
+
+    --bf-font-display: var(--font-heading--family);
+    --bf-font-body: var(--font-body--family);
+
+    --bf-container: 1280px;
+    --bf-shadow-float: 0 12px 32px rgb(var(--bf-ink-rgb) / 0.1);
+
+    --bf-px: 20px;
+    --bf-py: 64px;
+    --bf-h1: 38px;
+    --bf-h2: 30px;
+    --bf-h3: 18px;
+    --bf-body: 15px;
+    --bf-small: 13px;
+    --bf-quote: 19px;
+    --bf-faq-q: 15px;
+    --bf-gap: 12px;
+    --bf-row-gap: 28px;
+    --bf-title-gap: 32px;
+    --bf-ghost: 108px;
+    --bf-ghost-sm: 96px;
+    --bf-r-card: 16px;
+    --bf-r-lg: 20px;
+    --bf-btn-h: 48px;
+
+    --narrow-page-width: calc(var(--bf-container) - 96px);
+  }
+
+  /* Comes after base.css, so it wins over both of its page-margin rules; --bf-px already switches at 750px. */
+  .page-width-narrow {
+    --page-margin: max(var(--bf-px), var(--safe-area-inset-left, 0px), var(--safe-area-inset-right, 0px));
+  }
+
+  @media screen and (min-width: 750px) {
+    :root {
+      --bf-px: 48px;
+      --bf-py: 112px;
+      --bf-h1: 60px;
+      --bf-h2: 44px;
+      --bf-h3: 22px;
+      --bf-body: 17px;
+      --bf-small: 14px;
+      --bf-quote: 24px;
+      --bf-faq-q: 17px;
+      --bf-gap: 24px;
+      --bf-row-gap: 40px;
+      --bf-title-gap: 48px;
+      --bf-ghost: 300px;
+      --bf-ghost-sm: 180px;
+      --bf-r-card: 20px;
+      --bf-r-lg: 28px;
+      --bf-btn-h: 52px;
+    }
+  }
+{% endstyle %}

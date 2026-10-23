@@ -172,6 +172,7 @@
     "disclosures": "Prohlášení"
   },
   "settings": {
+    "barkfam_footer_logo": "Footer logo",
     "barkfam_backdrop_width": "Word width",
     "barkfam_backdrop_offset": "Word vertical offset",
     "barkfam_mobile_image": "Mobile image",
@@ -1103,6 +1104,7 @@
     "disclosures": "Prohlášení"
   },
   "info": {
+    "barkfam_footer_logo": "Light version of the logo for the dark footer.",
     "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
     "barkfam_floating_card": "The title and price come from the product you select.",
     "video_alt_text": "Popište video pro uživatele asistivních technologií",

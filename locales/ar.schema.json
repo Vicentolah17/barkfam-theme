@@ -220,6 +220,7 @@
     "work_quickly_to_ship": "<p>سنعمل بسرعة لشحن طلبك في أقرب وقت ممكن. بمجرد شحن طلبك، ستتلقى رسالة بريد إلكتروني تحتوي على مزيد من المعلومات. تختلف أوقات التوصيل حسب موقعك.</p>"
   },
   "info": {
+    "barkfam_footer_logo": "Light version of the logo for the dark footer.",
     "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
     "barkfam_floating_card": "The title and price come from the product you select.",
     "actions_display_style": "تُستخدم الأيقونات دائماً على الهاتف المحمول",
@@ -696,6 +697,7 @@
     "below_media": "أسفل الوسائط"
   },
   "settings": {
+    "barkfam_footer_logo": "Footer logo",
     "barkfam_backdrop_width": "Word width",
     "barkfam_backdrop_offset": "Word vertical offset",
     "barkfam_mobile_image": "Mobile image",
