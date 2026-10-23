@@ -42,6 +42,11 @@
       margin-inline-end: -10px;
     }
 
+    /* Horizon pulls search into the cart with negative margins; the design keeps a 4px gap */
+    .header .header__column--right .search-action {
+      margin-inline: 0;
+    }
+
     /* Primary nav: 15px links with 36px between them */
     .header .header-menu .menu-list {
       --menu-horizontal-gap: 36px;
@@ -63,10 +68,10 @@
     height: 22px;
   }
 
-  /* Mobile, without the account icon: the design's [menu] [logo] [search cart] row.
+  /* Mobile: the design's [menu] [logo] [search cart] row.
      Targets sit 10px past the gutter, so glyphs centred in them land on the content edge,
      and the logo is centred between the menu and the icon pair.
-     The id matches Horizon's touch-mode rule (#header-component[data-menu-style='drawer']). */
+     The id outranks Horizon's touch-mode rules (#header-component[data-menu-style='drawer']). */
   @media screen and (max-width: 749px) {
     /* The menu toggle is a 44px square with the glyph centred, not 16px of padding around it */
     .header .header__drawer .header__icon--menu {
@@ -76,15 +81,25 @@
       justify-content: center;
     }
 
-    #header-component.header .header__columns:not(:has(shopify-account)) {
+    #header-component.header .header__columns.spacing-style {
       --header-template-columns: 44px 0 1fr 44px 48px;
 
       padding-inline: calc(var(--page-margin) - 10px);
     }
 
-    #header-component.header .header__columns:not(:has(shopify-account)) .header-logo {
+    #header-component.header .header__columns .header-logo {
       justify-self: center;
     }
+
+    /* Horizon parks search on the left when an account icon exists; the design keeps it by the cart */
+    #header-component.header .header__columns .search-action.search-action--hidden-on-menu {
+      grid-area: rightA;
+    }
+  }
+
+  /* The design has no account icon in the header. Sign-in stays reachable at /account and at checkout. */
+  .header .header__columns .account-button {
+    display: none;
   }
 
   .header .header__columns .search-action .header-actions__action svg {

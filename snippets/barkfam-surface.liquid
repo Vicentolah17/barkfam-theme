@@ -1,0 +1,26 @@
+{%- doc -%}
+  Outputs inline custom properties for a BarkFam section background.
+
+  Sets --bf-surface-bg to the chosen colour. When that colour is dark, it also
+  flips the ink, muted and line tokens to light values so text keeps its
+  contrast. The muted (78%) and line (16%) opacities are the ones the design
+  uses on its dark footer.
+
+  @param {color} [background] - Section background colour. Nothing is output when blank or transparent.
+
+  @example
+  <div class="bf-hero" style="{% render 'barkfam-surface', background: section.settings.background_color %}">
+{%- enddoc -%}
+
+{%- liquid
+  if background != blank and background.alpha != 0
+    echo '--bf-surface-bg: '
+    echo background
+    echo ';'
+
+    assign brightness = background | color_brightness
+    if brightness < 128
+      echo '--bf-ink: var(--bf-bg); --bf-ink-rgb: var(--bf-bg-rgb); --bf-muted: rgb(var(--bf-bg-rgb) / 0.78); --bf-line: rgb(var(--bf-bg-rgb) / 0.16);'
+    endif
+  endif
+-%}

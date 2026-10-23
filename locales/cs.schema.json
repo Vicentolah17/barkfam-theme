@@ -172,11 +172,12 @@
     "disclosures": "Prohlášení"
   },
   "settings": {
+    "barkfam_card_product_2": "Second card",
+    "barkfam_card_product_1": "First card",
+    "barkfam_meta": "Text after the price",
+    "barkfam_show_price": "Show product price",
+    "barkfam_pill": "Pill text",
     "barkfam_footer_logo": "Footer logo",
-    "barkfam_backdrop_width": "Word width",
-    "barkfam_backdrop_offset": "Word vertical offset",
-    "barkfam_mobile_image": "Mobile image",
-    "barkfam_show_card": "Show card",
     "alignment": "Zarovnání",
     "autoplay": "Automatické přehrávání",
     "background": "Pozadí",
@@ -875,8 +876,11 @@
     "direction_top_start": "Vlevo nahoře"
   },
   "content": {
+    "barkfam_secondary_button": "Secondary button",
+    "barkfam_primary_button": "Primary button",
+    "barkfam_featured_product": "Featured product",
     "backdrop_word": "Backdrop word",
-    "barkfam_floating_card": "Floating product card",
+    "barkfam_floating_card": "Floating product cards",
     "advanced": "Pokročilé",
     "background_image": "Obrázek na pozadí",
     "background_video": "Video na pozadí",
@@ -1005,9 +1009,6 @@
     "page_text_color_contrast_info": "Sekce s vlastní barvou pozadí použijí tuto barvu textu pouze v případě dostatečného barevného kontrastu."
   },
   "html_defaults": {
-    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
-    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
-    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>Sdílejte informace o značce se zákazníky. Popište produkt, oznamte novinky nebo přivítejte zákazníky v obchodě.</p>",
     "bestseller_h2": "<h2>Nejprodávanější</h2>",
     "bestseller_h3": "<h3>Nejprodávanější</h3>",
@@ -1065,7 +1066,13 @@
     "featured_collection_h3": "<h3>Doporučená kolekce</h3>"
   },
   "text_defaults": {
-    "barkfam_hero_word": "BarkFam",
+    "barkfam_hero_meta": "Estimated delivery in 5–10 days",
+    "barkfam_hero_secondary": "Shop all",
+    "barkfam_hero_primary": "Shop the glove",
+    "barkfam_hero_body": "The Pet Hair Remover Glove picks up loose fur while you pet your dog or cat. Use it on the couch, car seats and clothes too.",
+    "barkfam_hero_heading": "Pet hair, handled.",
+    "barkfam_hero_pill": "Our best seller",
+    "barkfam_hero_word": "barkfam",
     "button_label": "Nakupujte nyní",
     "collapsible_row": "Rozbalovací řádek",
     "heading": "Nadpis",
@@ -1104,8 +1111,11 @@
     "disclosures": "Prohlášení"
   },
   "info": {
+    "barkfam_primary_link": "Leave empty to link to the featured product.",
+    "barkfam_hero_image": "Leave empty to use the product's featured image.",
+    "barkfam_hero_product": "Fills the price and is where the primary button links by default.",
     "barkfam_footer_logo": "Light version of the logo for the dark footer.",
-    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_backdrop_word": "Sits across the top of the section, behind the content, and is clipped at both edges. One short word reads best.",
     "barkfam_floating_card": "The title and price come from the product you select.",
     "video_alt_text": "Popište video pro uživatele asistivních technologií",
     "video_autoplay": "Videa budou ve výchozím nastavení ztlumená",

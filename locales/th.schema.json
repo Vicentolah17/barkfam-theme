@@ -172,11 +172,12 @@
     "disclosures": "การเปิดเผยข้อมูล"
   },
   "settings": {
+    "barkfam_card_product_2": "Second card",
+    "barkfam_card_product_1": "First card",
+    "barkfam_meta": "Text after the price",
+    "barkfam_show_price": "Show product price",
+    "barkfam_pill": "Pill text",
     "barkfam_footer_logo": "Footer logo",
-    "barkfam_backdrop_width": "Word width",
-    "barkfam_backdrop_offset": "Word vertical offset",
-    "barkfam_mobile_image": "Mobile image",
-    "barkfam_show_card": "Show card",
     "alignment": "การจัดตำแหน่ง",
     "autoplay": "เล่นอัตโนมัติ",
     "background": "พื้นหลัง",
@@ -875,8 +876,11 @@
     "direction_top_start": "บนซ้าย"
   },
   "content": {
+    "barkfam_secondary_button": "Secondary button",
+    "barkfam_primary_button": "Primary button",
+    "barkfam_featured_product": "Featured product",
     "backdrop_word": "Backdrop word",
-    "barkfam_floating_card": "Floating product card",
+    "barkfam_floating_card": "Floating product cards",
     "advanced": "ขั้นสูง",
     "background_image": "รูปภาพพื้นหลัง",
     "background_video": "วิดีโอพื้นหลัง",
@@ -1005,9 +1009,6 @@
     "page_text_color_contrast_info": "ส่วนที่มีสีพื้นหลังแบบกำหนดเองจะใช้สีตัวอักษรนี้ก็ต่อเมื่อมีความเปรียบต่างของสีเพียงพอ"
   },
   "html_defaults": {
-    "barkfam_hero_eyebrow": "<p>Pet hair remover glove</p>",
-    "barkfam_hero_heading": "<h1>Loose fur, off before it spreads</h1>",
-    "barkfam_hero_text": "<p>A soft silicone grooming glove for dogs and cats. Brush, de-shed, and massage in one step.</p>",
     "share_information_about_your": "<p>แชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณกับลูกค้า อธิบายสินค้า ประกาศข่าวสาร หรือต้อนรับลูกค้าสู่ร้านค้าของคุณ</p>",
     "bestseller_h2": "<h2>สินค้าขายดี</h2>",
     "bestseller_h3": "<h3>สินค้าขายดี</h3>",
@@ -1065,7 +1066,13 @@
     "featured_collection_h3": "<h3>คอลเลกชันแนะนำ</h3>"
   },
   "text_defaults": {
-    "barkfam_hero_word": "BarkFam",
+    "barkfam_hero_meta": "Estimated delivery in 5–10 days",
+    "barkfam_hero_secondary": "Shop all",
+    "barkfam_hero_primary": "Shop the glove",
+    "barkfam_hero_body": "The Pet Hair Remover Glove picks up loose fur while you pet your dog or cat. Use it on the couch, car seats and clothes too.",
+    "barkfam_hero_heading": "Pet hair, handled.",
+    "barkfam_hero_pill": "Our best seller",
+    "barkfam_hero_word": "barkfam",
     "button_label": "ช้อปเลย",
     "collapsible_row": "แถวที่พับเก็บได้",
     "heading": "หัวเรื่อง",
@@ -1104,8 +1111,11 @@
     "disclosures": "การเปิดเผยข้อมูล"
   },
   "info": {
+    "barkfam_primary_link": "Leave empty to link to the featured product.",
+    "barkfam_hero_image": "Leave empty to use the product's featured image.",
+    "barkfam_hero_product": "Fills the price and is where the primary button links by default.",
     "barkfam_footer_logo": "Light version of the logo for the dark footer.",
-    "barkfam_backdrop_word": "Sits behind the product image and is clipped at both edges. One short word reads best.",
+    "barkfam_backdrop_word": "Sits across the top of the section, behind the content, and is clipped at both edges. One short word reads best.",
     "barkfam_floating_card": "The title and price come from the product you select.",
     "video_alt_text": "โปรดอธิบายวิดีโอสำหรับผู้ใช้เทคโนโลยีความช่วยเหลือพิเศษ",
     "video_autoplay": "วิดีโอจะถูกปิดเสียงตามค่าเริ่มต้น",
