@@ -9,6 +9,7 @@
  */
 {
   "accessibility": {
+    "barkfam_breadcrumb": "مسار التنقل",
     "account": "الحساب",
     "active_filters": "عوامل التصفية النشطة:",
     "cart": "سلة التسوق",
@@ -162,6 +163,7 @@
     }
   },
   "content": {
+    "barkfam_breadcrumb_home": "الرئيسية",
     "cancel": "إلغاء",
     "discount": "الخصم",
     "account_title": "الحساب",

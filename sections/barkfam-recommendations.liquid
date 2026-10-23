@@ -1,0 +1,223 @@
+{% comment %}
+  Section contract.
+  "You May Also Like" from the approved design (_referencias/design/Product.dc.html):
+  a pill and heading with a "Shop all" link, then a grid of product cards
+  (four across on desktop, two on mobile). Products come from Shopify's
+  product recommendations: the first render is a placeholder grid and
+  assets/product-recommendations.js swaps in the recommended products once the
+  section scrolls near the viewport. If Shopify has no recommendations yet,
+  other products from the catalog fill the grid, as in Horizon.
+
+  @example
+  <!-- templates/product.json, after the main product section -->
+{% endcomment %}
+
+<script
+  src="{{ 'product-recommendations.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% render 'barkfam-ui' %}
+{% render 'quick-add-styles' %}
+{% render 'quick-add-modal-styles' %}
+{% render 'variant-picker-styles' %}
+{% render 'quantity-selector-styles' %}
+{% render 'product-recommendations-styles' %}
+
+{%- liquid
+  assign recs_product = section.settings.product | default: product
+  assign shop_all_link = section.settings.link_url | default: routes.all_products_collection_url
+
+  if recommendations.performed
+    if recommendations.products_count > 0
+      assign recs_products = recommendations.products
+    else
+      assign recs_products = collections.all.products | reject: 'id', recs_product.id
+    endif
+  endif
+-%}
+
+<product-recommendations
+  id="product-recommendations-{{ section.id }}"
+  class="product-recommendations bf-section bf-recs"
+  data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.max_products }}"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ recs_product.id }}"
+  data-intent="related"
+  data-recommendations-performed="{{ recommendations.performed }}"
+  data-hydration-key="product-recommendations-{{ section.id }}"
+  style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+>
+  <div class="bf-container bf-recs__inner">
+    <div class="bf-recs__header">
+      <div class="bf-recs__titles">
+        {%- if section.settings.pill != blank -%}
+          <span class="bf-pill"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="bf-heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.link_label != blank -%}
+        <a class="bf-recs__link" href="{{ shop_all_link }}">
+          {{- section.settings.link_label | escape -}}
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if recommendations.performed -%}
+      <div
+        class="bf-recs__grid"
+        data-has-recommendations="{% if recs_products.size > 0 %}true{% else %}false{% endif %}"
+      >
+        {%- for card_product in recs_products limit: section.settings.max_products -%}
+          {% render 'barkfam-product-card',
+            product: card_product,
+            section_id: section.id,
+            image_sizes: '(min-width: 750px) 25vw, 50vw'
+          %}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="bf-recs__grid">
+        {%- for i in (1..section.settings.max_products) -%}
+          <div
+            class="bf-recs__skeleton"
+            aria-label="{{ 'accessibility.loading_product_recommendations' | t }}"
+          ></div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</product-recommendations>
+
+{% stylesheet %}
+  .bf-recs {
+    background-color: var(--bf-surface-bg, transparent);
+  }
+
+  .bf-recs__inner {
+    padding-block: var(--bf-py);
+  }
+
+  .bf-recs__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-block-end: var(--bf-title-gap);
+  }
+
+  .bf-recs__titles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .bf-recs__link {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+    color: var(--bf-ink);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .bf-recs__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--bf-row-gap) var(--bf-gap);
+  }
+
+  .bf-recs__skeleton {
+    aspect-ratio: 1;
+    border-radius: var(--bf-r-card);
+    background-color: var(--bf-alt);
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-recs__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_recommendations",
+  "tag": "section",
+  "class": "section-wrapper",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product",
+      "info": "t:info.barkfam_recommendations_product"
+    },
+    {
+      "type": "text",
+      "id": "pill",
+      "label": "t:settings.barkfam_pill",
+      "default": "t:text_defaults.barkfam_recommendations_pill"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "t:text_defaults.barkfam_recommendations_heading"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "t:settings.product_count",
+      "min": 2,
+      "max": 8,
+      "step": 2,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "t:content.buttons"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.barkfam_recommendations_link"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:settings.link",
+      "info": "t:info.barkfam_recommendations_link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_recommendations",
+      "category": "t:categories.products"
+    }
+  ]
+}
+{% endschema %}

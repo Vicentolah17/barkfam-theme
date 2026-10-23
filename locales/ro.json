@@ -29,6 +29,7 @@
     "slider_label": "Cursor"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Traseu de navigare",
     "play_model": "Redă modelul 3D",
     "play_video": "Redă videoclipul",
     "unit_price": "Preț unitar",
@@ -132,6 +133,7 @@
     "zoom_media": "Fă zoom pe elementul media {{ index }}"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Acasă",
     "reviews": "recenzii",
     "language": "Limba",
     "localization_region_and_language": "Regiunea și limba",

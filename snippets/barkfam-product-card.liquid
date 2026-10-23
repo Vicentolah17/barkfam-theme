@@ -156,8 +156,10 @@
     font-weight: 600;
   }
 
+  /* Horizon's quick add form is an inline-size container, so it has no intrinsic width; reserve the button's */
   .bf-card__action {
     flex: none;
+    min-width: 36px;
   }
 
   /* Horizon's quick add, turned from an image overlay into the design's 36px round button */

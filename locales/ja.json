@@ -29,6 +29,7 @@
     "slider_label": "スライダー"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "パンくずリスト",
     "play_model": "3Dモデルを再生",
     "play_video": "ビデオを再生",
     "unit_price": "単価",
@@ -130,6 +131,7 @@
     "back_to_main_menu": "メインメニューに戻る"
   },
   "content": {
+    "barkfam_breadcrumb_home": "ホーム",
     "reviews": "レビュー",
     "language": "言語",
     "localization_region_and_language": "地域と言語",

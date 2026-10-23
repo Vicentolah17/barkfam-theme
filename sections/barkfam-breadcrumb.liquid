@@ -1,0 +1,95 @@
+{% comment %}
+  Section contract.
+  Breadcrumb trail above the product from the approved design
+  (_referencias/design/Product.dc.html): Home / collection / product. The
+  collection is the one in the URL when the shopper came from a collection,
+  otherwise the product's first collection other than the home page one.
+
+  @example
+  <!-- templates/product.json, first section -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+
+{%- liquid
+  assign crumb_collection = collection
+  if crumb_collection == blank and product != blank
+    for product_collection in product.collections
+      unless product_collection.handle == 'frontpage' or product_collection.handle == 'all'
+        assign crumb_collection = product_collection
+        break
+      endunless
+    endfor
+  endif
+-%}
+
+{%- if product != blank -%}
+  <nav class="bf-section bf-breadcrumb" aria-label="{{ 'accessibility.barkfam_breadcrumb' | t }}">
+    <ol class="bf-container bf-breadcrumb__list">
+      <li><a href="{{ routes.root_url }}">{{ 'content.barkfam_breadcrumb_home' | t }}</a></li>
+      {%- if crumb_collection != blank -%}
+        <li><a href="{{ crumb_collection.url }}">{{ crumb_collection.title | escape }}</a></li>
+      {%- endif -%}
+      <li aria-current="page">{{ product.title | escape }}</li>
+    </ol>
+  </nav>
+{%- endif -%}
+
+{% stylesheet %}
+  .bf-breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-block: 0;
+    padding-block: var(--bf-crumb-py, 16px);
+    color: var(--bf-muted);
+    font-size: 13px;
+    line-height: 1.55;
+    list-style: none;
+  }
+
+  .bf-breadcrumb__list li {
+    display: flex;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .bf-breadcrumb__list li + li::before {
+    content: '/';
+  }
+
+  .bf-breadcrumb__list a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Long product titles wrap beside the trail instead of dropping to a new line */
+  .bf-breadcrumb__list [aria-current] {
+    flex: 1 1 0;
+    color: var(--bf-ink);
+    overflow-wrap: anywhere;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-breadcrumb__list {
+      --bf-crumb-py: 24px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_breadcrumb",
+  "tag": "section",
+  "class": "section-wrapper",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "presets": [
+    {
+      "name": "t:names.barkfam_breadcrumb",
+      "category": "t:categories.products"
+    }
+  ]
+}
+{% endschema %}

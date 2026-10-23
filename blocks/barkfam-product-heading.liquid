@@ -1,0 +1,146 @@
+{%- doc -%}
+  Renders the top of the BarkFam product details from the approved design
+  (_referencias/design/Product.dc.html): an optional pill, the product title as
+  the page heading, and the star rating with review count.
+
+  The pill shows on every product, or only on products carrying a given tag,
+  so "Best seller" never lands on the wrong product. Stars come only from the
+  standard reviews.rating and reviews.rating_count metafields that review apps
+  write, and the row is hidden without them.
+
+  Block settings: pill, pill_tag, show_rating.
+
+  @example
+  {% content_for 'block', type: 'barkfam-product-heading', id: 'heading', closest.product: product %}
+{%- enddoc -%}
+
+{% render 'barkfam-ui' %}
+
+{%- liquid
+  assign heading_product = closest.product
+
+  assign show_pill = false
+  if block.settings.pill != blank
+    if block.settings.pill_tag == blank
+      assign show_pill = true
+    else
+      assign wanted_tag = block.settings.pill_tag | downcase | strip
+      for tag in heading_product.tags
+        assign product_tag = tag | downcase
+        if product_tag == wanted_tag
+          assign show_pill = true
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  assign heading_rating = heading_product.metafields.reviews.rating.value
+  assign heading_rating_count = heading_product.metafields.reviews.rating_count.value
+  if heading_rating != blank
+    assign heading_scale = heading_rating.scale_max | default: 5
+    assign heading_stars = heading_rating.rating | times: 5 | divided_by: heading_scale | round
+  endif
+-%}
+
+<div class="bf-product-heading" {{ block.shopify_attributes }}>
+  {%- if show_pill -%}
+    <span class="bf-pill"><span class="bf-pill__dot"></span>{{ block.settings.pill | escape }}</span>
+  {%- endif -%}
+
+  <h1 class="bf-product-heading__title">{{ heading_product.title | escape }}</h1>
+
+  {%- if block.settings.show_rating and heading_rating != blank -%}
+    <div class="bf-product-heading__rating">
+      <div class="bf-stars">
+        <span class="visually-hidden">{{ 'accessibility.rating' | t: rating: heading_rating.rating }}</span>
+        {%- for star in (1..5) -%}
+          <svg
+            class="{% if star > heading_stars %}bf-stars__empty{% endif %}"
+            aria-hidden="true"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/>
+          </svg>
+        {%- endfor -%}
+      </div>
+      {%- if heading_rating_count != blank -%}
+        <span class="bf-product-heading__count">{{ heading_rating_count }} {{ 'content.reviews' | t }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .bf-product-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+  }
+
+  .bf-product-heading__title {
+    margin: 0;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h2);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+  }
+
+  .bf-product-heading__rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bf-product-heading__rating .bf-stars svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .bf-product-heading__count {
+    color: var(--bf-muted);
+    font-size: 13px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_product_heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "pill",
+      "label": "t:settings.barkfam_pill",
+      "default": "t:text_defaults.barkfam_product_pill"
+    },
+    {
+      "type": "text",
+      "id": "pill_tag",
+      "label": "t:settings.barkfam_pill_tag",
+      "info": "t:info.barkfam_pill_tag",
+      "default": "best-seller"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "t:settings.barkfam_show_rating",
+      "info": "t:info.barkfam_show_rating",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_product_heading"
+    }
+  ]
+}
+{% endschema %}

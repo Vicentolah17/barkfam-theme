@@ -29,6 +29,7 @@
     "slider_label": "Thanh trượt"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Đường dẫn",
     "play_model": "Phát mô hình 3D",
     "play_video": "Phát video",
     "unit_price": "Đơn giá",
@@ -130,6 +131,7 @@
     "back_to_main_menu": "Quay lại menu chính"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Trang chủ",
     "reviews": "đánh giá",
     "language": "Ngôn ngữ",
     "localization_region_and_language": "Khu vực và ngôn ngữ",

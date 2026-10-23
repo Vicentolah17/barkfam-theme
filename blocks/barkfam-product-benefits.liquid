@@ -1,0 +1,79 @@
+{%- doc -%}
+  Renders the product's benefit list from the approved design
+  (_referencias/design/Product.dc.html): short lines, each after a check in a
+  tinted circle. The lines come from the product metafield custom.benefits
+  (list of single line text), so every product shows its own; the block
+  renders nothing when the metafield is empty.
+
+  @example
+  {% content_for 'block', type: 'barkfam-product-benefits', id: 'benefits', closest.product: product %}
+{%- enddoc -%}
+
+{%- assign product_benefits = closest.product.metafields.custom.benefits.value -%}
+
+{%- if product_benefits != blank and product_benefits.size > 0 -%}
+  <ul class="bf-benefits" {{ block.shopify_attributes }}>
+    {%- for benefit in product_benefits -%}
+      <li class="bf-benefits__item">
+        <span class="bf-benefits__check">
+          <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12.5l4.5 4.5L19 7.5"/>
+          </svg>
+        </span>
+        <span>{{ benefit | escape }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{% stylesheet %}
+  .bf-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+    font-size: 15px;
+    line-height: 1.55;
+    list-style: none;
+  }
+
+  .bf-benefits__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .bf-benefits__check {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-block-start: 1px;
+    border-radius: 999px;
+    background-color: var(--bf-alt);
+    color: var(--bf-accent);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_product_benefits",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:info.barkfam_product_benefits"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_product_benefits"
+    }
+  ]
+}
+{% endschema %}

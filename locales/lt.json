@@ -29,6 +29,7 @@
     "slider_label": "Slankiklis"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Naršymo kelias",
     "play_model": "Paleisti 3D modelį",
     "play_video": "Paleisti vaizdo įrašą",
     "unit_price": "Vieneto kaina",
@@ -134,6 +135,7 @@
     "back_to_main_menu": "Atgal į pagrindinį meniu"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Pradžia",
     "reviews": "apžvalgos (-ų; -a)",
     "language": "Kalba",
     "localization_region_and_language": "Regionas ir kalba",

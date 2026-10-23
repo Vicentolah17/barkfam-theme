@@ -29,6 +29,7 @@
     "slider_label": "Controle deslizante"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Trilha de navegação",
     "play_model": "Reproduzir modelo 3D",
     "play_video": "Reproduzir vídeo",
     "unit_price": "Preço unitário",
@@ -132,6 +133,7 @@
     "back_to_main_menu": "Voltar ao menu principal"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Início",
     "reviews": "avaliações",
     "language": "Idioma",
     "localization_region_and_language": "Região e idioma",

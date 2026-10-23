@@ -9,6 +9,7 @@
  */
 {
   "accessibility": {
+    "barkfam_breadcrumb": "נתיב ניווט",
     "account": "חשבון",
     "active_filters": "מסננים פעילים:",
     "cart": "סל",
@@ -156,6 +157,7 @@
     }
   },
   "content": {
+    "barkfam_breadcrumb_home": "דף הבית",
     "cancel": "ביטול",
     "discount": "הנחה",
     "account_title": "חשבון",

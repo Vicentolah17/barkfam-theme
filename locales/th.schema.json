@@ -9,6 +9,13 @@
  */
 {
   "names": {
+    "barkfam_recommendations": "You may also like",
+    "barkfam_breadcrumb": "Breadcrumb",
+    "barkfam_accordion_row": "Accordion row",
+    "barkfam_accordion": "Product accordion",
+    "barkfam_delivery": "Delivery estimate",
+    "barkfam_product_benefits": "Product benefits",
+    "barkfam_product_heading": "Product heading",
     "barkfam_footer": "BarkFam footer",
     "barkfam_trust_item": "Trust item",
     "barkfam_trust": "Trust strip",
@@ -190,6 +197,11 @@
     "disclosures": "การเปิดเผยข้อมูล"
   },
   "settings": {
+    "barkfam_content_source": "Content",
+    "barkfam_max_days": "Latest delivery",
+    "barkfam_min_days": "Earliest delivery",
+    "barkfam_show_rating": "Show star rating",
+    "barkfam_pill_tag": "Show pill only for products tagged",
     "barkfam_copyright": "Copyright text",
     "barkfam_social_3_url": "Social link 3 URL",
     "barkfam_social_3_label": "Social link 3 label",
@@ -636,6 +648,8 @@
     "customer_account_menu": "เมนูบัญชีผู้ใช้ของลูกค้า"
   },
   "options": {
+    "barkfam_product_description": "Product description",
+    "barkfam_custom_text": "Custom text",
     "apple": "Apple",
     "arrow": "ลูกศร",
     "auto": "อัตโนมัติ",
@@ -1055,6 +1069,8 @@
     "page_text_color_contrast_info": "ส่วนที่มีสีพื้นหลังแบบกำหนดเองจะใช้สีตัวอักษรนี้ก็ต่อเมื่อมีความเปรียบต่างของสีเพียงพอ"
   },
   "html_defaults": {
+    "barkfam_accordion_returns": "<p>If something isn’t right, email <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a> within 30 days of delivery and we’ll walk you through the return.</p>",
+    "barkfam_accordion_shipping": "<p>We ship to addresses across the United States. Estimated delivery is 5–10 days after your order is placed.</p><p>You’ll get a tracking link by email as soon as your order ships.</p>",
     "barkfam_faq_text": "Can't find what you need? Email us at <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a>.",
     "barkfam_faq_answer": "<p>We ship across the United States. Estimated delivery is 5–10 days after your order is placed. You’ll get a tracking link by email as soon as it ships.</p>",
     "share_information_about_your": "<p>แชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณกับลูกค้า อธิบายสินค้า ประกาศข่าวสาร หรือต้อนรับลูกค้าสู่ร้านค้าของคุณ</p>",
@@ -1114,6 +1130,15 @@
     "featured_collection_h3": "<h3>คอลเลกชันแนะนำ</h3>"
   },
   "text_defaults": {
+    "barkfam_recommendations_link": "Shop all",
+    "barkfam_recommendations_heading": "You May Also Like",
+    "barkfam_recommendations_pill": "More for them",
+    "barkfam_accordion_returns": "Returns",
+    "barkfam_accordion_shipping": "Shipping",
+    "barkfam_accordion_description": "Description",
+    "barkfam_delivery_text": "Ships within the US · Tracking sent by email",
+    "barkfam_delivery_label": "Estimated delivery:",
+    "barkfam_product_pill": "Best seller",
     "barkfam_footer_copyright": "BarkFam. All rights reserved.",
     "barkfam_footer_contact_text": "We reply within 1–2 business days.",
     "barkfam_footer_contact_heading": "Contact",
@@ -1211,6 +1236,11 @@
     "disclosures": "การเปิดเผยข้อมูล"
   },
   "info": {
+    "barkfam_recommendations_link": "Defaults to all products.",
+    "barkfam_recommendations_product": "Leave empty to use the product on the page.",
+    "barkfam_product_benefits": "Lists the product metafield custom.benefits (list of single line text). Hidden when the product has none.",
+    "barkfam_show_rating": "Stars appear only when a reviews app fills the product's rating metafields.",
+    "barkfam_pill_tag": "Leave empty to show the pill on every product.",
     "barkfam_copyright": "The © symbol and the current year are added in front.",
     "barkfam_footer_logo_location": "The logo comes from Theme settings → Logo and favicon → Footer logo. Without it, the inverse logo is used, then the store name.",
     "barkfam_reviewer_detail": "For example: Verified buyer · product name",

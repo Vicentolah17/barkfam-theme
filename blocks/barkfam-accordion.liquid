@@ -1,0 +1,142 @@
+{%- doc -%}
+  Renders the product information accordion from the approved design
+  (_referencias/design/Product.dc.html): Description, Shipping and Returns rows
+  with a round +/− glyph. Rows are _barkfam-accordion-row blocks built on native
+  <details> sharing one name, so only one row is open at a time and no script
+  is needed.
+
+  @example
+  {% content_for 'block', type: 'barkfam-accordion', id: 'accordion', closest.product: product %}
+{%- enddoc -%}
+
+<div class="bf-accordion" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+
+{% stylesheet %}
+  .bf-accordion {
+    display: flex;
+    flex-direction: column;
+    border-block-start: 1px solid var(--bf-line);
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+  }
+
+  .bf-accordion__row {
+    border-block-end: 1px solid var(--bf-line);
+  }
+
+  .bf-accordion__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 20px;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-faq-q);
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .bf-accordion__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .bf-accordion__summary:focus-visible {
+    outline: 2px solid var(--bf-accent);
+    outline-offset: 3px;
+  }
+
+  .bf-accordion__icon {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--bf-line);
+    border-radius: 999px;
+    font-family: var(--bf-font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .bf-accordion__icon-minus,
+  .bf-accordion__row[open] .bf-accordion__icon-plus {
+    display: none;
+  }
+
+  .bf-accordion__row[open] .bf-accordion__icon-minus {
+    display: inline;
+  }
+
+  .bf-accordion__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-block-end: 20px;
+    color: var(--bf-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .bf-accordion__content > *,
+  .bf-accordion__content p {
+    margin: 0;
+  }
+
+  .bf-accordion__content img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .bf-accordion__content a {
+    color: var(--bf-ink);
+    text-decoration: underline;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_accordion",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_barkfam-accordion-row"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_accordion",
+      "blocks": {
+        "description": {
+          "type": "_barkfam-accordion-row",
+          "settings": {
+            "heading": "t:text_defaults.barkfam_accordion_description",
+            "source": "description",
+            "open_by_default": true
+          }
+        },
+        "shipping": {
+          "type": "_barkfam-accordion-row",
+          "settings": {
+            "heading": "t:text_defaults.barkfam_accordion_shipping",
+            "content": "t:html_defaults.barkfam_accordion_shipping"
+          }
+        },
+        "returns": {
+          "type": "_barkfam-accordion-row",
+          "settings": {
+            "heading": "t:text_defaults.barkfam_accordion_returns",
+            "content": "t:html_defaults.barkfam_accordion_returns"
+          }
+        }
+      },
+      "block_order": ["description", "shipping", "returns"]
+    }
+  ]
+}
+{% endschema %}

@@ -29,6 +29,7 @@
     "slider_label": "Kliznik"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Navigacijski put",
     "play_model": "Reproduciraj 3D model",
     "play_video": "Reproduciraj videozapis",
     "unit_price": "Jedinična cijena",
@@ -132,6 +133,7 @@
     "back_to_main_menu": "Natrag na glavni izbornik"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Početna",
     "reviews": "recenzije",
     "no_results_found": "Nema pronađenih rezultata",
     "language": "Jezik",

@@ -9,6 +9,7 @@
  */
 {
   "accessibility": {
+    "barkfam_breadcrumb": "Breadcrumb",
     "account": "Account",
     "active_filters": "Active filters:",
     "cart": "Cart",
@@ -163,6 +164,7 @@
     }
   },
   "content": {
+    "barkfam_breadcrumb_home": "Home",
     "cancel": "Cancel",
     "discount": "Discount",
     "account_title": "Account",

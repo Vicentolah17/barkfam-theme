@@ -29,6 +29,7 @@
     "slider_label": "Slider"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Breadcrumb-Navigation",
     "play_model": "3D-Modell abspielen",
     "play_video": "Video abspielen",
     "unit_price": "Stückpreis",
@@ -130,6 +131,7 @@
     "back_to_main_menu": "Zurück zum Hauptmenü"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Startseite",
     "reviews": "Reviews",
     "language": "Sprache",
     "localization_region_and_language": "Region und Sprache",

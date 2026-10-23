@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "breadcrumb": {
+      "type": "barkfam-breadcrumb",
+      "settings": {}
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -17,15 +21,12 @@
           "static": true,
           "settings": {
             "media_presentation": "carousel",
-            "image_gap": 8,
+            "image_gap": 0,
             "slideshow_controls_style": "thumbnails",
-            "slideshow_mobile_controls_style": "dots",
-            "thumbnail_width": 56,
-            "thumbnail_radius": 12,
+            "slideshow_mobile_controls_style": "thumbnails",
+            "thumbnail_radius": 14,
             "aspect_ratio": "1",
-            "constrain_to_viewport": true,
-            "media_fit": "contain",
-            "media_radius": 24,
+            "media_radius": 28,
             "extend_media": false,
             "hide_variants": true
           },
@@ -35,63 +36,41 @@
           "type": "_product-details",
           "static": true,
           "settings": {
-            "gap": 24,
-            "sticky_details_desktop": true,
-            "padding-block-start": 24,
-            "padding-block-end": 24
+            "gap": 24
           },
           "blocks": {
             "header": {
               "type": "group",
               "name": "t:names.header",
               "settings": {
-                "gap": 8
+                "gap": 14
               },
               "blocks": {
-                "title": {
-                  "type": "text",
-                  "name": "t:names.product_title",
-                  "settings": {
-                    "text": "<h1>{{ closest.product.title }}</h1>",
-                    "width": "100%",
-                    "type_preset": "h3",
-                    "wrap": "pretty"
-                  },
-                  "blocks": {}
+                "heading": {
+                  "type": "barkfam-product-heading",
+                  "settings": {}
                 },
                 "price": {
                   "type": "price",
-                  "settings": {
-                    "show_installments": true,
-                    "type_preset": "h5"
-                  },
-                  "blocks": {}
+                  "settings": {}
                 }
               },
-              "block_order": [
-                "title",
-                "price"
-              ]
+              "block_order": ["heading", "price"]
             },
-            "divider_top": {
-              "type": "_divider",
-              "settings": {
-                "divider_color": "{{ settings.color_palette.color2 }}"
-              },
-              "blocks": {}
+            "benefits": {
+              "type": "barkfam-product-benefits",
+              "settings": {}
             },
             "variant_picker": {
               "type": "variant-picker",
               "settings": {
                 "show_swatches": false,
                 "padding-block-end": 0
-              },
-              "blocks": {}
+              }
             },
             "buy_buttons": {
               "type": "buy-buttons",
               "settings": {
-                "stacking": true,
                 "show_pickup_availability": false,
                 "border_radius": 50
               },
@@ -101,338 +80,66 @@
                   "static": true,
                   "settings": {
                     "border_radius": 50
-                  },
-                  "blocks": {}
+                  }
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
                     "style_class": "button"
-                  },
-                  "blocks": {}
+                  }
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
                   "static": true,
-                  "settings": {},
-                  "blocks": {}
+                  "settings": {}
                 }
               },
               "block_order": []
             },
-            "description": {
-              "type": "text",
-              "name": "t:names.product_description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "wrap": "pretty"
-              },
-              "blocks": {}
+            "delivery": {
+              "type": "barkfam-delivery",
+              "settings": {}
             },
-            "details": {
-              "type": "accordion",
-              "settings": {
-                "icon": "plus",
-                "divider_color": "{{ settings.color_palette.color2 }}"
-              },
+            "accordion": {
+              "type": "barkfam-accordion",
+              "settings": {},
               "blocks": {
-                "row_use": {
-                  "type": "_accordion-row",
+                "description": {
+                  "type": "_barkfam-accordion-row",
                   "settings": {
-                    "heading": "How to use"
-                  },
-                  "blocks": {
-                    "answer": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Slide the glove on and pull the strap snug. Run your hand over your pet the way you normally would, then peel the collected fur off in one piece.</p>",
-                        "width": "100%",
-                        "wrap": "pretty"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "answer"
-                  ]
+                    "heading": "Description",
+                    "source": "description",
+                    "open_by_default": true
+                  }
                 },
-                "row_care": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Care and cleaning"
-                  },
-                  "blocks": {
-                    "answer": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Rinse the glove under warm water and let it air dry. No special cleaning products needed.</p>",
-                        "width": "100%",
-                        "wrap": "pretty"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "answer"
-                  ]
+                "shipping": {
+                  "type": "_barkfam-accordion-row",
+                  "settings": {}
                 },
-                "row_shipping": {
-                  "type": "_accordion-row",
+                "returns": {
+                  "type": "_barkfam-accordion-row",
                   "settings": {
-                    "heading": "Shipping and delivery"
-                  },
-                  "blocks": {
-                    "answer": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Orders are packed within 1 to 3 business days, and delivery inside the United States usually takes another 7 to 15 business days. Timing can vary with carrier volume, so treat it as an estimate rather than a guaranteed date.</p>",
-                        "width": "100%",
-                        "wrap": "pretty"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "answer"
-                  ]
+                    "heading": "Returns",
+                    "content": "<p>If something isn’t right, email <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a> within 30 days of delivery and we’ll walk you through the return.</p>"
+                  }
                 }
               },
-              "block_order": [
-                "row_use",
-                "row_care",
-                "row_shipping"
-              ]
+              "block_order": ["description", "shipping", "returns"]
             }
           },
-          "block_order": [
-            "header",
-            "divider_top",
-            "variant_picker",
-            "buy_buttons",
-            "description",
-            "details"
-          ]
+          "block_order": ["header", "benefits", "variant_picker", "buy_buttons", "delivery", "accordion"]
         }
       },
       "block_order": [],
       "settings": {
-        "limit_details_width": true,
-        "gap": 48,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 24,
-        "padding-block-end": 56
+        "gap": 32
       }
     },
-    "benefits": {
-      "type": "section",
-      "blocks": {
-        "benefit_pets": {
-          "type": "group",
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false
-          },
-          "blocks": {
-            "icon": {
-              "type": "icon",
-              "settings": {
-                "icon": "paw_print"
-              },
-              "blocks": {}
-            },
-            "label": {
-              "type": "text",
-              "settings": {
-                "text": "<p>For dogs and cats</p>",
-                "width": "100%",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon",
-            "label"
-          ]
-        },
-        "benefit_silicone": {
-          "type": "group",
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false
-          },
-          "blocks": {
-            "icon": {
-              "type": "icon",
-              "settings": {
-                "icon": "heart"
-              },
-              "blocks": {}
-            },
-            "label": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Soft silicone tips</p>",
-                "width": "100%",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon",
-            "label"
-          ]
-        },
-        "benefit_rinse": {
-          "type": "group",
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false
-          },
-          "blocks": {
-            "icon": {
-              "type": "icon",
-              "settings": {
-                "icon": "washing"
-              },
-              "blocks": {}
-            },
-            "label": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Rinses clean under water</p>",
-                "width": "100%",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon",
-            "label"
-          ]
-        },
-        "benefit_clothes": {
-          "type": "group",
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false
-          },
-          "blocks": {
-            "icon": {
-              "type": "icon",
-              "settings": {
-                "icon": "shirt"
-              },
-              "blocks": {}
-            },
-            "label": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Less fur on your clothes</p>",
-                "width": "100%",
-                "wrap": "pretty"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon",
-            "label"
-          ]
-        }
-      },
-      "block_order": [
-        "benefit_pets",
-        "benefit_silicone",
-        "benefit_rinse",
-        "benefit_clothes"
-      ],
-      "name": "t:names.section",
-      "settings": {
-        "content_direction": "row",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.color3 }}",
-        "toggle_overlay": false,
-        "padding-block-start": 32,
-        "padding-block-end": 32
-      }
-    },
-    "product_recommendations_qggXJq": {
-      "type": "product-recommendations",
-      "disabled": true,
-      "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
-          "settings": {
-            "text": "<h3>You may also like</h3>",
-            "type_preset": "h4",
-            "wrap": "pretty"
-          },
-          "blocks": {}
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 8,
-            "padding-block-end": 8
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "square"
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "settings": {
-                "width": "100%",
-                "wrap": "pretty",
-                "padding-block-start": 4
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "type_preset": "h6"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
-        }
-      },
-      "block_order": [
-        "text_cbcgyb"
-      ],
-      "name": "t:names.product_recommendations",
-      "settings": {
-        "product": "{{ closest.product }}",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
+    "recommendations": {
+      "type": "barkfam-recommendations",
+      "settings": {}
     }
   },
-  "order": [
-    "main",
-    "benefits",
-    "product_recommendations_qggXJq"
-  ]
+  "order": ["breadcrumb", "main", "recommendations"]
 }

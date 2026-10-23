@@ -29,6 +29,7 @@
     "slider_label": "Suwak"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Ścieżka nawigacji",
     "play_model": "Odtwórz model 3D",
     "play_video": "Odtwórz film",
     "unit_price": "Cena jednostkowa",
@@ -134,6 +135,7 @@
     "back_to_main_menu": "Wróć do menu głównego"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Strona główna",
     "reviews": "recenzje",
     "language": "Język",
     "localization_region_and_language": "Region i język",

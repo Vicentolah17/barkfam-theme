@@ -29,6 +29,7 @@
     "slider_label": "Bild"
   },
   "accessibility": {
+    "barkfam_breadcrumb": "Brödsmulor",
     "play_model": "Spela 3D-modell",
     "play_video": "Spela video",
     "unit_price": "Enhetspris",
@@ -130,6 +131,7 @@
     "zoom_media": "Zooma media {{ index }}"
   },
   "content": {
+    "barkfam_breadcrumb_home": "Hem",
     "reviews": "recensioner",
     "language": "Språk",
     "localization_region_and_language": "Region och språk",
