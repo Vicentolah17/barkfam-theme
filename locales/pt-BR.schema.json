@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_footer": "Rodapé BarkFam",
     "barkfam_trust_item": "Item de confiança",
     "barkfam_trust": "Faixa de confiança",
     "barkfam_faq_item": "Pergunta",
@@ -189,6 +190,20 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_copyright": "Texto de copyright",
+    "barkfam_social_3_url": "Link da rede 3",
+    "barkfam_social_3_label": "Rótulo da rede 3",
+    "barkfam_social_2_url": "Link da rede 2",
+    "barkfam_social_2_label": "Rótulo da rede 2",
+    "barkfam_social_1_url": "Link da rede 1",
+    "barkfam_social_1_label": "Rótulo da rede 1",
+    "barkfam_email": "E-mail",
+    "barkfam_menu_2": "Segundo menu",
+    "barkfam_menu_2_heading": "Título do segundo menu",
+    "barkfam_menu_1": "Primeiro menu",
+    "barkfam_menu_1_heading": "Título do primeiro menu",
+    "barkfam_tagline": "Frase de marca",
+    "barkfam_logo_height": "Altura da logo",
     "barkfam_answer": "Resposta",
     "barkfam_question": "Pergunta",
     "barkfam_reviewer_avatar": "Foto",
@@ -903,6 +918,10 @@
     "direction_top_start": "Superior à esquerda"
   },
   "content": {
+    "barkfam_bottom_bar": "Barra inferior",
+    "barkfam_contact": "Contato",
+    "barkfam_menus": "Menus",
+    "barkfam_newsletter": "Newsletter",
     "barkfam_secondary_button": "Botão secundário",
     "barkfam_primary_button": "Botão principal",
     "barkfam_featured_product": "Produto em destaque",
@@ -1095,6 +1114,14 @@
     "introducing_p": "<p><em>Apresentando</em></p>"
   },
   "text_defaults": {
+    "barkfam_footer_copyright": "BarkFam. All rights reserved.",
+    "barkfam_footer_contact_text": "We reply within 1–2 business days.",
+    "barkfam_footer_contact_heading": "Contact",
+    "barkfam_footer_menu_2": "Help",
+    "barkfam_footer_menu_1": "Shop",
+    "barkfam_footer_newsletter_text": "New products and restocks, about twice a month.",
+    "barkfam_footer_newsletter_heading": "Join the newsletter",
+    "barkfam_footer_tagline": "Better Days. Together.",
     "barkfam_trust_checkout_text": "Encrypted payment",
     "barkfam_trust_checkout_title": "Secure checkout",
     "barkfam_trust_returns_text": "Start a return by email",
@@ -1184,6 +1211,8 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_copyright": "O símbolo © e o ano atual são adicionados na frente.",
+    "barkfam_footer_logo_location": "A logo vem de Configurações do tema → Logo e favicon → Logo do rodapé. Sem ela, usa a logo inversa e depois o nome da loja.",
     "barkfam_reviewer_detail": "Por exemplo: Verified buyer · nome do produto",
     "barkfam_products_button_link": "Deixe vazio para linkar a coleção.",
     "barkfam_products_collection": "Os cards seguem a ordenação desta coleção. Ordene por mais vendidos para uma lista real de best sellers.",

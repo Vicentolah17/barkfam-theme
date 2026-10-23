@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_footer": "BarkFam footer",
     "barkfam_trust_item": "Trust item",
     "barkfam_trust": "Trust strip",
     "barkfam_faq_item": "Question",
@@ -189,6 +190,20 @@
     "disclosures": "Prohlášení"
   },
   "settings": {
+    "barkfam_copyright": "Copyright text",
+    "barkfam_social_3_url": "Social link 3 URL",
+    "barkfam_social_3_label": "Social link 3 label",
+    "barkfam_social_2_url": "Social link 2 URL",
+    "barkfam_social_2_label": "Social link 2 label",
+    "barkfam_social_1_url": "Social link 1 URL",
+    "barkfam_social_1_label": "Social link 1 label",
+    "barkfam_email": "Email",
+    "barkfam_menu_2": "Second menu",
+    "barkfam_menu_2_heading": "Second menu heading",
+    "barkfam_menu_1": "First menu",
+    "barkfam_menu_1_heading": "First menu heading",
+    "barkfam_tagline": "Tagline",
+    "barkfam_logo_height": "Logo height",
     "barkfam_answer": "Answer",
     "barkfam_question": "Question",
     "barkfam_reviewer_avatar": "Photo",
@@ -903,6 +918,10 @@
     "direction_top_start": "Vlevo nahoře"
   },
   "content": {
+    "barkfam_bottom_bar": "Bottom bar",
+    "barkfam_contact": "Contact",
+    "barkfam_menus": "Menus",
+    "barkfam_newsletter": "Newsletter",
     "barkfam_secondary_button": "Secondary button",
     "barkfam_primary_button": "Primary button",
     "barkfam_featured_product": "Featured product",
@@ -1095,6 +1114,14 @@
     "featured_collection_h3": "<h3>Doporučená kolekce</h3>"
   },
   "text_defaults": {
+    "barkfam_footer_copyright": "BarkFam. All rights reserved.",
+    "barkfam_footer_contact_text": "We reply within 1–2 business days.",
+    "barkfam_footer_contact_heading": "Contact",
+    "barkfam_footer_menu_2": "Help",
+    "barkfam_footer_menu_1": "Shop",
+    "barkfam_footer_newsletter_text": "New products and restocks, about twice a month.",
+    "barkfam_footer_newsletter_heading": "Join the newsletter",
+    "barkfam_footer_tagline": "Better Days. Together.",
     "barkfam_trust_checkout_text": "Encrypted payment",
     "barkfam_trust_checkout_title": "Secure checkout",
     "barkfam_trust_returns_text": "Start a return by email",
@@ -1184,6 +1211,8 @@
     "disclosures": "Prohlášení"
   },
   "info": {
+    "barkfam_copyright": "The © symbol and the current year are added in front.",
+    "barkfam_footer_logo_location": "The logo comes from Theme settings → Logo and favicon → Footer logo. Without it, the inverse logo is used, then the store name.",
     "barkfam_reviewer_detail": "For example: Verified buyer · product name",
     "barkfam_products_button_link": "Leave empty to link to the collection.",
     "barkfam_products_collection": "Cards follow this collection's sort order. Sort it by best selling for a real best-seller list.",
