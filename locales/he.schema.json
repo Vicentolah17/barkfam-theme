@@ -229,6 +229,7 @@
     "work_quickly_to_ship": "<p>נעבוד מהר כדי לשלוח את ההזמנה שלך בהקדם האפשרי. לאחר שההזמנה שלך תישלח, תקבל דוא&quot;ל עם מידע נוסף. זמני האספקה משתנים בהתאם למיקומך.</p>"
   },
   "info": {
+    "barkfam_heading_tag": "Use page heading when this section opens a page, so the page has one main title.",
     "barkfam_page_heading": "Leave empty to use the page title.",
     "barkfam_recommendations_link": "Defaults to all products.",
     "barkfam_recommendations_product": "Leave empty to use the product on the page.",
@@ -469,6 +470,8 @@
     "comparison_slider": "מחוון השוואה"
   },
   "options": {
+    "barkfam_page_heading": "Page heading (H1)",
+    "barkfam_section_heading": "Section heading (H2)",
     "barkfam_lead": "Lead",
     "barkfam_body": "Body",
     "barkfam_product_description": "Product description",
@@ -755,6 +758,7 @@
     "direction_top_start": "למעלה, התחלה"
   },
   "settings": {
+    "barkfam_heading_tag": "Heading level",
     "barkfam_content_source": "Content",
     "barkfam_max_days": "Latest delivery",
     "barkfam_min_days": "Earliest delivery",

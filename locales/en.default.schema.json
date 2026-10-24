@@ -237,6 +237,7 @@
     "work_quickly_to_ship": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>"
   },
   "info": {
+    "barkfam_heading_tag": "Use page heading when this section opens a page, so the page has one main title.",
     "barkfam_page_heading": "Leave empty to use the page title.",
     "barkfam_recommendations_link": "Defaults to all products.",
     "barkfam_recommendations_product": "Leave empty to use the product on the page.",
@@ -484,6 +485,8 @@
     "comparison_slider": "Comparison slider"
   },
   "options": {
+    "barkfam_page_heading": "Page heading (H1)",
+    "barkfam_section_heading": "Section heading (H2)",
     "barkfam_lead": "Lead",
     "barkfam_body": "Body",
     "barkfam_product_description": "Product description",
@@ -813,6 +816,7 @@
     "below_media": "Below media"
   },
   "settings": {
+    "barkfam_heading_tag": "Heading level",
     "barkfam_content_source": "Content",
     "barkfam_max_days": "Latest delivery",
     "barkfam_min_days": "Earliest delivery",

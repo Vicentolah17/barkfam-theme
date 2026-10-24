@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faq": {
+      "type": "barkfam-faq",
+      "blocks": {
+        "shipping_time": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Standard shipping is free on all US orders and usually arrives within 5 to 10 business days. You'll get a tracking number by email as soon as your order ships.</p>",
+            "open_by_default": true
+          }
+        },
+        "ship_from": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "Where do you ship from?",
+            "answer": "<p>Most of our orders ship from warehouses in the United States, so they reach you faster and with no customs fees.</p>"
+          }
+        },
+        "international": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "Do you ship outside the US?",
+            "answer": "<p>Not yet. We currently ship to addresses within the United States only.</p>"
+          }
+        },
+        "returns": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "What if I don't love my order?",
+            "answer": "<p>You're covered by our 30-Day Happiness Guarantee. If something isn't right, email us within 30 days of delivery and we'll make it right. See our <a href=\"/policies/refund-policy\" title=\"Refund Policy\">Refund Policy</a> for details.</p>"
+          }
+        },
+        "contact": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "How can I reach you?",
+            "answer": "<p>Email us at <a href=\"mailto:hello@barkfam.com\" title=\"hello@barkfam.com\">hello@barkfam.com</a> or use our <a href=\"/pages/contact\" title=\"Contact\">contact form</a>. We reply within 1 to 2 business days.</p>"
+          }
+        }
+      },
+      "block_order": ["shipping_time", "ship_from", "international", "returns", "contact"],
+      "settings": {
+        "pill": "",
+        "heading": "",
+        "heading_tag": "h1",
+        "text": ""
+      }
+    }
+  },
+  "order": ["faq"]
+}

@@ -201,6 +201,7 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_heading_tag": "Nível do título",
     "barkfam_content_source": "Conteúdo",
     "barkfam_max_days": "Entrega mais tarde",
     "barkfam_min_days": "Entrega mais cedo",
@@ -652,6 +653,8 @@
     "customer_account_menu": "Menu da conta de cliente"
   },
   "options": {
+    "barkfam_page_heading": "Título da página (H1)",
+    "barkfam_section_heading": "Título de seção (H2)",
     "barkfam_lead": "Destaque",
     "barkfam_body": "Corpo",
     "barkfam_product_description": "Descrição do produto",
@@ -1244,6 +1247,7 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_heading_tag": "Use título da página quando esta seção abre uma página, para a página ter um título principal.",
     "barkfam_page_heading": "Deixe vazio para usar o título da página.",
     "barkfam_recommendations_link": "Padrão: todos os produtos.",
     "barkfam_recommendations_product": "Deixe vazio para usar o produto da página.",

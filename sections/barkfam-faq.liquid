@@ -3,13 +3,19 @@
   "Questions, answered" from the approved design (_referencias/design/Home.dc.html,
   "FAQ"): a pill, heading and contact line on one side and an accordion of
   _barkfam-faq-item blocks on the other. The accordion is native <details>,
-  so it needs no script; one question open at a time.
+  so it needs no script; one question open at a time. On a page template the
+  heading can be the page's h1 and falls back to the page title.
 
   @example
   <!-- templates/index.json, after the reviews section -->
 {% endcomment %}
 
 {% render 'barkfam-ui' %}
+
+{%- liquid
+  assign faq_heading = section.settings.heading | default: page.title
+  assign faq_heading_tag = section.settings.heading_tag | default: 'h2'
+-%}
 
 <div
   class="bf-section bf-faq"
@@ -20,8 +26,8 @@
       {%- if section.settings.pill != blank -%}
         <span class="bf-pill"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
       {%- endif -%}
-      {%- if section.settings.heading != blank -%}
-        <h2 class="bf-heading">{{ section.settings.heading | escape }}</h2>
+      {%- if faq_heading != blank -%}
+        <{{ faq_heading_tag }} class="bf-heading">{{ faq_heading | escape }}</{{ faq_heading_tag }}>
       {%- endif -%}
       {%- if section.settings.text != blank -%}
         <p class="bf-faq__text bf-muted">{{ section.settings.text }}</p>
@@ -172,7 +178,25 @@
       "type": "text",
       "id": "heading",
       "label": "t:settings.heading",
-      "default": "t:text_defaults.barkfam_faq_heading"
+      "default": "t:text_defaults.barkfam_faq_heading",
+      "info": "t:info.barkfam_page_heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "t:settings.barkfam_heading_tag",
+      "info": "t:info.barkfam_heading_tag",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:options.barkfam_section_heading"
+        },
+        {
+          "value": "h1",
+          "label": "t:options.barkfam_page_heading"
+        }
+      ],
+      "default": "h2"
     },
     {
       "type": "inline_richtext",
