@@ -229,6 +229,7 @@
     "work_quickly_to_ship": "<p>ہم جلد از جلد آپ کا آرڈر شپ کرنے کے لیے تیزی سے کام کریں گے۔ آپ کا آرڈر شپ ہونے کے بعد، آپ کو مزید معلومات کے ساتھ ایک ای میل موصول ہوگی۔ آپ کے مقام کے لحاظ سے ترسیل کے اوقات مختلف ہو سکتے ہیں۔</p>"
   },
   "info": {
+    "barkfam_footer_column_email": "Shown below the links as an email link.",
     "barkfam_heading_tag": "Use page heading when this section opens a page, so the page has one main title.",
     "barkfam_page_heading": "Leave empty to use the page title.",
     "barkfam_recommendations_link": "Defaults to all products.",
@@ -278,6 +279,8 @@
     "media_type_info": "خصوصیات آپ کے مینو کے لنک سے پُر کی گئی ہیں"
   },
   "names": {
+    "barkfam_footer_link": "Link",
+    "barkfam_footer_column": "Link column",
     "barkfam_contact": "Contact form",
     "barkfam_statement": "Statement",
     "barkfam_text": "Text",
@@ -1211,6 +1214,8 @@
     "customer_account_menu": "کسٹمر اکاؤنٹ مینو"
   },
   "text_defaults": {
+    "barkfam_footer_link": "Link",
+    "barkfam_footer_column": "Links",
     "barkfam_contact_button": "Send message",
     "barkfam_statement": "Better Days. Together.",
     "barkfam_recommendations_link": "Shop all",

@@ -1,0 +1,42 @@
+{%- doc -%}
+  Renders one link in a BarkFam footer column as a list item. On the storefront
+  it outputs nothing until both the label and the link are filled in; the theme
+  editor still shows it so it can be selected. Styled by
+  sections/barkfam-footer.liquid.
+
+  Block settings: label, link.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- if block.settings.label != blank and block.settings.link != blank or request.design_mode -%}
+  <li {{ block.shopify_attributes }}>
+    <a href="{{ block.settings.link | default: '#' }}">{{ block.settings.label | escape }}</a>
+  </li>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_footer_link",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.barkfam_footer_link"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_footer_link"
+    }
+  ]
+}
+{% endschema %}

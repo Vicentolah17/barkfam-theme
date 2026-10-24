@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "barkfam_footer_link": "Link",
+    "barkfam_footer_column": "Link column",
     "barkfam_contact": "Contact form",
     "barkfam_statement": "Statement",
     "barkfam_text": "Text",
@@ -1141,6 +1143,8 @@
     "featured_collection_h3": "<h3>Doporučená kolekce</h3>"
   },
   "text_defaults": {
+    "barkfam_footer_link": "Link",
+    "barkfam_footer_column": "Links",
     "barkfam_contact_button": "Send message",
     "barkfam_statement": "Better Days. Together.",
     "barkfam_recommendations_link": "Shop all",
@@ -1249,6 +1253,7 @@
     "disclosures": "Prohlášení"
   },
   "info": {
+    "barkfam_footer_column_email": "Shown below the links as an email link.",
     "barkfam_heading_tag": "Use page heading when this section opens a page, so the page has one main title.",
     "barkfam_page_heading": "Leave empty to use the page title.",
     "barkfam_recommendations_link": "Defaults to all products.",

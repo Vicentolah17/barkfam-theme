@@ -13,10 +13,102 @@
   "sections": {
     "footer": {
       "type": "barkfam-footer",
+      "blocks": {
+        "shop": {
+          "type": "_barkfam-footer-column",
+          "settings": {
+            "heading": "Shop"
+          },
+          "blocks": {
+            "home": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "Home",
+                "link": "/"
+              }
+            },
+            "shop_all": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "Shop all",
+                "link": "/collections/all"
+              }
+            }
+          },
+          "block_order": ["home", "shop_all"]
+        },
+        "help": {
+          "type": "_barkfam-footer-column",
+          "settings": {
+            "heading": "Help",
+            "email": "hello@barkfam.com"
+          },
+          "blocks": {
+            "about": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "About Us",
+                "link": "/pages/about-us"
+              }
+            },
+            "faq": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "FAQ",
+                "link": "/pages/faq"
+              }
+            },
+            "contact": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "Contact",
+                "link": "/pages/contact"
+              }
+            }
+          },
+          "block_order": ["about", "faq", "contact"]
+        },
+        "policies": {
+          "type": "_barkfam-footer-column",
+          "settings": {
+            "heading": "Policies"
+          },
+          "blocks": {
+            "shipping": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "Shipping Policy",
+                "link": "/policies/shipping-policy"
+              }
+            },
+            "refund": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "Refund Policy",
+                "link": "/policies/refund-policy"
+              }
+            },
+            "privacy": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "Privacy Policy",
+                "link": "/policies/privacy-policy"
+              }
+            },
+            "terms": {
+              "type": "_barkfam-footer-link",
+              "settings": {
+                "label": "Terms of Service",
+                "link": "/policies/terms-of-service"
+              }
+            }
+          },
+          "block_order": ["shipping", "refund", "privacy", "terms"]
+        }
+      },
+      "block_order": ["shop", "help", "policies"],
       "settings": {}
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["footer"]
 }

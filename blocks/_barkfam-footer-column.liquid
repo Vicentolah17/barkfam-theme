@@ -1,0 +1,71 @@
+{%- doc -%}
+  Renders one link column in the BarkFam footer: a heading, a list of
+  _barkfam-footer-link blocks and an optional email address below the links.
+  Links are blocks rather than a navigation menu, so the column is edited in
+  the theme editor. Styled by sections/barkfam-footer.liquid.
+
+  Block settings: heading, email.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+<nav
+  class="bf-footer__column"
+  {% if block.settings.heading != blank %}
+    aria-label="{{ block.settings.heading | escape }}"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.heading != blank -%}
+    <p class="bf-footer__heading bf-footer__heading--list">{{ block.settings.heading | escape }}</p>
+  {%- endif -%}
+  <ul class="bf-footer__links">
+    {% content_for 'blocks' %}
+  </ul>
+  {%- if block.settings.email != blank -%}
+    <a class="bf-footer__email" href="mailto:{{ block.settings.email | escape }}">
+      {{- block.settings.email | escape -}}
+    </a>
+  {%- endif -%}
+</nav>
+
+{% schema %}
+{
+  "name": "t:names.barkfam_footer_column",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_barkfam-footer-link"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "t:text_defaults.barkfam_footer_column"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "t:settings.barkfam_email",
+      "info": "t:info.barkfam_footer_column_email"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_footer_column",
+      "blocks": {
+        "link_1": {
+          "type": "_barkfam-footer-link"
+        },
+        "link_2": {
+          "type": "_barkfam-footer-link"
+        }
+      },
+      "block_order": ["link_1", "link_2"]
+    }
+  ]
+}
+{% endschema %}
