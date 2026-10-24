@@ -131,6 +131,8 @@
     "back_to_main_menu": "メインメニューに戻る"
   },
   "content": {
+    "barkfam_contact_optional": "任意",
+    "barkfam_contact_message": "メッセージ",
     "barkfam_breadcrumb_home": "ホーム",
     "reviews": "レビュー",
     "language": "言語",

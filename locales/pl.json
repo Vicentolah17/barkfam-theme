@@ -135,6 +135,8 @@
     "back_to_main_menu": "Wróć do menu głównego"
   },
   "content": {
+    "barkfam_contact_optional": "opcjonalnie",
+    "barkfam_contact_message": "Wiadomość",
     "barkfam_breadcrumb_home": "Strona główna",
     "reviews": "recenzje",
     "language": "Język",

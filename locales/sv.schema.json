@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_contact": "Contact form",
     "barkfam_statement": "Statement",
     "barkfam_text": "Text",
     "barkfam_text_column": "Text column",
@@ -1140,6 +1141,7 @@
     "featured_collection_h3": "<h3>Utvald kollektion</h3>"
   },
   "text_defaults": {
+    "barkfam_contact_button": "Send message",
     "barkfam_statement": "Better Days. Together.",
     "barkfam_recommendations_link": "Shop all",
     "barkfam_recommendations_heading": "You May Also Like",

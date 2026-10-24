@@ -163,6 +163,8 @@
     }
   },
   "content": {
+    "barkfam_contact_optional": "اختياري",
+    "barkfam_contact_message": "الرسالة",
     "barkfam_breadcrumb_home": "الرئيسية",
     "cancel": "إلغاء",
     "discount": "الخصم",

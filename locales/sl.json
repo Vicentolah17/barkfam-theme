@@ -135,6 +135,8 @@
     "back_to_main_menu": "Nazaj na glavni meni"
   },
   "content": {
+    "barkfam_contact_optional": "neobvezno",
+    "barkfam_contact_message": "Sporočilo",
     "barkfam_breadcrumb_home": "Domov",
     "reviews": "ocen.",
     "no_results_found": "Nobenega rezultata ni bilo mogoče najti",

@@ -133,6 +133,8 @@
     "zoom_media": "Fă zoom pe elementul media {{ index }}"
   },
   "content": {
+    "barkfam_contact_optional": "opțional",
+    "barkfam_contact_message": "Mesaj",
     "barkfam_breadcrumb_home": "Acasă",
     "reviews": "recenzii",
     "language": "Limba",

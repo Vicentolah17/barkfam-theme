@@ -133,6 +133,8 @@
     "zoom_media": "Zoom du support multimédia {{ index }}"
   },
   "content": {
+    "barkfam_contact_optional": "facultatif",
+    "barkfam_contact_message": "Message",
     "barkfam_breadcrumb_home": "Accueil",
     "reviews": "avis",
     "language": "Langue",

@@ -131,6 +131,8 @@
     "back_to_main_menu": "Επιστροφή στο κύριο μενού"
   },
   "content": {
+    "barkfam_contact_optional": "προαιρετικό",
+    "barkfam_contact_message": "Μήνυμα",
     "barkfam_breadcrumb_home": "Αρχική",
     "reviews": "κριτικές",
     "no_results_found": "Δεν βρέθηκαν αποτελέσματα",

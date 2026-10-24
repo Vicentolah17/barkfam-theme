@@ -131,6 +131,8 @@
     "back_to_main_menu": "Назад към главното меню"
   },
   "content": {
+    "barkfam_contact_optional": "по избор",
+    "barkfam_contact_message": "Съобщение",
     "barkfam_breadcrumb_home": "Начало",
     "reviews": "мнения",
     "language": "Език",

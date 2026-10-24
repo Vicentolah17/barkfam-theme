@@ -131,6 +131,8 @@
     "back_to_main_menu": "Tilbage til hovedmenu"
   },
   "content": {
+    "barkfam_contact_optional": "valgfrit",
+    "barkfam_contact_message": "Besked",
     "barkfam_breadcrumb_home": "Forside",
     "reviews": "anmeldelser",
     "language": "Sprog",

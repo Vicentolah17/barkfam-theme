@@ -131,6 +131,8 @@
     "zoom_media": "Zooma media {{ index }}"
   },
   "content": {
+    "barkfam_contact_optional": "valfritt",
+    "barkfam_contact_message": "Meddelande",
     "barkfam_breadcrumb_home": "Hem",
     "reviews": "recensioner",
     "language": "Språk",

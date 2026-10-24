@@ -133,6 +133,8 @@
     "back_to_main_menu": "Torna al menu principale"
   },
   "content": {
+    "barkfam_contact_optional": "facoltativo",
+    "barkfam_contact_message": "Messaggio",
     "barkfam_breadcrumb_home": "Home",
     "reviews": "recensioni",
     "no_results_found": "Nessun risultato trovato",

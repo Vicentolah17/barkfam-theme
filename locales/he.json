@@ -157,6 +157,8 @@
     }
   },
   "content": {
+    "barkfam_contact_optional": "אופציונלי",
+    "barkfam_contact_message": "הודעה",
     "barkfam_breadcrumb_home": "דף הבית",
     "cancel": "ביטול",
     "discount": "הנחה",

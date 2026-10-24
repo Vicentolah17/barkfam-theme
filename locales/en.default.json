@@ -164,6 +164,8 @@
     }
   },
   "content": {
+    "barkfam_contact_optional": "optional",
+    "barkfam_contact_message": "Message",
     "barkfam_breadcrumb_home": "Home",
     "cancel": "Cancel",
     "discount": "Discount",

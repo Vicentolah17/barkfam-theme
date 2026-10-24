@@ -131,6 +131,8 @@
     "zoom_media": "Medyayı yakınlaştır: {{ index }}"
   },
   "content": {
+    "barkfam_contact_optional": "isteğe bağlı",
+    "barkfam_contact_message": "Mesaj",
     "barkfam_breadcrumb_home": "Ana sayfa",
     "reviews": "değerlendirme",
     "language": "Dil",

@@ -278,6 +278,7 @@
     "media_type_info": "خصوصیات آپ کے مینو کے لنک سے پُر کی گئی ہیں"
   },
   "names": {
+    "barkfam_contact": "Contact form",
     "barkfam_statement": "Statement",
     "barkfam_text": "Text",
     "barkfam_text_column": "Text column",
@@ -1210,6 +1211,7 @@
     "customer_account_menu": "کسٹمر اکاؤنٹ مینو"
   },
   "text_defaults": {
+    "barkfam_contact_button": "Send message",
     "barkfam_statement": "Better Days. Together.",
     "barkfam_recommendations_link": "Shop all",
     "barkfam_recommendations_heading": "You May Also Like",

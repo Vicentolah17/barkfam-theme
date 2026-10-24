@@ -135,6 +135,8 @@
     "back_to_main_menu": "Zpět do hlavní nabídky"
   },
   "content": {
+    "barkfam_contact_optional": "nepovinné",
+    "barkfam_contact_message": "Zpráva",
     "barkfam_breadcrumb_home": "Domů",
     "reviews": "recen.",
     "language": "Jazyk",

@@ -151,6 +151,8 @@
     }
   },
   "content": {
+    "barkfam_contact_optional": "اختیاری",
+    "barkfam_contact_message": "پیغام",
     "barkfam_breadcrumb_home": "ہوم",
     "cancel": "منسوخ کریں",
     "discount": "ڈسکاؤنٹ",

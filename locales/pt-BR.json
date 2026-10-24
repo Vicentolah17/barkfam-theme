@@ -133,6 +133,8 @@
     "back_to_main_menu": "Voltar ao menu principal"
   },
   "content": {
+    "barkfam_contact_optional": "opcional",
+    "barkfam_contact_message": "Mensagem",
     "barkfam_breadcrumb_home": "Início",
     "reviews": "avaliações",
     "language": "Idioma",

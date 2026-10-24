@@ -135,6 +135,8 @@
     "back_to_main_menu": "Späť do hlavnej ponuky"
   },
   "content": {
+    "barkfam_contact_optional": "nepovinné",
+    "barkfam_contact_message": "Správa",
     "barkfam_breadcrumb_home": "Domov",
     "reviews": "recenz.",
     "no_results_found": "Nenašli sa žiadne výsledky",

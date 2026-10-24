@@ -135,6 +135,8 @@
     "back_to_main_menu": "Назад в главное меню"
   },
   "content": {
+    "barkfam_contact_optional": "необязательно",
+    "barkfam_contact_message": "Сообщение",
     "barkfam_breadcrumb_home": "Главная",
     "reviews": "отз.",
     "no_results_found": "Результатов не найдено",

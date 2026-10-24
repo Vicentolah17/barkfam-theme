@@ -135,6 +135,8 @@
     "back_to_main_menu": "Atgal į pagrindinį meniu"
   },
   "content": {
+    "barkfam_contact_optional": "neprivaloma",
+    "barkfam_contact_message": "Žinutė",
     "barkfam_breadcrumb_home": "Pradžia",
     "reviews": "apžvalgos (-ų; -a)",
     "language": "Kalba",

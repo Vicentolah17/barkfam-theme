@@ -133,6 +133,8 @@
     "back_to_main_menu": "Natrag na glavni izbornik"
   },
   "content": {
+    "barkfam_contact_optional": "neobavezno",
+    "barkfam_contact_message": "Poruka",
     "barkfam_breadcrumb_home": "Početna",
     "reviews": "recenzije",
     "no_results_found": "Nema pronađenih rezultata",

@@ -131,6 +131,8 @@
     "zoom_media": "Zoom medier {{ index }}"
   },
   "content": {
+    "barkfam_contact_optional": "valgfritt",
+    "barkfam_contact_message": "Melding",
     "barkfam_breadcrumb_home": "Hjem",
     "reviews": "anmeldelser",
     "no_results_found": "Fant ingen resultater",

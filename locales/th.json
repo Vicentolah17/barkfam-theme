@@ -131,6 +131,8 @@
     "back_to_main_menu": "กลับไปที่เมนูหลัก"
   },
   "content": {
+    "barkfam_contact_optional": "ไม่บังคับ",
+    "barkfam_contact_message": "ข้อความ",
     "barkfam_breadcrumb_home": "หน้าแรก",
     "reviews": "รีวิว",
     "language": "ภาษา",

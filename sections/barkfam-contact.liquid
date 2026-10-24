@@ -1,0 +1,283 @@
+{% comment %}
+  Section contract.
+  Contact details and Shopify's native contact form for the BarkFam Contact
+  page, in the approved design's language: the section's rich text sits above
+  a rounded card holding name, email, optional phone and message fields and a
+  pill button. Submissions go through {% form 'contact' %}, so they arrive in
+  the store's admin email like any Shopify contact form.
+
+  @example
+  <!-- templates/page.contact.json, after the page header -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+{% render 'barkfam-prose' %}
+
+{%- assign form_id = 'ContactForm-' | append: section.id -%}
+
+<div
+  class="bf-section bf-contact"
+  style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+>
+  <div class="bf-container">
+    <div class="bf-contact__inner">
+      {%- if section.settings.text != blank -%}
+        <div class="bf-prose bf-contact__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      {%- form 'contact', id: form_id, class: 'bf-contact__form' -%}
+        <input type="hidden" name="contact[id]" value="{{ form_id }}">
+
+        {%- liquid
+          assign form_matches = false
+          if form.id == form_id or form.id == blank
+            assign form_matches = true
+          endif
+        -%}
+
+        {%- if form.posted_successfully? and form_matches -%}
+          <p class="bf-contact__notice bf-contact__notice--success" role="status" tabindex="-1" autofocus>
+            {{- 'blocks.contact_form.post_success' | t -}}
+          </p>
+        {%- elsif form.errors and form_matches -%}
+          <div class="bf-contact__notice bf-contact__notice--error" role="alert" tabindex="-1" autofocus>
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div class="bf-contact__row">
+          <div class="bf-contact__field">
+            <label class="bf-contact__label" for="{{ form_id }}-name">{{ 'blocks.contact_form.name' | t }}</label>
+            <input
+              class="bf-contact__input"
+              type="text"
+              id="{{ form_id }}-name"
+              name="contact[name]"
+              autocomplete="name"
+              required
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            >
+          </div>
+
+          <div class="bf-contact__field">
+            <label class="bf-contact__label" for="{{ form_id }}-email">{{ 'blocks.contact_form.email' | t }}</label>
+            <input
+              class="bf-contact__input"
+              type="email"
+              id="{{ form_id }}-email"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              required
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              {% if form.errors contains 'email' and form_matches %}
+                aria-invalid="true"
+              {% endif %}
+            >
+          </div>
+        </div>
+
+        <div class="bf-contact__field">
+          <label class="bf-contact__label" for="{{ form_id }}-phone">
+            {{- 'blocks.contact_form.phone' | t }}
+            <span class="bf-contact__optional">({{ 'content.barkfam_contact_optional' | t }})</span>
+          </label>
+          <input
+            class="bf-contact__input"
+            type="tel"
+            id="{{ form_id }}-phone"
+            name="contact[phone]"
+            autocomplete="tel"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          >
+        </div>
+
+        <div class="bf-contact__field">
+          <label class="bf-contact__label" for="{{ form_id }}-body">{{ 'content.barkfam_contact_message' | t }}</label>
+          <textarea
+            class="bf-contact__input bf-contact__input--textarea"
+            id="{{ form_id }}-body"
+            name="contact[body]"
+            rows="6"
+            required
+          >
+            {{- form.body -}}
+          </textarea>
+        </div>
+
+        <button class="bf-btn bf-btn--primary bf-contact__submit" type="submit">
+          {%- if section.settings.button_label != blank -%}
+            {{- section.settings.button_label | escape -}}
+          {%- else -%}
+            {{- 'actions.submit' | t -}}
+          {%- endif -%}
+        </button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-contact {
+    background-color: var(--bf-surface-bg, transparent);
+  }
+
+  .bf-contact__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 680px;
+    margin-inline: auto;
+    padding-block: var(--bf-py);
+  }
+
+  .bf-contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 20px;
+    border: 1px solid var(--bf-line);
+    border-radius: var(--bf-r-lg);
+    background-color: var(--bf-surface);
+    color: var(--bf-ink);
+  }
+
+  .bf-contact__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .bf-contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .bf-contact__label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .bf-contact__optional {
+    color: var(--bf-muted);
+    font-weight: 400;
+  }
+
+  .bf-contact__input {
+    width: 100%;
+    min-height: var(--bf-btn-h);
+    padding: 11px 18px;
+    border: 1px solid var(--bf-line);
+    border-radius: 14px;
+    background-color: var(--bf-bg);
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    box-shadow: none;
+  }
+
+  .bf-contact__input:focus-visible {
+    outline: 2px solid var(--bf-accent);
+    outline-offset: 1px;
+    border-color: var(--bf-accent);
+  }
+
+  .bf-contact__input[aria-invalid='true'] {
+    border-color: currentcolor;
+  }
+
+  .bf-contact__input--textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  .bf-contact__submit {
+    align-self: stretch;
+    padding-inline: 32px;
+  }
+
+  .bf-contact__notice {
+    margin: 0;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .bf-contact__notice:focus {
+    outline: none;
+  }
+
+  .bf-contact__notice--success {
+    background-color: var(--bf-alt);
+    color: var(--bf-accent);
+    font-weight: 500;
+  }
+
+  .bf-contact__notice--error {
+    border: 1px solid currentcolor;
+  }
+
+  .bf-contact__notice--error ul {
+    margin: 0;
+    padding-inline-start: 1.1em;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-contact__inner {
+      gap: 48px;
+    }
+
+    .bf-contact__form {
+      padding: 40px;
+    }
+
+    .bf-contact__row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bf-contact__submit {
+      align-self: flex-start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_contact",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.barkfam_contact_button"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_contact",
+      "category": "t:categories.forms"
+    }
+  ]
+}
+{% endschema %}
