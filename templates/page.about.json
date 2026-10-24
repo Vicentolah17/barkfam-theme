@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "header": {
+      "type": "barkfam-page-header",
+      "settings": {
+        "pill": "About us",
+        "heading": "Better days start at home."
+      }
+    },
+    "story": {
+      "type": "barkfam-text-column",
+      "blocks": {
+        "lead": {
+          "type": "_barkfam-text",
+          "settings": {
+            "text": "<p>BarkFam was born from a simple idea: life with pets should feel good, not messy.</p>",
+            "size": "lead"
+          }
+        },
+        "image": {
+          "type": "_barkfam-image",
+          "settings": {}
+        },
+        "body": {
+          "type": "_barkfam-text",
+          "settings": {
+            "text": "<p>We create everyday essentials for dogs, cats and the people who love them. Thoughtful design, real quality, and products that solve the small daily struggles of sharing your home with a pet. Fur on the couch. Mealtime chaos. The little things that add up.</p><p>No gimmicks. No clutter. Just essentials that work, and look good in your home.</p><p>Most of our orders ship from warehouses in the United States, so your order gets to you fast and hassle free.</p><p>Because pets aren't just pets. They're family.</p>"
+          }
+        },
+        "statement": {
+          "type": "_barkfam-statement",
+          "settings": {}
+        }
+      },
+      "block_order": ["lead", "image", "body", "statement"],
+      "settings": {}
+    }
+  },
+  "order": ["header", "story"]
+}

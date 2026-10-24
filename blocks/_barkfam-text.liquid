@@ -1,0 +1,66 @@
+{%- doc -%}
+  Renders a run of rich text in the BarkFam reading column, either at body
+  size or as a larger lead paragraph. Styled by snippets/barkfam-prose.liquid,
+  which sections/barkfam-text-column.liquid renders.
+
+  Block settings: text, size.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- if block.settings.text != blank -%}
+  <div class="bf-prose bf-prose--{{ block.settings.size }}" {{ block.shopify_attributes }}>
+    {{ block.settings.text }}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .bf-prose.bf-prose--lead {
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-quote);
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
+  .bf-prose.bf-prose--body {
+    color: var(--bf-muted);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:settings.text",
+      "default": "t:html_defaults.barkfam_text"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:settings.size",
+      "options": [
+        {
+          "value": "body",
+          "label": "t:options.barkfam_body"
+        },
+        {
+          "value": "lead",
+          "label": "t:options.barkfam_lead"
+        }
+      ],
+      "default": "body"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_text"
+    }
+  ]
+}
+{% endschema %}

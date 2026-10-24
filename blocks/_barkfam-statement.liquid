@@ -1,0 +1,56 @@
+{%- doc -%}
+  Renders a short closing line in large display type, centred between two
+  hairlines, such as the brand line "Better Days. Together." at the end of the
+  About story.
+
+  Block settings: text.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- if block.settings.text != blank -%}
+  <p class="bf-statement" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+{%- endif -%}
+
+{% stylesheet %}
+  .bf-statement {
+    margin: 0;
+    padding-block: 32px;
+    border-block: 1px solid var(--bf-line);
+    color: var(--bf-accent);
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h2);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-statement {
+      padding-block: 48px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_statement",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:settings.text",
+      "default": "t:text_defaults.barkfam_statement"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_statement"
+    }
+  ]
+}
+{% endschema %}

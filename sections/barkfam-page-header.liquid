@@ -1,0 +1,110 @@
+{% comment %}
+  Section contract.
+  Opening band for BarkFam content pages (About, Contact), built from the
+  approved design's language (_referencias/design/Home.dc.html): a pill, the
+  page heading as the h1 and an optional line of copy, centred. All text lives
+  in the section, so nothing depends on the page's content field.
+
+  @example
+  <!-- templates/page.about.json, first section -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+
+{%- assign header_heading = section.settings.heading | default: page.title -%}
+
+<div
+  class="bf-section bf-page-header"
+  style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+>
+  <div class="bf-container bf-page-header__inner">
+    {%- if section.settings.pill != blank -%}
+      <span class="bf-pill"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
+    {%- endif -%}
+    {%- if header_heading != blank -%}
+      <h1 class="bf-page-header__heading">{{ header_heading | escape }}</h1>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="bf-page-header__text bf-muted">{{ section.settings.text }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-page-header {
+    background-color: var(--bf-surface-bg, transparent);
+  }
+
+  .bf-page-header__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-block: var(--bf-py);
+    text-align: center;
+  }
+
+  .bf-page-header__heading {
+    max-width: 820px;
+    margin: 0;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h1);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  .bf-page-header__text {
+    max-width: 600px;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .bf-page-header__text a {
+    color: var(--bf-ink);
+    text-decoration: underline;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_page_header",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "pill",
+      "label": "t:settings.barkfam_pill"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "info": "t:info.barkfam_page_heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "{{ settings.color_palette.color4 }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_page_header",
+      "category": "t:categories.text"
+    }
+  ]
+}
+{% endschema %}

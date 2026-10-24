@@ -9,6 +9,10 @@
  */
 {
   "names": {
+    "barkfam_statement": "Frase de destaque",
+    "barkfam_text": "Texto",
+    "barkfam_text_column": "Coluna de texto",
+    "barkfam_page_header": "Cabeçalho da página",
     "barkfam_recommendations": "Você também pode gostar",
     "barkfam_breadcrumb": "Trilha de navegação",
     "barkfam_accordion_row": "Linha do acordeão",
@@ -648,6 +652,8 @@
     "customer_account_menu": "Menu da conta de cliente"
   },
   "options": {
+    "barkfam_lead": "Destaque",
+    "barkfam_body": "Corpo",
     "barkfam_product_description": "Descrição do produto",
     "barkfam_custom_text": "Texto personalizado",
     "apple": "Maçã",
@@ -1069,6 +1075,7 @@
     "page_text_color_contrast_info": "As secções com uma cor de fundo personalizada apenas utilizam esta cor do texto quando existe contraste de cor suficiente."
   },
   "html_defaults": {
+    "barkfam_text": "<p>Share your story, in your own words.</p>",
     "barkfam_accordion_returns": "<p>If something isn’t right, email <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a> within 30 days of delivery and we’ll walk you through the return.</p>",
     "barkfam_accordion_shipping": "<p>We ship to addresses across the United States. Estimated delivery is 5–10 days after your order is placed.</p><p>You’ll get a tracking link by email as soon as your order ships.</p>",
     "barkfam_faq_text": "Can't find what you need? Email us at <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a>.",
@@ -1130,6 +1137,7 @@
     "shop_collection": "<p>Descubra a nossa coleção selecionada, com favoritos escolhidos a dedo que aliam estilo e qualidade.</p>"
   },
   "text_defaults": {
+    "barkfam_statement": "Better Days. Together.",
     "barkfam_recommendations_link": "Shop all",
     "barkfam_recommendations_heading": "You May Also Like",
     "barkfam_recommendations_pill": "More for them",
@@ -1236,6 +1244,7 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_page_heading": "Deixe vazio para usar o título da página.",
     "barkfam_recommendations_link": "Padrão: todos os produtos.",
     "barkfam_recommendations_product": "Deixe vazio para usar o produto da página.",
     "barkfam_product_benefits": "Lista o metacampo do produto custom.benefits (lista de texto de linha única). Oculto quando o produto não tem.",

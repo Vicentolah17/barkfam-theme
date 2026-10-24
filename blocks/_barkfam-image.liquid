@@ -1,0 +1,101 @@
+{%- doc -%}
+  Renders an optional framed image in the BarkFam reading column, with the
+  design's rounded corners and hairline border. Outputs nothing on the
+  storefront until an image is chosen; the theme editor shows a placeholder.
+
+  Block settings: image, aspect_ratio.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- liquid
+  case block.settings.aspect_ratio
+    when 'square'
+      assign image_ratio = '1'
+    when 'portrait'
+      assign image_ratio = '4 / 5'
+    when 'landscape'
+      assign image_ratio = '3 / 2'
+    else
+      assign image_ratio = 'auto'
+  endcase
+-%}
+
+{%- if block.settings.image != blank -%}
+  <div class="bf-column-image" style="--bf-image-ratio: {{ image_ratio }};" {{ block.shopify_attributes }}>
+    {{
+      block.settings.image
+      | image_url: width: 1400
+      | image_tag:
+        class: 'bf-column-image__img',
+        widths: '360, 540, 720, 1080, 1400',
+        sizes: '(min-width: 750px) 680px, calc(100vw - 40px)',
+        loading: 'lazy'
+    }}
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="bf-column-image" style="--bf-image-ratio: 3 / 2;" {{ block.shopify_attributes }}>
+    {{ 'image' | placeholder_svg_tag: 'bf-column-image__img' }}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .bf-column-image {
+    overflow: hidden;
+    border: 1px solid var(--bf-line);
+    border-radius: var(--bf-r-lg);
+    background-color: var(--bf-surface);
+  }
+
+  .bf-column-image__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--bf-image-ratio, auto);
+    object-fit: cover;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.image",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "t:settings.aspect_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:options.auto"
+        },
+        {
+          "value": "landscape",
+          "label": "t:options.landscape"
+        },
+        {
+          "value": "square",
+          "label": "t:options.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:options.portrait"
+        }
+      ],
+      "default": "landscape"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.image"
+    }
+  ]
+}
+{% endschema %}

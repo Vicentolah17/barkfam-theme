@@ -9,6 +9,10 @@
  */
 {
   "names": {
+    "barkfam_statement": "Statement",
+    "barkfam_text": "Text",
+    "barkfam_text_column": "Text column",
+    "barkfam_page_header": "Page header",
     "barkfam_recommendations": "You may also like",
     "barkfam_breadcrumb": "Breadcrumb",
     "barkfam_accordion_row": "Accordion row",
@@ -648,6 +652,8 @@
     "customer_account_menu": "Klantaccountmenu"
   },
   "options": {
+    "barkfam_lead": "Lead",
+    "barkfam_body": "Body",
     "barkfam_product_description": "Product description",
     "barkfam_custom_text": "Custom text",
     "apple": "Apple",
@@ -1069,6 +1075,7 @@
     "page_text_color_contrast_info": "Secties met een aangepaste achtergrondkleur gebruiken deze tekstkleur alleen als er voldoende kleurcontrast is."
   },
   "html_defaults": {
+    "barkfam_text": "<p>Share your story, in your own words.</p>",
     "barkfam_accordion_returns": "<p>If something isn’t right, email <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a> within 30 days of delivery and we’ll walk you through the return.</p>",
     "barkfam_accordion_shipping": "<p>We ship to addresses across the United States. Estimated delivery is 5–10 days after your order is placed.</p><p>You’ll get a tracking link by email as soon as your order ships.</p>",
     "barkfam_faq_text": "Can't find what you need? Email us at <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a>.",
@@ -1130,6 +1137,7 @@
     "featured_collection_h3": "<h3>Uitgelichte collectie</h3>"
   },
   "text_defaults": {
+    "barkfam_statement": "Better Days. Together.",
     "barkfam_recommendations_link": "Shop all",
     "barkfam_recommendations_heading": "You May Also Like",
     "barkfam_recommendations_pill": "More for them",
@@ -1236,6 +1244,7 @@
     "disclosures": "Toelichtingen"
   },
   "info": {
+    "barkfam_page_heading": "Leave empty to use the page title.",
     "barkfam_recommendations_link": "Defaults to all products.",
     "barkfam_recommendations_product": "Leave empty to use the product on the page.",
     "barkfam_product_benefits": "Lists the product metafield custom.benefits (list of single line text). Hidden when the product has none.",

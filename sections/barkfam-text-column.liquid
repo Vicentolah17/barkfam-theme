@@ -1,0 +1,109 @@
+{% comment %}
+  Section contract.
+  A centred reading column for BarkFam content pages (the About story): rich
+  text, an optional framed image and a closing statement line, each a block
+  the merchant can add, reorder or remove. Text styles come from
+  snippets/barkfam-prose.liquid.
+
+  @example
+  <!-- templates/page.about.json, after the page header -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+{% render 'barkfam-prose' %}
+
+<div
+  class="bf-section bf-text-column"
+  style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+>
+  <div class="bf-container">
+    <div class="bf-text-column__inner bf-text-column__inner--{{ section.settings.alignment }}">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-text-column {
+    background-color: var(--bf-surface-bg, transparent);
+  }
+
+  .bf-text-column__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 680px;
+    margin-inline: auto;
+    padding-block: var(--bf-py);
+  }
+
+  .bf-text-column__inner--center {
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-text-column__inner {
+      gap: 48px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_text_column",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "_barkfam-text"
+    },
+    {
+      "type": "_barkfam-image"
+    },
+    {
+      "type": "_barkfam-statement"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "t:settings.alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_text_column",
+      "category": "t:categories.text",
+      "blocks": {
+        "text": {
+          "type": "_barkfam-text"
+        },
+        "statement": {
+          "type": "_barkfam-statement"
+        }
+      },
+      "block_order": ["text", "statement"]
+    }
+  ]
+}
+{% endschema %}

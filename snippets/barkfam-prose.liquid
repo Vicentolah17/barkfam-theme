@@ -1,0 +1,102 @@
+{%- doc -%}
+  Style owner for BarkFam long-form reading text: a centred column at a
+  comfortable line length with the design's type scale. Covers the .bf-prose
+  class used by page sections and Shopify's own policy page markup
+  (.shopify-policy__container), whose HTML the theme cannot add classes to.
+  Render it from every section that uses .bf-prose, and from the layout on
+  policy pages.
+
+  @example
+  {% render 'barkfam-prose' %}
+{%- enddoc -%}
+
+{% stylesheet %}
+  .bf-prose,
+  .shopify-policy__body {
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+    font-size: var(--bf-body);
+    line-height: 1.7;
+    overflow-wrap: break-word;
+  }
+
+  .bf-prose > :first-child,
+  .shopify-policy__body .rte > :first-child {
+    margin-block-start: 0;
+  }
+
+  .bf-prose > :last-child,
+  .shopify-policy__body .rte > :last-child {
+    margin-block-end: 0;
+  }
+
+  .bf-prose p,
+  .bf-prose ul,
+  .bf-prose ol,
+  .shopify-policy__body p,
+  .shopify-policy__body ul,
+  .shopify-policy__body ol {
+    margin-block: 0 1em;
+  }
+
+  .bf-prose ul,
+  .bf-prose ol,
+  .shopify-policy__body ul,
+  .shopify-policy__body ol {
+    padding-inline-start: 1.25em;
+  }
+
+  .bf-prose li + li,
+  .shopify-policy__body li + li {
+    margin-block-start: 0.4em;
+  }
+
+  .bf-prose :is(h2, h3, h4),
+  .shopify-policy__body :is(h2, h3, h4, h5, h6) {
+    margin-block: 1.8em 0.6em;
+    color: var(--bf-ink);
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-faq-q);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .bf-prose strong,
+  .shopify-policy__body strong {
+    font-weight: 600;
+  }
+
+  .bf-prose a,
+  .shopify-policy__body a {
+    color: var(--bf-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  /* Policy pages: Shopify's container, title and body in the reading column */
+  .shopify-policy__container {
+    width: 100%;
+    max-width: calc(680px + 2 * var(--bf-px));
+    margin-inline: auto;
+    padding-block: var(--bf-py);
+    padding-inline: var(--bf-px);
+  }
+
+  .shopify-policy__title {
+    margin-block-end: var(--bf-title-gap);
+    padding-block-end: var(--bf-title-gap);
+    border-block-end: 1px solid var(--bf-line);
+  }
+
+  .shopify-policy__title h1 {
+    margin: 0;
+    color: var(--bf-ink);
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h2);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+{% endstylesheet %}
