@@ -221,12 +221,14 @@
     outline-offset: 2px;
   }
 
-  .bf-footer__input {
+  /* Two classes to beat Horizon's global input:not([type='checkbox'], [type='radio']) fill */
+  .bf-footer__field .bf-footer__input {
     flex: 1;
     min-width: 0;
     height: 36px;
     padding: 0;
     border: none;
+    border-radius: 0;
     outline: none;
     background: transparent;
     color: var(--bf-ink);
