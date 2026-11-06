@@ -1,10 +1,11 @@
 {% comment %}
   Section contract.
   Homepage hero from the approved design (_referencias/design/Home.dc.html, "Hero"):
-  an oversized ghost word across the top, a text column with pill, heading, copy,
-  two buttons and a price line, and a framed product image with two floating
-  product cards. The image, primary link, price and card contents come from the
-  products picked in the editor; nothing about a product is written in code.
+  the brand word set large and whole across the top in the accent green, then a
+  text column with pill, heading, copy, two buttons and a price line beside a row
+  of three equal product cards (the main product and two more). Images, links,
+  titles and prices come from the products picked in the editor; nothing about a
+  product is written in code.
 
   @example
   <!-- First section of templates/index.json, with the main product and two card products picked -->
@@ -39,130 +40,155 @@
   if section.settings.show_price and hero_product != blank
     assign show_price = true
   endif
+
+  # The word is sized from its length so it always fits the container whole
+  assign word_chars = section.settings.ghost_text | size | at_least: 1
+  assign card_sizes = '(min-width: 1200px) 200px, (min-width: 750px) 16vw, 30vw'
 -%}
 
 <div
   class="bf-section bf-hero"
   style="{% render 'barkfam-surface', background: section.settings.background_color %}"
 >
-  {%- if section.settings.ghost_text != blank -%}
-    <div
-      class="bf-ghost bf-hero__ghost"
-      style="--bf-hero-ghost-opacity: {{ section.settings.ghost_opacity | divided_by: 100.0 }};"
-      aria-hidden="true"
-    >
-      {{- section.settings.ghost_text | escape -}}
-    </div>
-  {%- endif -%}
-
   <div class="bf-container bf-hero__inner">
-    <div class="bf-hero__text">
-      {%- if section.settings.pill != blank -%}
-        <span class="bf-pill bf-pill--filled"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
-      {%- endif -%}
-
-      {%- if section.settings.heading != blank -%}
-        <h1 class="bf-hero__heading">{{ section.settings.heading | escape }}</h1>
-      {%- endif -%}
-
-      {%- if section.settings.body != blank -%}
-        <p class="bf-hero__body bf-muted">{{ section.settings.body }}</p>
-      {%- endif -%}
-
-      {%- if section.settings.primary_label != blank or section.settings.secondary_label != blank -%}
-        <div class="bf-hero__actions">
-          {%- if section.settings.primary_label != blank -%}
-            <a class="bf-btn bf-btn--primary" href="{{ primary_link }}">{{ section.settings.primary_label | escape }}</a>
-          {%- endif -%}
-          {%- if section.settings.secondary_label != blank -%}
-            <a class="bf-btn bf-btn--outline" href="{{ secondary_link }}">{{ section.settings.secondary_label | escape }}</a>
-          {%- endif -%}
+    {%- if section.settings.ghost_text != blank -%}
+      <div class="bf-hero__word-wrap" aria-hidden="true">
+        <div
+          class="bf-ghost bf-hero__word"
+          style="
+            --bf-hero-word-chars: {{ word_chars }};
+            {% if section.settings.ghost_color != blank %}--bf-hero-word-color: {{ section.settings.ghost_color }};{% endif %}
+            --bf-hero-word-opacity: {{ section.settings.ghost_opacity | divided_by: 100.0 }};
+          "
+        >
+          {{- section.settings.ghost_text | escape -}}
         </div>
-      {%- endif -%}
+      </div>
+    {%- endif -%}
 
-      {%- if show_price or section.settings.meta != blank -%}
-        <p class="bf-hero__meta bf-muted">
-          {%- if show_price -%}{{ hero_product.price | money }}{%- endif -%}
-          {%- if show_price and section.settings.meta != blank %} · {% endif -%}
-          {{- section.settings.meta | escape -}}
-        </p>
-      {%- endif -%}
-    </div>
+    <div class="bf-hero__grid">
+      <div class="bf-hero__text">
+        {%- if section.settings.pill != blank -%}
+          <span class="bf-pill bf-pill--filled"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
+        {%- endif -%}
 
-    <div class="bf-hero__media">
-      <div class="bf-hero__frame">
-        {%- if hero_image != blank -%}
-          {{
-            hero_image
-            | image_url: width: 1120
-            | image_tag:
-              class: 'bf-hero__image',
-              widths: '400, 560, 800, 1120',
-              sizes: '(min-width: 750px) 560px, calc(100vw - 40px)',
-              alt: hero_image_alt,
-              loading: image_loading,
-              fetchpriority: image_priority
-          }}
-        {%- else -%}
-          {{ 'product-apparel-1' | placeholder_svg_tag: 'bf-hero__image bf-hero__image--placeholder' }}
+        {%- if section.settings.heading != blank -%}
+          <h1 class="bf-hero__heading">{{ section.settings.heading | escape }}</h1>
+        {%- endif -%}
+
+        {%- if section.settings.body != blank -%}
+          <p class="bf-hero__body bf-muted">{{ section.settings.body }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.primary_label != blank or section.settings.secondary_label != blank -%}
+          <div class="bf-hero__actions">
+            {%- if section.settings.primary_label != blank -%}
+              <a class="bf-btn bf-btn--primary" href="{{ primary_link }}">{{ section.settings.primary_label | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.secondary_label != blank -%}
+              <a class="bf-btn bf-btn--outline" href="{{ secondary_link }}">{{ section.settings.secondary_label | escape }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if show_price or section.settings.meta != blank -%}
+          <p class="bf-hero__meta bf-muted">
+            {%- if show_price -%}{{ hero_product.price | money }}{%- endif -%}
+            {%- if show_price and section.settings.meta != blank %} · {% endif -%}
+            {{- section.settings.meta | escape -}}
+          </p>
         {%- endif -%}
       </div>
 
-      {%- for position in (1..2) -%}
-        {%- liquid
-          assign card_key = 'card_product_' | append: position
-          assign card_product = section.settings[card_key]
-        -%}
-        {%- if card_product != blank -%}
-          <a class="bf-hero__card bf-hero__card--{{ position }}" href="{{ card_product.url }}">
-            {%- if card_product.featured_media != blank -%}
+      <div class="bf-hero__products">
+        <a class="bf-hero__card" href="{{ primary_link }}">
+          <span class="bf-hero__card-media">
+            {%- if hero_image != blank -%}
               {{
-                card_product.featured_media.preview_image
-                | image_url: width: 480
+                hero_image
+                | image_url: width: 600
                 | image_tag:
                   class: 'bf-hero__card-image',
-                  widths: '160, 240, 320, 480',
-                  sizes: '(min-width: 750px) 156px, 112px',
-                  alt: '',
-                  loading: 'lazy'
+                  widths: '160, 240, 320, 480, 600',
+                  sizes: card_sizes,
+                  alt: hero_image_alt,
+                  loading: image_loading,
+                  fetchpriority: image_priority
               }}
+            {%- else -%}
+              {{ 'product-apparel-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
             {%- endif -%}
-            <span class="bf-hero__card-title">{{ card_product.title | escape }}</span>
-            <span class="bf-hero__card-price">{{ card_product.price | money }}</span>
-          </a>
-        {%- endif -%}
-      {%- endfor -%}
+          </span>
+          {%- if hero_product != blank -%}
+            <span class="bf-hero__card-title">{{ hero_product.title | escape }}</span>
+            <span class="bf-hero__card-price">{{ hero_product.price | money }}</span>
+          {%- endif -%}
+        </a>
+
+        {%- for position in (1..2) -%}
+          {%- liquid
+            assign card_key = 'card_product_' | append: position
+            assign card_product = section.settings[card_key]
+          -%}
+          {%- if card_product != blank -%}
+            <a class="bf-hero__card" href="{{ card_product.url }}">
+              <span class="bf-hero__card-media">
+                {%- if card_product.featured_media != blank -%}
+                  {{
+                    card_product.featured_media.preview_image
+                    | image_url: width: 600
+                    | image_tag:
+                      class: 'bf-hero__card-image',
+                      widths: '160, 240, 320, 480, 600',
+                      sizes: card_sizes,
+                      alt: '',
+                      loading: image_loading
+                  }}
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
+                {%- endif -%}
+              </span>
+              <span class="bf-hero__card-title">{{ card_product.title | escape }}</span>
+              <span class="bf-hero__card-price">{{ card_product.price | money }}</span>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
     </div>
   </div>
 </div>
 
 {% stylesheet %}
   .bf-hero {
-    --bf-hero-ghost-top: 12px;
-    --bf-hero-card-width: 132px;
-
     position: relative;
     overflow: hidden;
     background-color: var(--bf-surface-bg, var(--bf-alt));
   }
 
-  .bf-hero__ghost {
-    position: absolute;
-    inset-block-start: var(--bf-hero-ghost-top);
-    inset-inline: 0;
-    color: var(--bf-surface);
-    font-size: var(--bf-ghost);
-    text-align: center;
-    opacity: var(--bf-hero-ghost-opacity, 0.75);
+  .bf-hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 32px 72px;
   }
 
-  .bf-hero__inner {
-    position: relative;
+  /* The word fills the container width: its size follows the width and its length */
+  .bf-hero__word-wrap {
+    container-type: inline-size;
+  }
+
+  .bf-hero__word {
+    color: var(--bf-hero-word-color, var(--bf-accent));
+    font-size: min(var(--bf-ghost), calc(100cqi / (var(--bf-hero-word-chars) * 0.6)));
+    text-align: center;
+    opacity: var(--bf-hero-word-opacity, 1);
+  }
+
+  .bf-hero__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
     align-items: center;
-    padding-block: 72px 96px;
   }
 
   .bf-hero__text {
@@ -201,36 +227,21 @@
     font-size: var(--bf-small);
   }
 
-  .bf-hero__media {
-    position: relative;
+  /* Three equal cards in one row */
+  .bf-hero__products {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    gap: 12px;
     min-width: 0;
   }
 
-  .bf-hero__frame {
-    width: 100%;
-    max-width: 560px;
-    aspect-ratio: 1;
-    margin-inline-start: auto;
-    overflow: hidden;
-    border: 1px solid var(--bf-line);
-    border-radius: var(--bf-r-lg);
-    background-color: var(--bf-surface);
-  }
-
-  .bf-hero__image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .bf-hero__card {
-    position: absolute;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: var(--bf-hero-card-width);
-    padding: 10px;
+    min-width: 0;
+    padding: 8px;
     border-radius: var(--bf-r-card);
     background-color: var(--bf-surface);
     box-shadow: var(--bf-shadow-float);
@@ -238,29 +249,26 @@
     text-decoration: none;
   }
 
-  .bf-hero__card--1 {
-    inset-block-end: -56px;
-    inset-inline-start: 12px;
-  }
-
-  .bf-hero__card--2 {
-    inset-block-end: -56px;
-    inset-inline-end: 12px;
+  .bf-hero__card-media {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background-color: var(--bf-surface);
   }
 
   .bf-hero__card-image {
     display: block;
     width: 100%;
-    aspect-ratio: 1;
-    border-radius: 12px;
+    height: 100%;
     object-fit: cover;
   }
 
   .bf-hero__card-title {
     display: -webkit-box;
-    padding-inline: 4px;
+    padding-inline: 2px;
     overflow: hidden;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.3;
     -webkit-box-orient: vertical;
@@ -268,31 +276,40 @@
   }
 
   .bf-hero__card-price {
-    padding: 0 4px 4px;
-    font-size: 13px;
+    margin-block-start: auto;
+    padding: 0 2px 2px;
+    font-size: 12px;
     font-weight: 600;
   }
 
   @media screen and (min-width: 750px) {
-    .bf-hero {
-      --bf-hero-ghost-top: 8px;
-      --bf-hero-card-width: 176px;
-    }
-
     .bf-hero__inner {
-      grid-template-columns: 1fr 1.05fr;
+      gap: 40px;
+      padding-block: 48px 96px;
+    }
+
+    .bf-hero__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
       gap: 48px;
-      padding-block: 96px;
     }
 
-    .bf-hero__card--1 {
-      inset-block-end: 48px;
-      inset-inline-start: -56px;
+    .bf-hero__products {
+      gap: 16px;
     }
 
-    .bf-hero__card--2 {
-      inset-block: 48px auto;
-      inset-inline-end: -24px;
+    .bf-hero__card {
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .bf-hero__card-media {
+      border-radius: 12px;
+    }
+
+    .bf-hero__card-title,
+    .bf-hero__card-price {
+      padding-inline: 4px;
+      font-size: 13px;
     }
   }
 {% endstylesheet %}
@@ -318,6 +335,12 @@
       "default": "t:text_defaults.barkfam_hero_word"
     },
     {
+      "type": "color",
+      "id": "ghost_color",
+      "label": "t:settings.color",
+      "default": "{{ settings.color_palette.color1 }}"
+    },
+    {
       "type": "range",
       "id": "ghost_opacity",
       "label": "t:settings.opacity",
@@ -325,7 +348,7 @@
       "max": 100,
       "step": 5,
       "unit": "%",
-      "default": 75
+      "default": 100
     },
     {
       "type": "header",
