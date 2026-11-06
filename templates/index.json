@@ -88,7 +88,7 @@
         "cozy": {
           "type": "_barkfam-banner",
           "settings": {
-            "image": "shopify://shop_images/imagem_2026-11-06_193442284.png",
+            "image": "shopify://shop_images/cb2f70a022ee6a76eca9a50927394d9c.jpg",
             "ghost_text": "cozy",
             "ghost_opacity": 55,
             "tag": "Cold-weather wear",
@@ -101,6 +101,7 @@
         "walk": {
           "type": "_barkfam-banner",
           "settings": {
+            "image": "shopify://shop_images/b6c224505578d87fd88b4c899aeb05e9.jpg",
             "ghost_text": "walk",
             "ghost_opacity": 55,
             "tag": "Out and about",
