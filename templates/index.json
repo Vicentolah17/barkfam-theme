@@ -27,7 +27,7 @@
         "secondary_link": "shopify://collections/all",
         "card_product_1": "stainless-steel-pet-grooming-brush-cat-dog-hair-removal-comb-with-massage-function-for-detangling-and-cleaning",
         "card_product_2": "dog-licking-mat-slow-feeder-premium-lick-pad-with-suction-cups-for-dog-anxiety-relief-slow-feeder-dog-bowls-pet-placemat",
-        "background_color": "{{ settings.color_palette.color4 }}"
+        "background_color": "{{ settings.color_palette.background }}"
       }
     },
     "categories": {
@@ -88,11 +88,12 @@
         "cozy": {
           "type": "_barkfam-banner",
           "settings": {
+            "image": "shopify://shop_images/imagem_2026-11-06_193442284.png",
             "ghost_text": "cozy",
             "ghost_opacity": 55,
             "tag": "Cold-weather wear",
-            "title": "Holiday Hoodies for Dogs",
-            "link_label": "Explore",
+            "title": "HAPPY HOLIDAY",
+            "link_label": "enjoy",
             "link": "shopify://collections/all"
           },
           "blocks": {}
