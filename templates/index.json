@@ -12,115 +12,23 @@
     "hero": {
       "type": "barkfam-hero",
       "settings": {
+        "ghost_text": "barkfam",
+        "ghost_color": "{{ settings.color_palette.color1 }}",
+        "ghost_opacity": 100,
         "product": "pet-hair-remover-mitt-pet-hair-remover-gloves-deshedding-brush-glove-for-dog-cat-rabbit-with-long-short-curly-hair",
+        "pill": "Our best seller",
+        "heading": "Pet hair, handled.",
+        "body": "The Pet Hair Remover Glove picks up loose fur while you pet your dog or cat. Use it on the couch, car seats and clothes too.",
+        "show_price": true,
+        "meta": "Estimated delivery in 5–10 days",
+        "primary_label": "Shop the glove",
+        "primary_link": "",
+        "secondary_label": "Shop all",
+        "secondary_link": "shopify://collections/all",
         "card_product_1": "stainless-steel-pet-grooming-brush-cat-dog-hair-removal-comb-with-massage-function-for-detangling-and-cleaning",
-        "card_product_2": "dog-licking-mat-slow-feeder-premium-lick-pad-with-suction-cups-for-dog-anxiety-relief-slow-feeder-dog-bowls-pet-placemat"
+        "card_product_2": "dog-licking-mat-slow-feeder-premium-lick-pad-with-suction-cups-for-dog-anxiety-relief-slow-feeder-dog-bowls-pet-placemat",
+        "background_color": "{{ settings.color_palette.background }}"
       }
-    },
-    "reviews": {
-      "type": "barkfam-reviews",
-      "disabled": true,
-      "blocks": {
-        "slider": {
-          "type": "_barkfam-reviews-slider",
-          "static": true,
-          "settings": {},
-          "blocks": {},
-          "block_order": []
-        }
-      },
-      "settings": {}
-    },
-    "faq": {
-      "type": "barkfam-faq",
-      "blocks": {
-        "shipping": {
-          "type": "_barkfam-faq-item",
-          "settings": {
-            "question": "How long does shipping take?",
-            "answer": "<p>We ship across the United States. Estimated delivery is 5–10 days after your order is placed. You’ll get a tracking link by email as soon as it ships.</p>",
-            "open_by_default": true
-          }
-        },
-        "returns": {
-          "type": "_barkfam-faq-item",
-          "settings": {
-            "question": "What is your return policy?",
-            "answer": "<p>If something isn’t right, email hello@barkfam.com within 30 days of delivery and we’ll walk you through the return.</p>"
-          }
-        },
-        "cats": {
-          "type": "_barkfam-faq-item",
-          "settings": {
-            "question": "Does the glove work on cats?",
-            "answer": "<p>Yes. It works on dogs and cats with loose, shedding fur. Results depend on coat type and length.</p>"
-          }
-        },
-        "cleaning": {
-          "type": "_barkfam-faq-item",
-          "settings": {
-            "question": "How do I clean the glove?",
-            "answer": "<p>Peel the collected fur off by hand, then rinse the glove with water and let it air dry.</p>"
-          }
-        },
-        "checkout": {
-          "type": "_barkfam-faq-item",
-          "settings": {
-            "question": "Is checkout secure?",
-            "answer": "<p>Yes. Payments go through an encrypted checkout, and we never see or store your full card details.</p>"
-          }
-        },
-        "tracking": {
-          "type": "_barkfam-faq-item",
-          "settings": {
-            "question": "How do I track my order?",
-            "answer": "<p>Use the tracking link in your shipping confirmation email. If you can’t find it, email us and we’ll send it again.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "shipping",
-        "returns",
-        "cats",
-        "cleaning",
-        "checkout",
-        "tracking"
-      ],
-      "settings": {}
-    },
-    "shipping": {
-      "type": "barkfam-trust",
-      "blocks": {
-        "delivery": {
-          "type": "_barkfam-trust-item",
-          "settings": {
-            "title": "Estimated delivery: 5–10 days",
-            "text": "Tracking sent by email"
-          }
-        },
-        "returns": {
-          "type": "_barkfam-trust-item",
-          "settings": {
-            "icon": "return",
-            "title": "Easy returns",
-            "text": "Start a return by email"
-          }
-        },
-        "checkout": {
-          "type": "_barkfam-trust-item",
-          "settings": {
-            "icon": "lock",
-            "title": "Secure checkout",
-            "text": "Encrypted payment"
-          }
-        }
-      },
-      "block_order": [
-        "delivery",
-        "returns",
-        "checkout"
-      ],
-      "settings": {}
     },
     "categories": {
       "type": "barkfam-categories",
@@ -129,29 +37,37 @@
           "type": "_barkfam-category",
           "settings": {
             "title": "grooming & cleanup",
-            "collection": "all"
-          }
+            "collection": "all",
+            "image": "shopify://shop_images/Gemini_Generated_Image_v60fpsv60fpsv60f.jpg"
+          },
+          "blocks": {}
         },
         "food": {
           "type": "_barkfam-category",
           "settings": {
             "title": "food & water",
-            "collection": "all"
-          }
+            "collection": "all",
+            "image": "shopify://shop_images/Gemini_Generated_Image_jielwpjielwpjiel.jpg"
+          },
+          "blocks": {}
         },
         "walks": {
           "type": "_barkfam-category",
           "settings": {
             "title": "walks & wear",
-            "collection": "all"
-          }
+            "collection": "all",
+            "image": "shopify://shop_images/Gemini_Generated_Image_rj2srirj2srirj2s.jpg"
+          },
+          "blocks": {}
         },
         "rest": {
           "type": "_barkfam-category",
           "settings": {
-            "title": "rest & comfort",
-            "collection": "all"
-          }
+            "title": "holiday gifts",
+            "collection": "all",
+            "image": "shopify://shop_images/Gemini_Generated_Image_w1n4juw1n4juw1n4.jpg"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -160,7 +76,11 @@
         "walks",
         "rest"
       ],
-      "settings": {}
+      "settings": {
+        "pill": "Find what they need",
+        "heading": "Shop by Category",
+        "background_color": ""
+      }
     },
     "banners": {
       "type": "barkfam-banners",
@@ -168,25 +88,46 @@
         "cozy": {
           "type": "_barkfam-banner",
           "settings": {
+            "image": "shopify://shop_images/cb2f70a022ee6a76eca9a50927394d9c.jpg",
             "ghost_text": "cozy",
+            "ghost_opacity": 55,
             "tag": "Cold-weather wear",
-            "title": "Holiday Hoodies for Dogs"
-          }
+            "title": "HAPPY HOLIDAY",
+            "link_label": "enjoy",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
         },
         "walk": {
           "type": "_barkfam-banner",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/b6c224505578d87fd88b4c899aeb05e9.jpg",
+            "ghost_text": "walk",
+            "ghost_opacity": 55,
+            "tag": "Out and about",
+            "title": "Everyday Walking Gear",
+            "link_label": "Explore",
+            "link": "shopify://collections/all"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "cozy",
         "walk"
-      ]
+      ],
+      "settings": {}
     },
     "best_sellers": {
       "type": "barkfam-products",
       "settings": {
-        "collection": "all"
+        "pill": "Most loved",
+        "heading": "Best Sellers",
+        "collection": "all",
+        "products_to_show": 8,
+        "button_label": "Shop all",
+        "button_link": "",
+        "background_color": ""
       }
     },
     "feature": {
@@ -202,21 +143,24 @@
               "settings": {
                 "title": "The couch",
                 "text": "Fur works into the fabric and stays there."
-              }
+              },
+              "blocks": {}
             },
             "clothes": {
               "type": "_barkfam-feature-problem",
               "settings": {
                 "title": "Your clothes",
                 "text": "Dark fabrics show every single hair."
-              }
+              },
+              "blocks": {}
             },
             "car": {
               "type": "_barkfam-feature-problem",
               "settings": {
                 "title": "The car",
                 "text": "Seats and floor mats collect it fast."
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -228,14 +172,18 @@
         "steps": {
           "type": "_barkfam-feature-steps",
           "static": true,
-          "settings": {},
+          "settings": {
+            "heading": "How it works"
+          },
           "blocks": {
             "step_1": {
               "type": "_barkfam-feature-step",
               "settings": {
+                "number": "01",
                 "title": "Slip it on",
                 "text": "Put your hand in the glove. Either side works."
-              }
+              },
+              "blocks": {}
             },
             "step_2": {
               "type": "_barkfam-feature-step",
@@ -243,7 +191,8 @@
                 "number": "02",
                 "title": "Pet as usual",
                 "text": "Stroke in the direction of the fur to collect loose hair."
-              }
+              },
+              "blocks": {}
             },
             "step_3": {
               "type": "_barkfam-feature-step",
@@ -251,7 +200,8 @@
                 "number": "03",
                 "title": "Peel and rinse",
                 "text": "Pull the fur off the glove. Rinse with water when needed."
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -262,7 +212,146 @@
         }
       },
       "settings": {
-        "product": "pet-hair-remover-mitt-pet-hair-remover-gloves-deshedding-brush-glove-for-dog-cat-rabbit-with-long-short-curly-hair"
+        "product": "pet-hair-remover-mitt-pet-hair-remover-gloves-deshedding-brush-glove-for-dog-cat-rabbit-with-long-short-curly-hair",
+        "pill": "Pet Hair Remover Glove",
+        "heading": "Fur gets everywhere. Here's a simple fix.",
+        "button_label": "Shop the glove",
+        "button_link": "",
+        "show_price": true,
+        "background_color": "{{ settings.color_palette.color4 }}"
+      }
+    },
+    "reviews": {
+      "type": "barkfam-reviews",
+      "blocks": {
+        "slider": {
+          "type": "_barkfam-reviews-slider",
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "ghost_text": "woof",
+        "ghost_opacity": 75,
+        "pill": "Reviews",
+        "heading": "What Pet Parents Say",
+        "background_color": "{{ settings.color_palette.color4 }}"
+      }
+    },
+    "faq": {
+      "type": "barkfam-faq",
+      "blocks": {
+        "shipping": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>We ship across the United States. Estimated delivery is 5–10 days after your order is placed. You’ll get a tracking link by email as soon as it ships.</p>",
+            "open_by_default": true
+          },
+          "blocks": {}
+        },
+        "returns": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>If something isn’t right, email hello@barkfam.com within 30 days of delivery and we’ll walk you through the return.</p>",
+            "open_by_default": false
+          },
+          "blocks": {}
+        },
+        "cats": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "Does the glove work on cats?",
+            "answer": "<p>Yes. It works on dogs and cats with loose, shedding fur. Results depend on coat type and length.</p>",
+            "open_by_default": false
+          },
+          "blocks": {}
+        },
+        "cleaning": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "How do I clean the glove?",
+            "answer": "<p>Peel the collected fur off by hand, then rinse the glove with water and let it air dry.</p>",
+            "open_by_default": false
+          },
+          "blocks": {}
+        },
+        "checkout": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "Is checkout secure?",
+            "answer": "<p>Yes. Payments go through an encrypted checkout, and we never see or store your full card details.</p>",
+            "open_by_default": false
+          },
+          "blocks": {}
+        },
+        "tracking": {
+          "type": "_barkfam-faq-item",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>Use the tracking link in your shipping confirmation email. If you can’t find it, email us and we’ll send it again.</p>",
+            "open_by_default": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "shipping",
+        "returns",
+        "cats",
+        "cleaning",
+        "checkout",
+        "tracking"
+      ],
+      "settings": {
+        "pill": "FAQ",
+        "heading": "Questions, answered",
+        "heading_tag": "h2",
+        "text": "Can't find what you need? Email us at <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a>.",
+        "background_color": ""
+      }
+    },
+    "shipping": {
+      "type": "barkfam-trust",
+      "blocks": {
+        "delivery": {
+          "type": "_barkfam-trust-item",
+          "settings": {
+            "icon": "truck",
+            "title": "Estimated delivery: 5–10 days",
+            "text": "Tracking sent by email"
+          },
+          "blocks": {}
+        },
+        "returns": {
+          "type": "_barkfam-trust-item",
+          "settings": {
+            "icon": "return",
+            "title": "Easy returns",
+            "text": "Start a return by email"
+          },
+          "blocks": {}
+        },
+        "checkout": {
+          "type": "_barkfam-trust-item",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure checkout",
+            "text": "Encrypted payment"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "delivery",
+        "returns",
+        "checkout"
+      ],
+      "settings": {
+        "background_color": "{{ settings.color_palette.background }}"
       }
     }
   },
