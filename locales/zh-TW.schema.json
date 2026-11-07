@@ -204,6 +204,11 @@
     "disclosures": "資訊揭露"
   },
   "settings": {
+    "barkfam_pet_interval": "Time per photo",
+    "barkfam_pet_image_4": "Pet photo 4",
+    "barkfam_pet_image_3": "Pet photo 3",
+    "barkfam_pet_image_2": "Pet photo 2",
+    "barkfam_pet_image_1": "Pet photo 1",
     "barkfam_show_pet": "Show pet photo",
     "barkfam_heading_tag": "Heading level",
     "barkfam_content_source": "Content",
@@ -1256,7 +1261,7 @@
     "disclosures": "資訊揭露"
   },
   "info": {
-    "barkfam_pet_image": "Use a PNG or WebP with a transparent background, cropped at the bottom. The pet peeks over the product cards. Leave empty to keep the theme's default photo.",
+    "barkfam_pet_image": "Use PNG or WebP photos with a transparent background, cropped at the bottom. With more than one, they take turns behind the product cards. Leave all four empty to keep the theme's photos.",
     "barkfam_footer_column_email": "Shown below the links as an email link.",
     "barkfam_heading_tag": "Use page heading when this section opens a page, so the page has one main title.",
     "barkfam_page_heading": "Leave empty to use the page title.",

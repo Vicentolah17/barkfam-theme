@@ -204,6 +204,11 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_pet_interval": "Tempo de cada foto",
+    "barkfam_pet_image_4": "Foto do pet 4",
+    "barkfam_pet_image_3": "Foto do pet 3",
+    "barkfam_pet_image_2": "Foto do pet 2",
+    "barkfam_pet_image_1": "Foto do pet 1",
     "barkfam_show_pet": "Mostrar foto do pet",
     "barkfam_heading_tag": "Nível do título",
     "barkfam_content_source": "Conteúdo",
@@ -1256,7 +1261,7 @@
     "disclosures": "Divulgações"
   },
   "info": {
-    "barkfam_pet_image": "Use um PNG ou WebP com fundo transparente, cortado embaixo. O pet aparece por trás dos cards de produto. Deixe vazio para manter a foto padrão do tema.",
+    "barkfam_pet_image": "Use fotos PNG ou WebP com fundo transparente, cortadas embaixo. Com mais de uma, elas se revezam atrás dos cards de produto. Deixe as quatro vazias para manter as fotos do tema.",
     "barkfam_footer_column_email": "Aparece abaixo dos links, como link de e-mail.",
     "barkfam_heading_tag": "Use título da página quando esta seção abre uma página, para a página ter um título principal.",
     "barkfam_page_heading": "Deixe vazio para usar o título da página.",

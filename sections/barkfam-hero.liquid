@@ -5,9 +5,12 @@
   text column with pill, heading, copy, two buttons and a price line beside a row
   of three equal product cards (the main product and two more), with a cut-out pet
   photo peeking over the cards. Images, links, titles and prices come from the
-  products picked in the editor; nothing about a product is written in code. The
-  pet photo is the merchant's upload, or assets/barkfam-hero-pet.webp until one is
-  chosen.
+  products picked in the editor; nothing about a product is written in code.
+
+  Up to four pet photos cross-fade in turn, in CSS only (one keyframe set per
+  section, sized from the photo count and interval). They are the merchant's
+  uploads, or the four theme photos assets/barkfam-hero-pet*.webp until any is
+  chosen. Reduced motion shows the first photo only.
 
   @example
   <!-- First section of templates/index.json, with the main product and two card products picked -->
@@ -52,7 +55,52 @@
   if section.settings.show_pet
     assign card_priority = 'auto'
   endif
+
+  # Uploaded pet photos win; with none uploaded, the theme's four photos are used
+  assign pet_uploads = 0
+  for position in (1..4)
+    assign pet_key = 'pet_image'
+    if position > 1
+      assign pet_key = 'pet_image_' | append: position
+    endif
+    if section.settings[pet_key] != blank
+      assign pet_uploads = pet_uploads | plus: 1
+    endif
+  endfor
+
+  assign pet_default_files = 'barkfam-hero-pet.webp,barkfam-hero-pet-2.webp,barkfam-hero-pet-3.webp,barkfam-hero-pet-4.webp' | split: ','
+  assign pet_default_sizes = '580x610,551x627,683x657,546x647' | split: ','
+  assign pet_count = pet_uploads
+  if pet_uploads == 0
+    assign pet_count = pet_default_files.size
+  endif
+
+  assign pet_interval = section.settings.pet_interval | default: 4
+  assign pet_cycle = pet_interval | times: pet_count
+  assign pet_fade_pct = 80.0 | divided_by: pet_cycle | round: 2
+  assign pet_show_pct = 100.0 | divided_by: pet_count | round: 2
+  assign pet_out_pct = pet_show_pct | plus: pet_fade_pct | round: 2
+  assign pet_animation = 'bf-hero-pet-' | append: section.id
 -%}
+
+{%- if section.settings.show_pet and pet_count > 1 -%}
+  {% style %}
+    @keyframes {{ pet_animation }} {
+      0% { opacity: 0; }
+      {{ pet_fade_pct }}% { opacity: 1; }
+      {{ pet_show_pct }}% { opacity: 1; }
+      {{ pet_out_pct }}% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      #shopify-section-{{ section.id }} .bf-hero__pet-image {
+        animation: {{ pet_animation }} {{ pet_cycle }}s linear infinite backwards;
+        animation-delay: calc(var(--bf-pet-index) * {{ pet_interval }}s - 0.8s);
+      }
+    }
+  {% endstyle %}
+{%- endif -%}
 
 <div
   class="bf-section bf-hero"
@@ -111,29 +159,57 @@
       <div class="bf-hero__showcase">
         {%- if section.settings.show_pet -%}
           <div class="bf-hero__pet">
-            {%- if section.settings.pet_image != blank -%}
-              {{
-                section.settings.pet_image
-                | image_url: width: 900
-                | image_tag:
-                  class: 'bf-hero__pet-image',
-                  widths: '300, 450, 600, 900',
-                  sizes: '(min-width: 750px) 340px, 220px',
-                  alt: '',
-                  loading: image_loading,
-                  fetchpriority: image_priority
-              }}
-            {%- else -%}
-              <img
-                class="bf-hero__pet-image"
-                src="{{ 'barkfam-hero-pet.webp' | asset_url }}"
-                width="580"
-                height="610"
-                alt=""
-                loading="{{ image_loading }}"
-                fetchpriority="{{ image_priority }}"
-              >
-            {%- endif -%}
+            {%- assign pet_index = 0 -%}
+            {%- for position in (1..4) -%}
+              {%- liquid
+                assign pet_key = 'pet_image'
+                if position > 1
+                  assign pet_key = 'pet_image_' | append: position
+                endif
+                assign pet_upload = section.settings[pet_key]
+                assign default_index = position | minus: 1
+
+                # Only the first photo loads up front; the rest wait their turn
+                assign pet_loading = 'lazy'
+                assign pet_priority = 'auto'
+                if pet_index == 0
+                  assign pet_loading = image_loading
+                  assign pet_priority = image_priority
+                endif
+                assign pet_style = '--bf-pet-index: ' | append: pet_index | append: ';'
+              -%}
+
+              {%- if pet_uploads > 0 -%}
+                {%- if pet_upload != blank -%}
+                  {{
+                    pet_upload
+                    | image_url: width: 900
+                    | image_tag:
+                      class: 'bf-hero__pet-image',
+                      style: pet_style,
+                      widths: '300, 450, 600, 900',
+                      sizes: '(min-width: 750px) 340px, 220px',
+                      alt: '',
+                      loading: pet_loading,
+                      fetchpriority: pet_priority
+                  }}
+                  {%- assign pet_index = pet_index | plus: 1 -%}
+                {%- endif -%}
+              {%- else -%}
+                {%- assign default_size = pet_default_sizes[default_index] | split: 'x' -%}
+                <img
+                  class="bf-hero__pet-image"
+                  style="{{ pet_style }}"
+                  src="{{ pet_default_files[default_index] | asset_url }}"
+                  width="{{ default_size[0] }}"
+                  height="{{ default_size[1] }}"
+                  alt=""
+                  loading="{{ pet_loading }}"
+                  fetchpriority="{{ pet_priority }}"
+                >
+                {%- assign pet_index = pet_index | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
           </div>
         {%- endif -%}
 
@@ -276,7 +352,9 @@
     min-width: 0;
   }
 
+  /* Photos stack in one cell, bottom-aligned, so each one sits behind the cards */
   .bf-hero__pet {
+    display: grid;
     width: var(--bf-hero-pet-width);
     max-width: 70%;
     margin-block-end: calc(var(--bf-hero-pet-overlap) * -1);
@@ -284,8 +362,15 @@
 
   .bf-hero__pet-image {
     display: block;
+    grid-area: 1 / 1;
+    align-self: end;
     width: 100%;
     height: auto;
+  }
+
+  /* Without motion only the first shows; the keyframes in the section style take over otherwise */
+  .bf-hero__pet-image + .bf-hero__pet-image {
+    opacity: 0;
   }
 
   /* Three equal cards in one row */
@@ -513,8 +598,37 @@
     {
       "type": "image_picker",
       "id": "pet_image",
-      "label": "t:settings.image",
+      "label": "t:settings.barkfam_pet_image_1",
       "info": "t:info.barkfam_pet_image",
+      "visible_if": "{{ section.settings.show_pet }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "pet_image_2",
+      "label": "t:settings.barkfam_pet_image_2",
+      "visible_if": "{{ section.settings.show_pet }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "pet_image_3",
+      "label": "t:settings.barkfam_pet_image_3",
+      "visible_if": "{{ section.settings.show_pet }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "pet_image_4",
+      "label": "t:settings.barkfam_pet_image_4",
+      "visible_if": "{{ section.settings.show_pet }}"
+    },
+    {
+      "type": "range",
+      "id": "pet_interval",
+      "label": "t:settings.barkfam_pet_interval",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 4,
       "visible_if": "{{ section.settings.show_pet }}"
     },
     {
