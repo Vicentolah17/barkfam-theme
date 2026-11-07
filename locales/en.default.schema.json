@@ -33,6 +33,7 @@
     "text": "Text"
   },
   "content": {
+    "barkfam_pet": "Pet photo",
     "barkfam_bottom_bar": "Bottom bar",
     "barkfam_contact": "Contact",
     "barkfam_menus": "Menus",
@@ -237,6 +238,7 @@
     "work_quickly_to_ship": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>"
   },
   "info": {
+    "barkfam_pet_image": "Use a PNG or WebP with a transparent background, cropped at the bottom. The pet peeks over the product cards. Leave empty to keep the theme's default photo.",
     "barkfam_footer_column_email": "Shown below the links as an email link.",
     "barkfam_heading_tag": "Use page heading when this section opens a page, so the page has one main title.",
     "barkfam_page_heading": "Leave empty to use the page title.",
@@ -821,6 +823,7 @@
     "below_media": "Below media"
   },
   "settings": {
+    "barkfam_show_pet": "Show pet photo",
     "barkfam_heading_tag": "Heading level",
     "barkfam_content_source": "Content",
     "barkfam_max_days": "Latest delivery",

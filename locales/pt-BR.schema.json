@@ -204,6 +204,7 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_show_pet": "Mostrar foto do pet",
     "barkfam_heading_tag": "Nível do título",
     "barkfam_content_source": "Conteúdo",
     "barkfam_max_days": "Entrega mais tarde",
@@ -945,6 +946,7 @@
     "direction_top_start": "Superior à esquerda"
   },
   "content": {
+    "barkfam_pet": "Foto do pet",
     "barkfam_bottom_bar": "Barra inferior",
     "barkfam_contact": "Contato",
     "barkfam_menus": "Menus",
@@ -1254,6 +1256,7 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_pet_image": "Use um PNG ou WebP com fundo transparente, cortado embaixo. O pet aparece por trás dos cards de produto. Deixe vazio para manter a foto padrão do tema.",
     "barkfam_footer_column_email": "Aparece abaixo dos links, como link de e-mail.",
     "barkfam_heading_tag": "Use título da página quando esta seção abre uma página, para a página ter um título principal.",
     "barkfam_page_heading": "Deixe vazio para usar o título da página.",

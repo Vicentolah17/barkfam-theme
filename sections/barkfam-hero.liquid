@@ -3,9 +3,11 @@
   Homepage hero from the approved design (_referencias/design/Home.dc.html, "Hero"):
   the brand word set large and whole across the top in the accent green, then a
   text column with pill, heading, copy, two buttons and a price line beside a row
-  of three equal product cards (the main product and two more). Images, links,
-  titles and prices come from the products picked in the editor; nothing about a
-  product is written in code.
+  of three equal product cards (the main product and two more), with a cut-out pet
+  photo peeking over the cards. Images, links, titles and prices come from the
+  products picked in the editor; nothing about a product is written in code. The
+  pet photo is the merchant's upload, or assets/barkfam-hero-pet.webp until one is
+  chosen.
 
   @example
   <!-- First section of templates/index.json, with the main product and two card products picked -->
@@ -44,6 +46,12 @@
   # The word is sized from its length so it always fits the container whole
   assign word_chars = section.settings.ghost_text | size | at_least: 1
   assign card_sizes = '(min-width: 1200px) 200px, (min-width: 750px) 16vw, 30vw'
+
+  # The pet photo is the likely largest paint above the fold, so it gets the high priority
+  assign card_priority = image_priority
+  if section.settings.show_pet
+    assign card_priority = 'auto'
+  endif
 -%}
 
 <div
@@ -100,59 +108,89 @@
         {%- endif -%}
       </div>
 
-      <div class="bf-hero__products">
-        <a class="bf-hero__card" href="{{ primary_link }}">
-          <span class="bf-hero__card-media">
-            {%- if hero_image != blank -%}
+      <div class="bf-hero__showcase">
+        {%- if section.settings.show_pet -%}
+          <div class="bf-hero__pet">
+            {%- if section.settings.pet_image != blank -%}
               {{
-                hero_image
-                | image_url: width: 600
+                section.settings.pet_image
+                | image_url: width: 900
                 | image_tag:
-                  class: 'bf-hero__card-image',
-                  widths: '160, 240, 320, 480, 600',
-                  sizes: card_sizes,
-                  alt: hero_image_alt,
+                  class: 'bf-hero__pet-image',
+                  widths: '300, 450, 600, 900',
+                  sizes: '(min-width: 750px) 340px, 220px',
+                  alt: '',
                   loading: image_loading,
                   fetchpriority: image_priority
               }}
             {%- else -%}
-              {{ 'product-apparel-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
+              <img
+                class="bf-hero__pet-image"
+                src="{{ 'barkfam-hero-pet.webp' | asset_url }}"
+                width="580"
+                height="610"
+                alt=""
+                loading="{{ image_loading }}"
+                fetchpriority="{{ image_priority }}"
+              >
             {%- endif -%}
-          </span>
-          {%- if hero_product != blank -%}
-            <span class="bf-hero__card-title">{{ hero_product.title | escape }}</span>
-            <span class="bf-hero__card-price">{{ hero_product.price | money }}</span>
-          {%- endif -%}
-        </a>
+          </div>
+        {%- endif -%}
 
-        {%- for position in (1..2) -%}
-          {%- liquid
-            assign card_key = 'card_product_' | append: position
-            assign card_product = section.settings[card_key]
-          -%}
-          {%- if card_product != blank -%}
-            <a class="bf-hero__card" href="{{ card_product.url }}">
-              <span class="bf-hero__card-media">
-                {%- if card_product.featured_media != blank -%}
-                  {{
-                    card_product.featured_media.preview_image
-                    | image_url: width: 600
-                    | image_tag:
-                      class: 'bf-hero__card-image',
-                      widths: '160, 240, 320, 480, 600',
-                      sizes: card_sizes,
-                      alt: '',
-                      loading: image_loading
-                  }}
-                {%- else -%}
-                  {{ 'product-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
-                {%- endif -%}
-              </span>
-              <span class="bf-hero__card-title">{{ card_product.title | escape }}</span>
-              <span class="bf-hero__card-price">{{ card_product.price | money }}</span>
-            </a>
-          {%- endif -%}
-        {%- endfor -%}
+        <div class="bf-hero__products">
+          <a class="bf-hero__card" href="{{ primary_link }}">
+            <span class="bf-hero__card-media">
+              {%- if hero_image != blank -%}
+                {{
+                  hero_image
+                  | image_url: width: 600
+                  | image_tag:
+                    class: 'bf-hero__card-image',
+                    widths: '160, 240, 320, 480, 600',
+                    sizes: card_sizes,
+                    alt: hero_image_alt,
+                    loading: image_loading,
+                    fetchpriority: card_priority
+                }}
+              {%- else -%}
+                {{ 'product-apparel-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
+              {%- endif -%}
+            </span>
+            {%- if hero_product != blank -%}
+              <span class="bf-hero__card-title">{{ hero_product.title | escape }}</span>
+              <span class="bf-hero__card-price">{{ hero_product.price | money }}</span>
+            {%- endif -%}
+          </a>
+
+          {%- for position in (1..2) -%}
+            {%- liquid
+              assign card_key = 'card_product_' | append: position
+              assign card_product = section.settings[card_key]
+            -%}
+            {%- if card_product != blank -%}
+              <a class="bf-hero__card" href="{{ card_product.url }}">
+                <span class="bf-hero__card-media">
+                  {%- if card_product.featured_media != blank -%}
+                    {{
+                      card_product.featured_media.preview_image
+                      | image_url: width: 600
+                      | image_tag:
+                        class: 'bf-hero__card-image',
+                        widths: '160, 240, 320, 480, 600',
+                        sizes: card_sizes,
+                        alt: '',
+                        loading: image_loading
+                    }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
+                  {%- endif -%}
+                </span>
+                <span class="bf-hero__card-title">{{ card_product.title | escape }}</span>
+                <span class="bf-hero__card-price">{{ card_product.price | money }}</span>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
       </div>
     </div>
   </div>
@@ -227,8 +265,33 @@
     font-size: var(--bf-small);
   }
 
+  /* The pet sits behind the cards, its cropped lower edge hidden under them */
+  .bf-hero__showcase {
+    --bf-hero-pet-width: 220px;
+    --bf-hero-pet-overlap: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .bf-hero__pet {
+    width: var(--bf-hero-pet-width);
+    max-width: 70%;
+    margin-block-end: calc(var(--bf-hero-pet-overlap) * -1);
+  }
+
+  .bf-hero__pet-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   /* Three equal cards in one row */
   .bf-hero__products {
+    position: relative;
+    width: 100%;
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;
@@ -291,6 +354,11 @@
     .bf-hero__grid {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
       gap: 48px;
+    }
+
+    .bf-hero__showcase {
+      --bf-hero-pet-width: 340px;
+      --bf-hero-pet-overlap: 64px;
     }
 
     .bf-hero__products {
@@ -431,6 +499,23 @@
       "id": "secondary_link",
       "label": "t:settings.link",
       "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "t:content.barkfam_pet"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pet",
+      "label": "t:settings.barkfam_show_pet",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "pet_image",
+      "label": "t:settings.image",
+      "info": "t:info.barkfam_pet_image",
+      "visible_if": "{{ section.settings.show_pet }}"
     },
     {
       "type": "header",
