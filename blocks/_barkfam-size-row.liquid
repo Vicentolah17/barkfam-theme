@@ -1,0 +1,47 @@
+{%- doc -%}
+  Renders one row of the size guide table: the size, then two measurements,
+  matching the three columns of blocks/_barkfam-size-guide.liquid.
+
+  Block settings: size, value_2, value_3.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{%- if block.settings.size != blank -%}
+  <tr {{ block.shopify_attributes }}>
+    <th scope="row">{{ block.settings.size | escape }}</th>
+    <td>{{ block.settings.value_2 | escape }}</td>
+    <td>{{ block.settings.value_3 | escape }}</td>
+  </tr>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_size_row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "size",
+      "label": "t:settings.barkfam_size_row_size",
+      "default": "M"
+    },
+    {
+      "type": "text",
+      "id": "value_2",
+      "label": "t:settings.barkfam_column_2"
+    },
+    {
+      "type": "text",
+      "id": "value_3",
+      "label": "t:settings.barkfam_column_3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_size_row"
+    }
+  ]
+}
+{% endschema %}

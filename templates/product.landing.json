@@ -1,0 +1,211 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "barkfam-breadcrumb",
+      "settings": {}
+    },
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "carousel",
+            "image_gap": 0,
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails",
+            "thumbnail_radius": 14,
+            "aspect_ratio": "1",
+            "media_radius": 28,
+            "extend_media": false,
+            "hide_variants": true
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "gap": 24
+          },
+          "blocks": {
+            "header": {
+              "type": "group",
+              "name": "t:names.header",
+              "settings": {
+                "gap": 14
+              },
+              "blocks": {
+                "heading": {
+                  "type": "barkfam-product-heading",
+                  "settings": {}
+                },
+                "price": {
+                  "type": "price",
+                  "settings": {}
+                }
+              },
+              "block_order": ["heading", "price"]
+            },
+            "benefits": {
+              "type": "barkfam-product-benefits",
+              "settings": {}
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "show_swatches": false,
+                "padding-block-end": 0
+              },
+              "blocks": {
+                "size-guide": {
+                  "type": "_barkfam-size-guide",
+                  "static": true,
+                  "settings": {
+                    "show": true,
+                    "intro": "<p>Measure around the widest part of the chest, right behind the front legs, and from the base of the neck to the base of the tail.</p>",
+                    "note": "<p>Pick the size where the chest is about 1 to 2 inches bigger than your dog's. If your dog falls between two sizes, go with the bigger one.</p>"
+                  },
+                  "blocks": {
+                    "size_xs": {
+                      "type": "_barkfam-size-row",
+                      "settings": {
+                        "size": "XS",
+                        "value_2": "12.6 in (32 cm)",
+                        "value_3": "7.9 in (20 cm)"
+                      }
+                    },
+                    "size_s": {
+                      "type": "_barkfam-size-row",
+                      "settings": {
+                        "size": "S",
+                        "value_2": "15 in (38 cm)",
+                        "value_3": "9.8 in (25 cm)"
+                      }
+                    },
+                    "size_m": {
+                      "type": "_barkfam-size-row",
+                      "settings": {
+                        "size": "M",
+                        "value_2": "17.3 in (44 cm)",
+                        "value_3": "11.8 in (30 cm)"
+                      }
+                    },
+                    "size_l": {
+                      "type": "_barkfam-size-row",
+                      "settings": {
+                        "size": "L",
+                        "value_2": "19.7 in (50 cm)",
+                        "value_3": "13.8 in (35 cm)"
+                      }
+                    },
+                    "size_xl": {
+                      "type": "_barkfam-size-row",
+                      "settings": {
+                        "size": "XL",
+                        "value_2": "22 in (56 cm)",
+                        "value_3": "15.7 in (40 cm)"
+                      }
+                    },
+                    "size_2xl": {
+                      "type": "_barkfam-size-row",
+                      "settings": {
+                        "size": "2XL",
+                        "value_2": "24.4 in (62 cm)",
+                        "value_3": "17.7 in (45 cm)"
+                      }
+                    }
+                  },
+                  "block_order": ["size_xs", "size_s", "size_m", "size_l", "size_xl", "size_2xl"]
+                }
+              }
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "show_quantity": false,
+                "show_add_to_cart": false,
+                "show_offers": false,
+                "show_pickup_availability": false,
+                "border_radius": 50
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "border_radius": 50
+                  }
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  }
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {}
+                }
+              },
+              "block_order": []
+            },
+            "delivery": {
+              "type": "barkfam-delivery",
+              "settings": {}
+            },
+            "accordion": {
+              "type": "barkfam-accordion",
+              "settings": {},
+              "blocks": {
+                "description": {
+                  "type": "_barkfam-accordion-row",
+                  "settings": {
+                    "heading": "Description",
+                    "source": "description",
+                    "open_by_default": true
+                  }
+                },
+                "shipping": {
+                  "type": "_barkfam-accordion-row",
+                  "settings": {}
+                },
+                "returns": {
+                  "type": "_barkfam-accordion-row",
+                  "settings": {
+                    "heading": "Returns",
+                    "content": "<p>If something isn’t right, email <a href=\"mailto:hello@barkfam.com\">hello@barkfam.com</a> within 30 days of delivery and we’ll walk you through the return.</p>"
+                  }
+                }
+              },
+              "block_order": ["description", "shipping", "returns"]
+            }
+          },
+          "block_order": ["header", "benefits", "variant_picker", "buy_buttons", "delivery", "accordion"]
+        }
+      },
+      "block_order": [],
+      "settings": {
+        "gap": 32,
+        "enable_sticky_add_to_cart": false
+      }
+    },
+    "recommendations": {
+      "type": "barkfam-recommendations",
+      "settings": {}
+    }
+  },
+  "order": ["breadcrumb", "main", "recommendations"]
+}

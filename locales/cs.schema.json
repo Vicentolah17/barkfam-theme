@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "barkfam_size_row": "Size row",
+    "barkfam_size_guide": "Size guide",
     "barkfam_holiday": "Holiday drop",
     "barkfam_band_item": "Band item",
     "barkfam_footer_link": "Link",
@@ -206,6 +208,22 @@
     "disclosures": "Prohlášení"
   },
   "settings": {
+    "barkfam_size_guide_option": "Size guide option",
+    "barkfam_size_row_size": "Size",
+    "barkfam_size_note": "Note",
+    "barkfam_column_3": "Column 3",
+    "barkfam_column_2": "Column 2",
+    "barkfam_column_1": "Column 1",
+    "barkfam_show_size_guide": "Show size guide link",
+    "barkfam_offer_3_note": "Offer 3 note",
+    "barkfam_offer_3_label": "Offer 3 label",
+    "barkfam_offer_2_note": "Offer 2 note",
+    "barkfam_offer_2_label": "Offer 2 label",
+    "barkfam_offer_1_note": "Offer 1 note",
+    "barkfam_offer_1_label": "Offer 1 label",
+    "barkfam_show_offers": "Show Buy 1/2/3 offers",
+    "barkfam_show_add_to_cart": "Show Add to cart button",
+    "barkfam_show_quantity": "Show quantity selector",
     "barkfam_holiday_accent": "Ornament accent",
     "barkfam_holiday_deadline_date": "Cut-off date",
     "barkfam_holiday_details": "Details",
@@ -963,6 +981,8 @@
     "direction_top_start": "Vlevo nahoře"
   },
   "content": {
+    "barkfam_size_columns": "Table columns",
+    "barkfam_buy_controls": "Purchase options",
     "barkfam_holiday_deadline": "Cut-off",
     "barkfam_hero_extras": "Extras",
     "barkfam_hero_images": "Images",
@@ -1166,6 +1186,14 @@
     "featured_collection_h3": "<h3>Doporučená kolekce</h3>"
   },
   "text_defaults": {
+    "barkfam_size_column_3": "Back length",
+    "barkfam_size_column_2": "Chest",
+    "barkfam_size_column_1": "Size",
+    "barkfam_size_guide_heading": "Find the right size",
+    "barkfam_size_guide": "Size guide",
+    "barkfam_offer_3": "Buy 3",
+    "barkfam_offer_2": "Buy 2",
+    "barkfam_offer_1": "Buy 1",
     "barkfam_holiday_deadline": "Order by Dec 12 to get it before Christmas.",
     "barkfam_holiday_button": "Get the Reindeer Hoodie",
     "barkfam_holiday_details": "Fleece-lined\nSizes XS to 2XL\nFree US shipping",
@@ -1289,6 +1317,9 @@
     "disclosures": "Prohlášení"
   },
   "info": {
+    "barkfam_size_guide_option": "Name of the option the Size guide link sits beside. Turn the link on in the variant picker's Size guide block.",
+    "barkfam_show_offers": "Replaces the quantity selector. Each offer sets the quantity bought; add matching discounts in Shopify admin for any saving you mention in a note.",
+    "barkfam_show_add_to_cart": "When off, only the checkout buttons show (Buy it now, Shop Pay, PayPal and others).",
     "barkfam_holiday_deadline_date": "YYYY-MM-DD. A day count shows until this date, then hides.",
     "barkfam_holiday_link": "Defaults to the product page.",
     "barkfam_holiday_details": "One per line.",

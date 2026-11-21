@@ -9,6 +9,8 @@
  */
 {
   "names": {
+    "barkfam_size_row": "Linha de tamanho",
+    "barkfam_size_guide": "Guia de tamanhos",
     "barkfam_holiday": "Lançamento de Natal",
     "barkfam_band_item": "Item da faixa",
     "barkfam_footer_link": "Link",
@@ -206,6 +208,22 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_size_guide_option": "Opção do guia de tamanhos",
+    "barkfam_size_row_size": "Tamanho",
+    "barkfam_size_note": "Observação",
+    "barkfam_column_3": "Coluna 3",
+    "barkfam_column_2": "Coluna 2",
+    "barkfam_column_1": "Coluna 1",
+    "barkfam_show_size_guide": "Mostrar link do guia de tamanhos",
+    "barkfam_offer_3_note": "Oferta 3: observação",
+    "barkfam_offer_3_label": "Oferta 3: texto",
+    "barkfam_offer_2_note": "Oferta 2: observação",
+    "barkfam_offer_2_label": "Oferta 2: texto",
+    "barkfam_offer_1_note": "Oferta 1: observação",
+    "barkfam_offer_1_label": "Oferta 1: texto",
+    "barkfam_show_offers": "Mostrar ofertas Buy 1/2/3",
+    "barkfam_show_add_to_cart": "Mostrar botão Adicionar ao carrinho",
+    "barkfam_show_quantity": "Mostrar seletor de quantidade",
     "barkfam_holiday_accent": "Cor do enfeite",
     "barkfam_holiday_deadline_date": "Data limite",
     "barkfam_holiday_details": "Detalhes",
@@ -963,6 +981,8 @@
     "direction_top_start": "Superior à esquerda"
   },
   "content": {
+    "barkfam_size_columns": "Colunas da tabela",
+    "barkfam_buy_controls": "Opções de compra",
     "barkfam_holiday_deadline": "Prazo",
     "barkfam_hero_extras": "Extras",
     "barkfam_hero_images": "Imagens",
@@ -1166,6 +1186,14 @@
     "introducing_p": "<p><em>Apresentando</em></p>"
   },
   "text_defaults": {
+    "barkfam_size_column_3": "Back length",
+    "barkfam_size_column_2": "Chest",
+    "barkfam_size_column_1": "Size",
+    "barkfam_size_guide_heading": "Find the right size",
+    "barkfam_size_guide": "Size guide",
+    "barkfam_offer_3": "Buy 3",
+    "barkfam_offer_2": "Buy 2",
+    "barkfam_offer_1": "Buy 1",
     "barkfam_holiday_deadline": "Order by Dec 12 to get it before Christmas.",
     "barkfam_holiday_button": "Get the Reindeer Hoodie",
     "barkfam_holiday_details": "Fleece-lined\nSizes XS to 2XL\nFree US shipping",
@@ -1289,6 +1317,9 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_size_guide_option": "Nome da opção ao lado da qual fica o link do guia de tamanhos. Ligue o link no bloco Guia de tamanhos do seletor de variantes.",
+    "barkfam_show_offers": "Substitui o seletor de quantidade. Cada oferta define a quantidade comprada; crie os descontos correspondentes no admin da Shopify para qualquer economia citada na observação.",
+    "barkfam_show_add_to_cart": "Desligado, aparecem só os botões de checkout (Comprar agora, Shop Pay, PayPal e outros).",
     "barkfam_holiday_deadline_date": "AAAA-MM-DD. Uma contagem de dias aparece até essa data e depois some.",
     "barkfam_holiday_link": "Padrão: a página do produto.",
     "barkfam_holiday_details": "Um por linha.",

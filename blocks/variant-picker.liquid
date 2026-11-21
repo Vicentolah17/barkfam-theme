@@ -8,7 +8,17 @@
 -%}
 
 {% unless product_resource == blank %}
-  {% render 'variant-main-picker', product_resource: product_resource, section: section, product: product %}
+  {%- comment -%} BarkFam: the size guide link sits beside the option named in size_guide_option {%- endcomment -%}
+  {%- capture size_guide -%}
+    {% content_for 'block', type: '_barkfam-size-guide', id: 'size-guide' %}
+  {%- endcapture -%}
+  {% render 'variant-main-picker',
+    product_resource: product_resource,
+    section: section,
+    product: product,
+    size_guide: size_guide,
+    size_guide_option: block.settings.size_guide_option
+  %}
 {% endunless %}
 
 {% schema %}
@@ -16,6 +26,13 @@
   "name": "t:names.product_variant_picker",
   "tag": null,
   "settings": [
+    {
+      "type": "text",
+      "id": "size_guide_option",
+      "label": "t:settings.barkfam_size_guide_option",
+      "info": "t:info.barkfam_size_guide_option",
+      "default": "Size"
+    },
     {
       "type": "header",
       "content": "t:content.type"

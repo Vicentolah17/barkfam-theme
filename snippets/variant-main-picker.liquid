@@ -5,6 +5,8 @@
   @param {object} [block] - The block object
   @param {object} section - The section object.
   @param {object} product - The current product object (used to determine selected variant state).
+  @param {string} [size_guide] - Rendered size guide link and modal, placed beside the matching option
+  @param {string} [size_guide_option] - Name of the option the size guide belongs to, e.g. "Size"
 {%- enddoc -%}
 
 {% assign block_settings = block.settings %}
@@ -99,6 +101,13 @@
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
+            {%- if size_guide != blank and size_guide_option != blank -%}
+              {%- assign option_handle = product_option.name | handleize -%}
+              {%- assign guide_handle = size_guide_option | handleize -%}
+              {%- if option_handle == guide_handle -%}
+                {{ size_guide }}
+              {%- endif -%}
+            {%- endif -%}
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
@@ -191,6 +200,13 @@
 
           <div class="variant-option variant-option--dropdowns">
             <label for="Option-{{ block.id }}-{{ forloop.index0 }}">{{ product_option.name | escape }}</label>
+            {%- if size_guide != blank and size_guide_option != blank -%}
+              {%- assign option_handle = product_option.name | handleize -%}
+              {%- assign guide_handle = size_guide_option | handleize -%}
+              {%- if option_handle == guide_handle -%}
+                {{ size_guide }}
+              {%- endif -%}
+            {%- endif -%}
             <div
               class="variant-option__select-wrapper"
               style="

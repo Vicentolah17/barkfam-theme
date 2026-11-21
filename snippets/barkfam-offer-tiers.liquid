@@ -1,0 +1,115 @@
+{%- doc -%}
+  Renders the Buy 1/2/3 offer picker inside the buy buttons form. The chosen
+  offer sets the form's one hidden "quantity" field (assets/barkfam-offer-tiers.js),
+  which Add to cart and the dynamic checkout buttons both submit; the radios use
+  another name because Shopify's checkout buttons read the first "quantity" field.
+  It only sets the quantity: any saving shown in an offer's note needs a matching
+  discount in Shopify admin to apply.
+
+  @param {object} block_settings - Settings of the buy buttons block (offer_N_label, offer_N_note)
+  @param {string} block_id - ID of the buy buttons block, for unique input IDs
+
+  @example
+  {% render 'barkfam-offer-tiers', block_settings: block_settings, block_id: block.id %}
+{%- enddoc -%}
+
+<script src="{{ 'barkfam-offer-tiers.js' | asset_url }}" type="module"></script>
+
+<barkfam-offer-tiers class="bf-offers">
+  <input type="hidden" name="quantity" value="1" ref="quantity">
+  <fieldset class="bf-offers__group">
+    <legend class="visually-hidden">{{ 'products.product.quantity' | t }}</legend>
+    {%- for tier in (1..3) -%}
+      {%- liquid
+        assign label_key = 'offer_' | append: tier | append: '_label'
+        assign note_key = 'offer_' | append: tier | append: '_note'
+        assign tier_label = block_settings[label_key]
+        assign tier_note = block_settings[note_key]
+      -%}
+      {%- if tier_label != blank -%}
+        <label class="bf-offers__tier" for="Offer-{{ block_id }}-{{ tier }}">
+          <input
+            class="bf-offers__input"
+            type="radio"
+            id="Offer-{{ block_id }}-{{ tier }}"
+            name="offer-{{ block_id }}"
+            value="{{ tier }}"
+            on:change="/select"
+            {% if tier == 1 %}
+              checked
+            {% endif %}
+          >
+          <span class="bf-offers__label">{{ tier_label | escape }}</span>
+          {%- if tier_note != blank -%}
+            <span class="bf-offers__note">{{ tier_note | escape }}</span>
+          {%- endif -%}
+        </label>
+      {%- endif -%}
+    {%- endfor -%}
+  </fieldset>
+</barkfam-offer-tiers>
+
+{% stylesheet %}
+  .bf-offers {
+    display: block;
+    flex: 1 0 100%;
+    min-width: 0;
+  }
+
+  .bf-offers__group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-auto-flow: column;
+    gap: 10px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .bf-offers__tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 64px;
+    padding: 10px 8px;
+    border: 1px solid var(--bf-line);
+    border-radius: 16px;
+    background-color: var(--bf-surface);
+    color: var(--bf-ink);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .bf-offers__tier:has(.bf-offers__input:checked) {
+    border-color: var(--bf-accent);
+    box-shadow: inset 0 0 0 1px var(--bf-accent);
+  }
+
+  .bf-offers__tier:has(.bf-offers__input:focus-visible) {
+    outline: 2px solid var(--bf-accent);
+    outline-offset: 2px;
+  }
+
+  .bf-offers__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .bf-offers__label {
+    font-family: var(--bf-font-display);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .bf-offers__note {
+    color: var(--bf-accent);
+    font-size: 12px;
+    font-weight: 600;
+  }
+{% endstylesheet %}

@@ -110,7 +110,12 @@
             </div>
           {%- endif -%}
 
-          {% content_for 'block', type: 'quantity', id: 'quantity' %}
+          {%- comment -%} Buy 1/2/3 offers replace the quantity selector when both are on {%- endcomment -%}
+          {%- if block_settings.show_offers -%}
+            {% render 'barkfam-offer-tiers', block_settings: block_settings, block_id: block.id %}
+          {%- elsif block_settings.show_quantity -%}
+            {% content_for 'block', type: 'quantity', id: 'quantity' %}
+          {%- endif -%}
 
           {%- if has_quantity_rules -%}
             <div
@@ -224,12 +229,14 @@
               </div>
             </volume-pricing>
           {%- endif -%}
-          {% content_for 'block',
-            type: 'add-to-cart',
-            id: 'add-to-cart',
-            can_add_to_cart: can_add_to_cart,
-            add_to_cart_text: add_to_cart_text
-          %}
+          {%- if block_settings.show_add_to_cart -%}
+            {% content_for 'block',
+              type: 'add-to-cart',
+              id: 'add-to-cart',
+              can_add_to_cart: can_add_to_cart,
+              add_to_cart_text: add_to_cart_text
+            %}
+          {%- endif -%}
 
           {% content_for 'block',
             type: 'accelerated-checkout',
@@ -392,6 +399,69 @@
   "name": "t:names.product_buy_buttons",
   "tag": null,
   "settings": [
+    {
+      "type": "header",
+      "content": "t:content.barkfam_buy_controls"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "t:settings.barkfam_show_quantity",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_add_to_cart",
+      "label": "t:settings.barkfam_show_add_to_cart",
+      "info": "t:info.barkfam_show_add_to_cart",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_offers",
+      "label": "t:settings.barkfam_show_offers",
+      "info": "t:info.barkfam_show_offers",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "offer_1_label",
+      "label": "t:settings.barkfam_offer_1_label",
+      "default": "t:text_defaults.barkfam_offer_1",
+      "visible_if": "{{ block.settings.show_offers }}"
+    },
+    {
+      "type": "text",
+      "id": "offer_1_note",
+      "label": "t:settings.barkfam_offer_1_note",
+      "visible_if": "{{ block.settings.show_offers }}"
+    },
+    {
+      "type": "text",
+      "id": "offer_2_label",
+      "label": "t:settings.barkfam_offer_2_label",
+      "default": "t:text_defaults.barkfam_offer_2",
+      "visible_if": "{{ block.settings.show_offers }}"
+    },
+    {
+      "type": "text",
+      "id": "offer_2_note",
+      "label": "t:settings.barkfam_offer_2_note",
+      "visible_if": "{{ block.settings.show_offers }}"
+    },
+    {
+      "type": "text",
+      "id": "offer_3_label",
+      "label": "t:settings.barkfam_offer_3_label",
+      "default": "t:text_defaults.barkfam_offer_3",
+      "visible_if": "{{ block.settings.show_offers }}"
+    },
+    {
+      "type": "text",
+      "id": "offer_3_note",
+      "label": "t:settings.barkfam_offer_3_note",
+      "visible_if": "{{ block.settings.show_offers }}"
+    },
     {
       "type": "checkbox",
       "id": "stacking",

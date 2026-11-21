@@ -1,0 +1,286 @@
+{%- doc -%}
+  Renders the "Size guide" link that sits beside the size option of the variant
+  picker, and the measurement table it opens in a modal (Horizon's
+  dialog-component). Rows are _barkfam-size-row blocks, so the table is edited in
+  the theme editor. Static block of blocks/variant-picker.liquid, which places it
+  next to the option named in its size_guide_option setting. Renders nothing while
+  show is off.
+
+  Block settings: show, label, heading, intro, column_1, column_2, column_3, note.
+
+  @example
+  {% content_for 'block', type: '_barkfam-size-guide', id: 'size-guide' %}
+{%- enddoc -%}
+
+{%- if block.settings.show -%}
+  <script src="{{ 'dialog.js' | asset_url }}" type="module"></script>
+  {% render 'dialog-styles' %}
+
+  <dialog-component class="bf-size-guide" {{ block.shopify_attributes }}>
+    <button type="button" class="bf-size-guide__trigger" on:click="/showDialog">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 8h18v8H3zM7 8v3M11 8v4M15 8v3M19 8v4"/>
+      </svg>
+      {{- block.settings.label | escape -}}
+    </button>
+
+    <dialog
+      ref="dialog"
+      class="bf-size-guide__dialog dialog-modal"
+      scroll-lock
+      aria-labelledby="SizeGuideHeading-{{ block.id }}"
+    >
+      <div class="bf-size-guide__inner">
+        <h2 id="SizeGuideHeading-{{ block.id }}" class="bf-size-guide__heading">
+          {{- block.settings.heading | default: block.settings.label | escape -}}
+        </h2>
+
+        {%- if block.settings.intro != blank -%}
+          <div class="bf-size-guide__intro">{{ block.settings.intro }}</div>
+        {%- endif -%}
+
+        <div class="bf-size-guide__table-wrap">
+          <table class="bf-size-guide__table">
+            <thead>
+              <tr>
+                <th scope="col">{{ block.settings.column_1 | escape }}</th>
+                <th scope="col">{{ block.settings.column_2 | escape }}</th>
+                <th scope="col">{{ block.settings.column_3 | escape }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% content_for 'blocks' %}
+            </tbody>
+          </table>
+        </div>
+
+        {%- if block.settings.note != blank -%}
+          <div class="bf-size-guide__note">{{ block.settings.note }}</div>
+        {%- endif -%}
+      </div>
+
+      <button
+        type="button"
+        ref="closeButton"
+        on:click="/closeDialog"
+        class="button button-unstyled close-button bf-size-guide__close"
+        aria-label="{{ 'accessibility.close_dialog' | t }}"
+      >
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </button>
+    </dialog>
+  </dialog-component>
+{%- endif -%}
+
+{% stylesheet %}
+  /* Sits on the option's legend row, at the end, beside the option name.
+     A fieldset's positioned children start below its legend, so the link is
+     anchored by its bottom edge, one legend gap (Horizon's --margin-xs) above
+     the options, and is one legend line tall. */
+  .variant-option:has(> .bf-size-guide) {
+    position: relative;
+  }
+
+  .variant-option > .bf-size-guide {
+    position: absolute;
+    inset-block-end: calc(100% + var(--margin-xs, 8px));
+    inset-inline-end: 0;
+    display: flex;
+    align-items: center;
+    height: 1lh;
+  }
+
+  .variant-option--dropdowns > .bf-size-guide {
+    inset-block: 0 auto;
+  }
+
+  .bf-size-guide__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--bf-ink);
+    font-family: var(--bf-font-body);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .bf-size-guide__trigger:focus-visible {
+    outline: 2px solid var(--bf-accent);
+    outline-offset: 3px;
+  }
+
+  .bf-size-guide__dialog {
+    width: min(560px, calc(100vw - 32px));
+    max-height: var(--modal-max-height, 85vh);
+    padding: 0;
+    border: 0;
+    border-radius: var(--bf-r-lg);
+    background-color: var(--bf-bg);
+    color: var(--bf-ink);
+    box-shadow: 0 30px 80px rgb(30 30 30 / 0.3);
+  }
+
+  .bf-size-guide__dialog::backdrop {
+    background-color: rgb(30 30 30 / 0.45);
+  }
+
+  .bf-size-guide__dialog[open] {
+    animation: modalSlideInTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .bf-size-guide__dialog.dialog-closing {
+    animation: modalSlideOutTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .bf-size-guide__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 24px 24px;
+    font-family: var(--bf-font-body);
+  }
+
+  .bf-size-guide__heading {
+    margin: 0;
+    padding-inline-end: 40px;
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h3);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .bf-size-guide__intro,
+  .bf-size-guide__note {
+    color: var(--bf-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .bf-size-guide__intro > *,
+  .bf-size-guide__note > * {
+    margin: 0;
+  }
+
+  .bf-size-guide__intro > * + *,
+  .bf-size-guide__note > * + * {
+    margin-block-start: 8px;
+  }
+
+  .bf-size-guide__table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--bf-line);
+    border-radius: 14px;
+    background-color: var(--bf-surface);
+  }
+
+  .bf-size-guide__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bf-size-guide__table th,
+  .bf-size-guide__table td {
+    padding: 12px 14px;
+    border-block-end: 1px solid var(--bf-line);
+    text-align: start;
+    white-space: nowrap;
+  }
+
+  .bf-size-guide__table thead th {
+    background-color: var(--bf-alt);
+    font-weight: 600;
+  }
+
+  .bf-size-guide__table tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  .bf-size-guide__table tbody th {
+    font-weight: 600;
+  }
+
+  .bf-size-guide__close {
+    position: absolute;
+    inset-block-start: 16px;
+    inset-inline-end: 16px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-size-guide__inner {
+      padding: 40px 36px 32px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_size_guide",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_barkfam-size-row"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show",
+      "label": "t:settings.barkfam_show_size_guide",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.barkfam_size_guide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "t:text_defaults.barkfam_size_guide_heading"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "t:settings.text"
+    },
+    {
+      "type": "header",
+      "content": "t:content.barkfam_size_columns"
+    },
+    {
+      "type": "text",
+      "id": "column_1",
+      "label": "t:settings.barkfam_column_1",
+      "default": "t:text_defaults.barkfam_size_column_1"
+    },
+    {
+      "type": "text",
+      "id": "column_2",
+      "label": "t:settings.barkfam_column_2",
+      "default": "t:text_defaults.barkfam_size_column_2"
+    },
+    {
+      "type": "text",
+      "id": "column_3",
+      "label": "t:settings.barkfam_column_3",
+      "default": "t:text_defaults.barkfam_size_column_3"
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "t:settings.barkfam_size_note"
+    }
+  ]
+}
+{% endschema %}
