@@ -135,6 +135,7 @@
     "back_to_main_menu": "Назад в главное меню"
   },
   "content": {
+    "barkfam_days_left": {"one": "Остался {{ count }} день", "other": "Осталось {{ count }} дня", "few": "Осталось {{ count }} дня", "many": "Осталось {{ count }} дней"},
     "barkfam_contact_optional": "необязательно",
     "barkfam_contact_message": "Сообщение",
     "barkfam_breadcrumb_home": "Главная",

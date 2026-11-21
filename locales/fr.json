@@ -133,6 +133,7 @@
     "zoom_media": "Zoom du support multimédia {{ index }}"
   },
   "content": {
+    "barkfam_days_left": {"one": "Plus qu’un jour", "other": "Plus que {{ count }} jours", "many": "Plus que {{ count }} jours"},
     "barkfam_contact_optional": "facultatif",
     "barkfam_contact_message": "Message",
     "barkfam_breadcrumb_home": "Accueil",

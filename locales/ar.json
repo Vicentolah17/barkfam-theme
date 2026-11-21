@@ -163,6 +163,7 @@
     }
   },
   "content": {
+    "barkfam_days_left": {"zero": "لم يتبق أي يوم", "one": "يتبقى يوم واحد", "two": "يتبقى يومان", "few": "يتبقى {{ count }} أيام", "many": "يتبقى {{ count }} يومًا", "other": "يتبقى {{ count }} يوم"},
     "barkfam_contact_optional": "اختياري",
     "barkfam_contact_message": "الرسالة",
     "barkfam_breadcrumb_home": "الرئيسية",

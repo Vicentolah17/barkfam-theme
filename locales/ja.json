@@ -131,6 +131,7 @@
     "back_to_main_menu": "メインメニューに戻る"
   },
   "content": {
+    "barkfam_days_left": {"one": "残り{{ count }}日", "other": "残り{{ count }}日"},
     "barkfam_contact_optional": "任意",
     "barkfam_contact_message": "メッセージ",
     "barkfam_breadcrumb_home": "ホーム",

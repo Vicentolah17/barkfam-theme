@@ -131,6 +131,7 @@
     "back_to_main_menu": "Επιστροφή στο κύριο μενού"
   },
   "content": {
+    "barkfam_days_left": {"one": "Απομένει 1 ημέρα", "other": "Απομένουν {{ count }} ημέρες"},
     "barkfam_contact_optional": "προαιρετικό",
     "barkfam_contact_message": "Μήνυμα",
     "barkfam_breadcrumb_home": "Αρχική",

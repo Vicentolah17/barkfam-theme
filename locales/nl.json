@@ -131,6 +131,7 @@
     "back_to_main_menu": "Terug naar hoofdmenu"
   },
   "content": {
+    "barkfam_days_left": {"one": "Nog 1 dag", "other": "Nog {{ count }} dagen"},
     "barkfam_contact_optional": "optioneel",
     "barkfam_contact_message": "Bericht",
     "barkfam_breadcrumb_home": "Home",

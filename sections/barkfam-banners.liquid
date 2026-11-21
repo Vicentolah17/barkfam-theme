@@ -122,6 +122,44 @@
     font-weight: 600;
   }
 
+  /* Scroll parallax: the photo drifts slower than the page and the ghost word slides
+     across it, both tied to the banner's pass through the viewport */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .bf-banners .bf-banner__image {
+        animation: bf-banner-parallax linear both;
+        animation-timeline: view();
+        animation-range: cover;
+      }
+
+      .bf-banners .bf-banner__ghost {
+        animation: bf-banner-drift linear both;
+        animation-timeline: view();
+        animation-range: cover;
+      }
+    }
+  }
+
+  @keyframes bf-banner-parallax {
+    from {
+      transform: translateY(-7%) scale(1.16);
+    }
+
+    to {
+      transform: translateY(7%) scale(1.16);
+    }
+  }
+
+  @keyframes bf-banner-drift {
+    from {
+      transform: translateX(-6%);
+    }
+
+    to {
+      transform: translateX(10%);
+    }
+  }
+
   @media screen and (min-width: 750px) {
     .bf-banners__grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));

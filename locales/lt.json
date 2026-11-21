@@ -135,6 +135,7 @@
     "back_to_main_menu": "Atgal į pagrindinį meniu"
   },
   "content": {
+    "barkfam_days_left": {"one": "Liko {{ count }} diena", "other": "Liko {{ count }} dienų", "few": "Liko {{ count }} dienos", "many": "Liko {{ count }} dienos"},
     "barkfam_contact_optional": "neprivaloma",
     "barkfam_contact_message": "Žinutė",
     "barkfam_breadcrumb_home": "Pradžia",

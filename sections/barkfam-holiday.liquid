@@ -1,0 +1,560 @@
+{% comment %}
+  Section contract.
+  Seasonal product drop (first used for The Reindeer Hoodie): a cranberry field
+  with a large headline, copy, a short list of product details, a price, a
+  button to the product and a cut-off countdown, beside the product photo set in
+  a holiday photo card that wears antlers and hangs from a thread like a tree
+  ornament. The card swings in as it scrolls into view, then sways softly.
+
+  The product, photo, words, cut-off date and colours are section settings; the
+  price, title and link come from the product. The countdown shows whole days
+  left until the cut-off date and hides once it has passed.
+
+  @example
+  <!-- templates/index.json, right after the hero, with the drop product picked -->
+{% endcomment %}
+
+{% render 'barkfam-ui' %}
+
+{%- liquid
+  assign drop_product = section.settings.product
+  assign drop_link = section.settings.button_link | default: drop_product.url | default: routes.all_products_collection_url
+  assign display_font = section.settings.heading_font
+
+  # The photo inside the ornament repeats the button's link, so it is decorative
+  assign drop_image = section.settings.image | default: drop_product.featured_media.preview_image
+
+  if drop_product.price_varies
+    assign drop_min_price = drop_product.price_min | money
+    assign drop_price = 'content.price_from' | t: price: drop_min_price
+  else
+    assign drop_price = drop_product.price | money
+  endif
+
+  # Whole days left until the cut-off; the countdown hides from the cut-off day on
+  assign days_left = 0
+  if section.settings.deadline_date != blank
+    assign deadline_seconds = section.settings.deadline_date | date: '%s' | plus: 0
+    assign now_seconds = 'now' | date: '%s' | plus: 0
+    if deadline_seconds > now_seconds
+      assign days_left = deadline_seconds | minus: now_seconds | divided_by: 86400.0 | ceil
+    endif
+  endif
+
+  assign detail_lines = section.settings.details | newline_to_br | split: '<br />'
+-%}
+
+{% style %}
+  {{ display_font | font_face: font_display: 'swap' }}
+
+  #shopify-section-{{ section.id }} .bf-holiday__heading {
+    font-family: {{ display_font.family }}, {{ display_font.fallback_families }};
+    font-weight: {{ display_font.weight }};
+  }
+{% endstyle %}
+
+<div
+  class="bf-section bf-holiday"
+  style="
+    {% render 'barkfam-surface', background: section.settings.background_color %}
+    --bf-holiday-nose: {{ section.settings.accent_color }};
+  "
+>
+  <div class="bf-container bf-holiday__inner">
+    <div class="bf-holiday__intro">
+      {%- if section.settings.tag != blank -%}
+        <span class="bf-pill bf-holiday__tag">{{ section.settings.tag | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="bf-holiday__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="bf-holiday__stage">
+      <a class="bf-holiday__ornament" href="{{ drop_link }}" tabindex="-1" aria-hidden="true">
+        <span class="bf-holiday__sway">
+          <span class="bf-holiday__thread"></span>
+          <span class="bf-holiday__pom"></span>
+          <svg class="bf-holiday__antlers" viewBox="0 0 240 70" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M58 68 C52 46 40 32 22 22 M44 40 C36 30 34 18 38 6 M40 34 C26 34 14 28 6 18"/>
+            <path d="M182 68 C188 46 200 32 218 22 M196 40 C204 30 206 18 202 6 M200 34 C214 34 226 28 234 18"/>
+          </svg>
+          <span class="bf-holiday__card">
+            <span class="bf-holiday__photo">
+              {%- if drop_image != blank -%}
+                {{
+                  drop_image
+                  | image_url: width: 900
+                  | image_tag:
+                    class: 'bf-holiday__image',
+                    widths: '360, 540, 720, 900',
+                    sizes: '(min-width: 750px) 380px, 72vw',
+                    alt: '',
+                    loading: 'lazy'
+                }}
+              {%- else -%}
+                {{ 'product-apparel-1' | placeholder_svg_tag: 'bf-holiday__image' }}
+              {%- endif -%}
+            </span>
+            {%- if drop_product != blank -%}
+              <span class="bf-holiday__caption">{{ drop_product.title | escape }}</span>
+            {%- endif -%}
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <div class="bf-holiday__body">
+      {%- if section.settings.text != blank -%}
+        <p class="bf-holiday__text">{{ section.settings.text }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.details != blank -%}
+        <ul class="bf-holiday__details">
+          {%- for line in detail_lines -%}
+            {%- assign detail = line | strip -%}
+            {%- if detail != blank -%}
+              <li>
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12.5l4.5 4.5L19 7.5"/>
+                </svg>
+                {{ detail | escape }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <div class="bf-holiday__buy">
+        {%- if section.settings.show_price and drop_product != blank -%}
+          <span class="bf-holiday__price">{{ drop_price }}</span>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a class="bf-btn bf-holiday__button" href="{{ drop_link }}">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.deadline_text != blank or days_left > 0 -%}
+        <p class="bf-holiday__deadline">
+          {%- if days_left > 0 -%}
+            <span class="bf-holiday__countdown">{{ 'content.barkfam_days_left' | t: count: days_left }}</span>
+          {%- endif -%}
+          {{- section.settings.deadline_text | escape -}}
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .bf-holiday {
+    --bf-holiday-nose: #e8392b;
+    --bf-holiday-antler: #8a5a3b;
+
+    overflow-x: clip;
+    background-color: var(--bf-surface-bg, #8e1f2c);
+  }
+
+  .bf-holiday__inner {
+    display: grid;
+    grid-template-areas:
+      'intro'
+      'stage'
+      'body';
+    gap: 32px;
+    padding-block: var(--bf-py);
+  }
+
+  .bf-holiday__intro {
+    grid-area: intro;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .bf-holiday__tag {
+    border-color: rgb(var(--bf-ink-rgb) / 0.4);
+  }
+
+  .bf-holiday__heading {
+    margin: 0;
+    font-size: clamp(54px, 15vw, 132px);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  .bf-holiday__body {
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 520px;
+  }
+
+  .bf-holiday__text {
+    margin: 0;
+    color: var(--bf-muted);
+    font-size: var(--bf-body);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .bf-holiday__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .bf-holiday__details li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background-color: rgb(var(--bf-ink-rgb) / 0.1);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .bf-holiday__buy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+  }
+
+  .bf-holiday__price {
+    font-family: var(--bf-font-display);
+    font-size: var(--bf-h3);
+    font-weight: 600;
+  }
+
+  /* Cream button with the field colour as text: the one light surface in the section */
+  .bf-holiday .bf-holiday__button {
+    background-color: var(--bf-ink);
+    color: var(--bf-surface-bg, #8e1f2c);
+    padding-inline: 30px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .bf-holiday .bf-holiday__button:hover {
+    transform: translateY(-2px);
+  }
+
+  .bf-holiday__deadline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: var(--bf-muted);
+    font-size: 13px;
+  }
+
+  .bf-holiday__countdown {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: var(--bf-holiday-nose);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* The ornament: thread, red pom, antlers and the photo card, hanging from the top */
+  .bf-holiday__stage {
+    grid-area: stage;
+    display: flex;
+    justify-content: center;
+    padding-block-start: 48px;
+  }
+
+  .bf-holiday__ornament {
+    display: block;
+    width: min(72vw, 300px);
+    color: inherit;
+    text-decoration: none;
+    transform-origin: 50% -48px;
+  }
+
+  .bf-holiday__sway {
+    position: relative;
+    display: block;
+    transform-origin: 50% -48px;
+  }
+
+  .bf-holiday__thread {
+    position: absolute;
+    inset-block-end: 100%;
+    inset-inline-start: calc(50% - 0.5px);
+    width: 1px;
+    height: 48px;
+    background-color: rgb(var(--bf-ink-rgb) / 0.55);
+  }
+
+  .bf-holiday__pom {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: -11px;
+    inset-inline-start: calc(50% - 11px);
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 35% 35%, #ff8a7a, var(--bf-holiday-nose) 55%, #a61e17);
+    box-shadow: 0 3px 8px rgb(0 0 0 / 0.25);
+  }
+
+  /* Antlers grow from behind the card's top edge */
+  .bf-holiday__antlers {
+    position: absolute;
+    z-index: 0;
+    inset-block-end: calc(100% - 28px);
+    inset-inline-start: -8%;
+    width: 116%;
+    height: auto;
+    color: var(--bf-holiday-antler);
+  }
+
+  .bf-holiday__card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 12px 16px;
+    border-radius: 6px;
+    background-color: #fbf8f1;
+    box-shadow: 0 30px 60px rgb(40 6 10 / 0.35), 0 4px 10px rgb(40 6 10 / 0.2);
+    color: #2f3a32;
+  }
+
+  .bf-holiday__photo {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border-radius: 3px;
+    background-color: #efe7da;
+  }
+
+  .bf-holiday__photo .bf-holiday__image {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bf-holiday__caption {
+    font-family: var(--bf-font-display);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bf-holiday__sway {
+      animation: bf-holiday-sway 6s ease-in-out infinite alternate;
+    }
+
+    /* Swings in from the side as it enters the viewport, where view timelines exist */
+    @supports (animation-timeline: view()) {
+      .bf-holiday__ornament {
+        animation: bf-holiday-swing-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 45%;
+      }
+    }
+  }
+
+  @keyframes bf-holiday-sway {
+    from {
+      transform: rotate(-1.8deg);
+    }
+
+    to {
+      transform: rotate(1.8deg);
+    }
+  }
+
+  @keyframes bf-holiday-swing-in {
+    from {
+      opacity: 0;
+      transform: translateY(-36px) rotate(-16deg);
+    }
+
+    60% {
+      opacity: 1;
+      transform: translateY(0) rotate(5deg);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .bf-holiday__inner {
+      grid-template-areas:
+        'intro stage'
+        'body stage';
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      grid-template-rows: auto 1fr;
+      gap: 32px 64px;
+      align-items: start;
+    }
+
+    .bf-holiday__stage {
+      align-self: center;
+      padding-block-start: 64px;
+    }
+
+    .bf-holiday__ornament,
+    .bf-holiday__sway {
+      transform-origin: 50% -64px;
+    }
+
+    .bf-holiday__ornament {
+      width: 380px;
+      max-width: 100%;
+    }
+
+    .bf-holiday__thread {
+      height: 64px;
+    }
+
+    .bf-holiday__card {
+      padding: 14px 14px 20px;
+    }
+
+    .bf-holiday__caption {
+      font-size: 17px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.barkfam_holiday",
+  "tag": "section",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image",
+      "info": "t:info.barkfam_holiday_image"
+    },
+    {
+      "type": "header",
+      "content": "t:content.text"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "t:settings.barkfam_pill",
+      "default": "t:text_defaults.barkfam_holiday_tag"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "t:text_defaults.barkfam_holiday_heading"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "t:settings.font",
+      "default": "montserrat_n8"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:settings.text",
+      "default": "t:text_defaults.barkfam_holiday_text"
+    },
+    {
+      "type": "textarea",
+      "id": "details",
+      "label": "t:settings.barkfam_holiday_details",
+      "info": "t:info.barkfam_holiday_details",
+      "default": "t:text_defaults.barkfam_holiday_details"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "t:settings.barkfam_show_price",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:content.buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.barkfam_holiday_button"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:settings.link",
+      "info": "t:info.barkfam_holiday_link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.barkfam_holiday_deadline"
+    },
+    {
+      "type": "text",
+      "id": "deadline_text",
+      "label": "t:settings.text",
+      "default": "t:text_defaults.barkfam_holiday_deadline"
+    },
+    {
+      "type": "text",
+      "id": "deadline_date",
+      "label": "t:settings.barkfam_holiday_deadline_date",
+      "info": "t:info.barkfam_holiday_deadline_date",
+      "default": "2026-12-12"
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "#8E1F2C"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "t:settings.barkfam_holiday_accent",
+      "default": "#E8392B"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.barkfam_holiday",
+      "category": "t:categories.products"
+    }
+  ]
+}
+{% endschema %}

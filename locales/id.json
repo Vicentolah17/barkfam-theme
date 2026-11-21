@@ -131,6 +131,7 @@
     "zoom_media": "Perbesar media {{ index }}"
   },
   "content": {
+    "barkfam_days_left": {"one": "Tinggal {{ count }} hari", "other": "Tinggal {{ count }} hari"},
     "barkfam_contact_optional": "opsional",
     "barkfam_contact_message": "Pesan",
     "barkfam_breadcrumb_home": "Beranda",

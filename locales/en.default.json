@@ -164,6 +164,7 @@
     }
   },
   "content": {
+    "barkfam_days_left": {"one": "1 day left", "other": "{{ count }} days left"},
     "barkfam_contact_optional": "optional",
     "barkfam_contact_message": "Message",
     "barkfam_breadcrumb_home": "Home",

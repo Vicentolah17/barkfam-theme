@@ -133,6 +133,7 @@
     "back_to_main_menu": "Natrag na glavni izbornik"
   },
   "content": {
+    "barkfam_days_left": {"one": "Još {{ count }} dan", "other": "Još {{ count }} dana", "few": "Još {{ count }} dana"},
     "barkfam_contact_optional": "neobavezno",
     "barkfam_contact_message": "Poruka",
     "barkfam_breadcrumb_home": "Početna",

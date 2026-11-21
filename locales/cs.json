@@ -135,6 +135,7 @@
     "back_to_main_menu": "Zpět do hlavní nabídky"
   },
   "content": {
+    "barkfam_days_left": {"one": "Zbývá 1 den", "other": "Zbývá {{ count }} dní", "few": "Zbývají {{ count }} dny", "many": "Zbývá {{ count }} dne"},
     "barkfam_contact_optional": "nepovinné",
     "barkfam_contact_message": "Zpráva",
     "barkfam_breadcrumb_home": "Domů",

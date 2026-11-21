@@ -131,6 +131,7 @@
     "zoom_media": "Medyayı yakınlaştır: {{ index }}"
   },
   "content": {
+    "barkfam_days_left": {"one": "1 gün kaldı", "other": "{{ count }} gün kaldı"},
     "barkfam_contact_optional": "isteğe bağlı",
     "barkfam_contact_message": "Mesaj",
     "barkfam_breadcrumb_home": "Ana sayfa",

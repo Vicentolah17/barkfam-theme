@@ -64,56 +64,10 @@
         "background_color": "{{ settings.color_palette.background }}"
       }
     },
-    "categories": {
-      "type": "barkfam-categories",
-      "blocks": {
-        "grooming": {
-          "type": "_barkfam-category",
-          "settings": {
-            "title": "grooming & cleanup",
-            "collection": "all",
-            "image": "shopify://shop_images/Gemini_Generated_Image_v60fpsv60fpsv60f.jpg"
-          },
-          "blocks": {}
-        },
-        "food": {
-          "type": "_barkfam-category",
-          "settings": {
-            "title": "food & water",
-            "collection": "all",
-            "image": "shopify://shop_images/Gemini_Generated_Image_jielwpjielwpjiel.jpg"
-          },
-          "blocks": {}
-        },
-        "walks": {
-          "type": "_barkfam-category",
-          "settings": {
-            "title": "walks & wear",
-            "collection": "all",
-            "image": "shopify://shop_images/Gemini_Generated_Image_rj2srirj2srirj2s.jpg"
-          },
-          "blocks": {}
-        },
-        "rest": {
-          "type": "_barkfam-category",
-          "settings": {
-            "title": "holiday gifts",
-            "collection": "all",
-            "image": "shopify://shop_images/Gemini_Generated_Image_w1n4juw1n4juw1n4.jpg"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "grooming",
-        "food",
-        "walks",
-        "rest"
-      ],
+    "holiday": {
+      "type": "barkfam-holiday",
       "settings": {
-        "pill": "Find what they need",
-        "heading": "Shop by Category",
-        "background_color": ""
+        "product": "cute-and-warm-costume"
       }
     },
     "banners": {
@@ -391,7 +345,7 @@
   },
   "order": [
     "hero",
-    "categories",
+    "holiday",
     "banners",
     "best_sellers",
     "feature",

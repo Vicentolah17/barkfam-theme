@@ -131,6 +131,7 @@
     "back_to_main_menu": "Zurück zum Hauptmenü"
   },
   "content": {
+    "barkfam_days_left": {"one": "Noch 1 Tag", "other": "Noch {{ count }} Tage"},
     "barkfam_contact_optional": "optional",
     "barkfam_contact_message": "Nachricht",
     "barkfam_breadcrumb_home": "Startseite",

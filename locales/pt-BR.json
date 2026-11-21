@@ -133,6 +133,7 @@
     "back_to_main_menu": "Voltar ao menu principal"
   },
   "content": {
+    "barkfam_days_left": {"one": "Falta 1 dia", "other": "Faltam {{ count }} dias", "many": "Faltam {{ count }} dias"},
     "barkfam_contact_optional": "opcional",
     "barkfam_contact_message": "Mensagem",
     "barkfam_breadcrumb_home": "Início",

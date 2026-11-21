@@ -131,6 +131,7 @@
     "back_to_main_menu": "返回主選單"
   },
   "content": {
+    "barkfam_days_left": {"one": "還剩 {{ count }} 天", "other": "還剩 {{ count }} 天"},
     "barkfam_contact_optional": "選填",
     "barkfam_contact_message": "留言",
     "barkfam_breadcrumb_home": "首頁",

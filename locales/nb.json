@@ -131,6 +131,7 @@
     "zoom_media": "Zoom medier {{ index }}"
   },
   "content": {
+    "barkfam_days_left": {"one": "1 dag igjen", "other": "{{ count }} dager igjen"},
     "barkfam_contact_optional": "valgfritt",
     "barkfam_contact_message": "Melding",
     "barkfam_breadcrumb_home": "Hjem",

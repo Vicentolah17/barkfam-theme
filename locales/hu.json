@@ -131,6 +131,7 @@
     "back_to_main_menu": "Vissza a főmenübe"
   },
   "content": {
+    "barkfam_days_left": {"one": "Még 1 nap", "other": "Még {{ count }} nap"},
     "barkfam_contact_optional": "nem kötelező",
     "barkfam_contact_message": "Üzenet",
     "barkfam_breadcrumb_home": "Főoldal",

@@ -131,6 +131,7 @@
     "back_to_main_menu": "กลับไปที่เมนูหลัก"
   },
   "content": {
+    "barkfam_days_left": {"one": "เหลืออีก {{ count }} วัน", "other": "เหลืออีก {{ count }} วัน"},
     "barkfam_contact_optional": "ไม่บังคับ",
     "barkfam_contact_message": "ข้อความ",
     "barkfam_breadcrumb_home": "หน้าแรก",

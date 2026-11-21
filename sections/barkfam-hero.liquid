@@ -469,6 +469,43 @@
     }
   }
 
+  /* One load sequence: the photo settles, the word rises into the sky, then the card arrives.
+     Photo and cut-out move together so the dog stays registered with its background. */
+  @media (prefers-reduced-motion: no-preference) {
+    .bf-hero__stage .bf-hero__bg,
+    .bf-hero__stage .bf-hero__dog {
+      animation: bf-hero-settle 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .bf-hero__word {
+      animation: bf-hero-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s both;
+    }
+
+    .bf-hero__card {
+      animation: bf-hero-arrive 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s both;
+    }
+  }
+
+  @keyframes bf-hero-settle {
+    from {
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes bf-hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.25em);
+    }
+  }
+
+  @keyframes bf-hero-arrive {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+  }
+
   @media screen and (min-width: 750px) {
     .bf-hero {
       --bf-hero-word-size: clamp(110px, 22.5vw, 340px);

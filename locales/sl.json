@@ -135,6 +135,7 @@
     "back_to_main_menu": "Nazaj na glavni meni"
   },
   "content": {
+    "barkfam_days_left": {"one": "Še {{ count }} dan", "other": "Še {{ count }} dni", "two": "Še {{ count }} dneva", "few": "Še {{ count }} dnevi"},
     "barkfam_contact_optional": "neobvezno",
     "barkfam_contact_message": "Sporočilo",
     "barkfam_breadcrumb_home": "Domov",

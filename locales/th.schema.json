@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_holiday": "Holiday drop",
     "barkfam_band_item": "Band item",
     "barkfam_footer_link": "Link",
     "barkfam_footer_column": "Link column",
@@ -205,6 +206,9 @@
     "disclosures": "การเปิดเผยข้อมูล"
   },
   "settings": {
+    "barkfam_holiday_accent": "Ornament accent",
+    "barkfam_holiday_deadline_date": "Cut-off date",
+    "barkfam_holiday_details": "Details",
     "barkfam_subject_top": "Top of the dog in the photo",
     "barkfam_show_chip": "Show floating product",
     "barkfam_sticker_text": "Sticker text",
@@ -959,6 +963,7 @@
     "direction_top_start": "บนซ้าย"
   },
   "content": {
+    "barkfam_holiday_deadline": "Cut-off",
     "barkfam_hero_extras": "Extras",
     "barkfam_hero_images": "Images",
     "barkfam_pet": "Pet photo",
@@ -1161,6 +1166,12 @@
     "featured_collection_h3": "<h3>คอลเลกชันแนะนำ</h3>"
   },
   "text_defaults": {
+    "barkfam_holiday_deadline": "Order by Dec 12 to get it before Christmas.",
+    "barkfam_holiday_button": "Get the Reindeer Hoodie",
+    "barkfam_holiday_details": "Fleece-lined\nSizes XS to 2XL\nFree US shipping",
+    "barkfam_holiday_text": "Our cozy reindeer hoodie turns every walk, nap and family photo into a Christmas card. Soft fleece inside, little antlers on top, and that red nose? Pure joy.",
+    "barkfam_holiday_heading": "Sleigh the holidays.",
+    "barkfam_holiday_tag": "Holiday drop 🎄",
     "barkfam_band_checkout": "Secure checkout",
     "barkfam_band_returns": "Easy returns",
     "barkfam_band_paws": "Made for muddy paws",
@@ -1278,6 +1289,10 @@
     "disclosures": "การเปิดเผยข้อมูล"
   },
   "info": {
+    "barkfam_holiday_deadline_date": "YYYY-MM-DD. A day count shows until this date, then hides.",
+    "barkfam_holiday_link": "Defaults to the product page.",
+    "barkfam_holiday_details": "One per line.",
+    "barkfam_holiday_image": "Shown inside the hanging photo card, cropped to 4:5. Leave empty to use the product's first image.",
     "barkfam_subject_top": "How far down the photo the dog's head begins. The word sits just above it, sized to fit between the header and the head.",
     "barkfam_show_chip": "Shows on tablet and desktop.",
     "barkfam_sticker_text": "Around 24 characters, ending with ' · '.",

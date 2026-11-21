@@ -131,6 +131,7 @@
     "back_to_main_menu": "Quay lại menu chính"
   },
   "content": {
+    "barkfam_days_left": {"one": "Còn {{ count }} ngày", "other": "Còn {{ count }} ngày"},
     "barkfam_contact_optional": "không bắt buộc",
     "barkfam_contact_message": "Tin nhắn",
     "barkfam_breadcrumb_home": "Trang chủ",

@@ -151,6 +151,7 @@
     }
   },
   "content": {
+    "barkfam_days_left": {"one": "1 دن باقی", "other": "{{ count }} دن باقی"},
     "barkfam_contact_optional": "اختیاری",
     "barkfam_contact_message": "پیغام",
     "barkfam_breadcrumb_home": "ہوم",

@@ -131,6 +131,7 @@
     "zoom_media": "{{ index }} 미디어 확대/축소"
   },
   "content": {
+    "barkfam_days_left": {"one": "{{ count }}일 남음", "other": "{{ count }}일 남음"},
     "barkfam_contact_optional": "선택 사항",
     "barkfam_contact_message": "메시지",
     "barkfam_breadcrumb_home": "홈",
