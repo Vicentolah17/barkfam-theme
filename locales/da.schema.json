@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_band_item": "Band item",
     "barkfam_footer_link": "Link",
     "barkfam_footer_column": "Link column",
     "barkfam_contact": "Contact form",
@@ -204,6 +205,12 @@
     "disclosures": "Oplysninger"
   },
   "settings": {
+    "barkfam_show_chip": "Show floating product",
+    "barkfam_sticker_text": "Sticker text",
+    "barkfam_show_sticker": "Show spinning sticker",
+    "barkfam_image_description": "Image description",
+    "barkfam_cutout": "Dog cut-out",
+    "barkfam_background_photo": "Background photo",
     "barkfam_pet_interval": "Time per photo",
     "barkfam_pet_image_4": "Pet photo 4",
     "barkfam_pet_image_3": "Pet photo 3",
@@ -951,6 +958,8 @@
     "direction_top_start": "Øverst til venstre"
   },
   "content": {
+    "barkfam_hero_extras": "Extras",
+    "barkfam_hero_images": "Images",
     "barkfam_pet": "Pet photo",
     "barkfam_bottom_bar": "Bottom bar",
     "barkfam_contact": "Contact",
@@ -1151,6 +1160,13 @@
     "shop_collection": "<p>Opdag vores nøje udvalgte kollektion med håndplukkede favoritter, der forener stil og kvalitet.</p>"
   },
   "text_defaults": {
+    "barkfam_band_checkout": "Secure checkout",
+    "barkfam_band_returns": "Easy returns",
+    "barkfam_band_paws": "Made for muddy paws",
+    "barkfam_band_delivery": "Delivery in 5–10 days",
+    "barkfam_band_item": "Better Days. Together.",
+    "barkfam_hero_sticker": "Play more · Walk more · ",
+    "barkfam_hero_image_alt": "A smiling golden retriever holding tulips in its mouth on a sunny lawn",
     "barkfam_footer_link": "Link",
     "barkfam_footer_column": "Links",
     "barkfam_contact_button": "Send message",
@@ -1218,10 +1234,10 @@
     "barkfam_categories_pill": "Find what they need",
     "barkfam_hero_meta": "Estimated delivery in 5–10 days",
     "barkfam_hero_secondary": "Shop all",
-    "barkfam_hero_primary": "Shop the glove",
-    "barkfam_hero_body": "The Pet Hair Remover Glove picks up loose fur while you pet your dog or cat. Use it on the couch, car seats and clothes too.",
-    "barkfam_hero_heading": "Pet hair, handled.",
-    "barkfam_hero_pill": "Our best seller",
+    "barkfam_hero_primary": "Shop dogs",
+    "barkfam_hero_body": "Cozy, clean and ready for walks. The everyday stuff your dog will actually love.",
+    "barkfam_hero_heading": "Little things for their happiest days.",
+    "barkfam_hero_pill": "Gear for the good days",
     "barkfam_hero_word": "barkfam",
     "button_label": "Køb nu",
     "collapsible_row": "Række, der kan skjules",
@@ -1261,6 +1277,10 @@
     "disclosures": "Oplysninger"
   },
   "info": {
+    "barkfam_show_chip": "Shows on tablet and desktop.",
+    "barkfam_sticker_text": "Around 24 characters, ending with ' · '.",
+    "barkfam_cutout": "PNG or WebP with a transparent background, the same size and framing as the background photo. It sits in front of the word.",
+    "barkfam_background_photo": "16:9, at least 2000 px wide. Leave empty to use the theme's photo.",
     "barkfam_pet_image": "Use PNG or WebP photos with a transparent background, cropped at the bottom. With more than one, they take turns behind the product cards. Leave all four empty to keep the theme's photos.",
     "barkfam_footer_column_email": "Shown below the links as an email link.",
     "barkfam_heading_tag": "Use page heading when this section opens a page, so the page has one main title.",
@@ -1281,7 +1301,7 @@
     "barkfam_hero_image": "Leave empty to use the product's featured image.",
     "barkfam_hero_product": "Fills the price and is where the primary button links by default.",
     "barkfam_footer_logo": "Light version of the logo for the dark footer.",
-    "barkfam_backdrop_word": "Set large across the top of the section and sized to fit whole. One short word reads best.",
+    "barkfam_backdrop_word": "Sits between the photo and the cut-out, so the dog stands in front of it. One short word reads best.",
     "barkfam_floating_card": "The image, title and price come from the product you select.",
     "carousel_layout_on_mobile": "Karrusellen bruges altid på mobil",
     "video_alt_text": "Beskriv videoen for brugere af hjælpeteknologi",

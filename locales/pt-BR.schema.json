@@ -9,6 +9,7 @@
  */
 {
   "names": {
+    "barkfam_band_item": "Item da faixa",
     "barkfam_footer_link": "Link",
     "barkfam_footer_column": "Coluna de links",
     "barkfam_contact": "Formulário de contato",
@@ -204,6 +205,12 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_show_chip": "Mostrar produto flutuante",
+    "barkfam_sticker_text": "Texto do selo",
+    "barkfam_show_sticker": "Mostrar selo girando",
+    "barkfam_image_description": "Descrição da imagem",
+    "barkfam_cutout": "Recorte do cachorro",
+    "barkfam_background_photo": "Foto de fundo",
     "barkfam_pet_interval": "Tempo de cada foto",
     "barkfam_pet_image_4": "Foto do pet 4",
     "barkfam_pet_image_3": "Foto do pet 3",
@@ -951,6 +958,8 @@
     "direction_top_start": "Superior à esquerda"
   },
   "content": {
+    "barkfam_hero_extras": "Extras",
+    "barkfam_hero_images": "Imagens",
     "barkfam_pet": "Foto do pet",
     "barkfam_bottom_bar": "Barra inferior",
     "barkfam_contact": "Contato",
@@ -1151,6 +1160,13 @@
     "introducing_p": "<p><em>Apresentando</em></p>"
   },
   "text_defaults": {
+    "barkfam_band_checkout": "Secure checkout",
+    "barkfam_band_returns": "Easy returns",
+    "barkfam_band_paws": "Made for muddy paws",
+    "barkfam_band_delivery": "Delivery in 5–10 days",
+    "barkfam_band_item": "Better Days. Together.",
+    "barkfam_hero_sticker": "Play more · Walk more · ",
+    "barkfam_hero_image_alt": "A smiling golden retriever holding tulips in its mouth on a sunny lawn",
     "barkfam_footer_link": "Link",
     "barkfam_footer_column": "Links",
     "barkfam_contact_button": "Send message",
@@ -1218,10 +1234,10 @@
     "barkfam_categories_pill": "Find what they need",
     "barkfam_hero_meta": "Estimated delivery in 5–10 days",
     "barkfam_hero_secondary": "Shop all",
-    "barkfam_hero_primary": "Shop the glove",
-    "barkfam_hero_body": "The Pet Hair Remover Glove picks up loose fur while you pet your dog or cat. Use it on the couch, car seats and clothes too.",
-    "barkfam_hero_heading": "Pet hair, handled.",
-    "barkfam_hero_pill": "Our best seller",
+    "barkfam_hero_primary": "Shop dogs",
+    "barkfam_hero_body": "Cozy, clean and ready for walks. The everyday stuff your dog will actually love.",
+    "barkfam_hero_heading": "Little things for their happiest days.",
+    "barkfam_hero_pill": "Gear for the good days",
     "barkfam_hero_word": "barkfam",
     "button_label": "Compre agora",
     "collapsible_row": "Linha expansível",
@@ -1261,6 +1277,10 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_show_chip": "Aparece no tablet e no desktop.",
+    "barkfam_sticker_text": "Cerca de 24 caracteres, terminando com ' · '.",
+    "barkfam_cutout": "PNG ou WebP com fundo transparente, do mesmo tamanho e enquadramento da foto de fundo. Fica na frente da palavra.",
+    "barkfam_background_photo": "16:9, com pelo menos 2000 px de largura. Deixe vazio para usar a foto do tema.",
     "barkfam_pet_image": "Use fotos PNG ou WebP com fundo transparente, cortadas embaixo. Com mais de uma, elas se revezam atrás dos cards de produto. Deixe as quatro vazias para manter as fotos do tema.",
     "barkfam_footer_column_email": "Aparece abaixo dos links, como link de e-mail.",
     "barkfam_heading_tag": "Use título da página quando esta seção abre uma página, para a página ter um título principal.",
@@ -1281,7 +1301,7 @@
     "barkfam_hero_image": "Deixe vazio para usar a imagem principal do produto.",
     "barkfam_hero_product": "Preenche o preço e é o destino padrão do botão principal.",
     "barkfam_footer_logo": "Versão clara da logo para o rodapé escuro.",
-    "barkfam_backdrop_word": "Fica grande no topo da seção, no tamanho certo para caber inteira. Uma palavra curta funciona melhor.",
+    "barkfam_backdrop_word": "Fica entre a foto e o recorte, então o cachorro aparece na frente dela. Uma palavra curta funciona melhor.",
     "barkfam_floating_card": "A imagem, o título e o preço vêm do produto que você selecionar.",
     "video_alt_text": "Descreva o vídeo para usuários de tecnologia assistiva",
     "video_autoplay": "Os vídeos ficarão sem som por padrão",

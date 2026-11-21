@@ -1,38 +1,29 @@
 {% comment %}
   Section contract.
-  Homepage hero from the approved design (_referencias/design/Home.dc.html, "Hero"):
-  the brand word set large and whole across the top in the accent green, then a
-  text column with pill, heading, copy, two buttons and a price line beside a row
-  of three equal product cards (the main product and two more), with a cut-out pet
-  photo peeking over the cards. Images, links, titles and prices come from the
-  products picked in the editor; nothing about a product is written in code.
+  Homepage hero from the chosen BarkFam design (Claude design "H1", Downloads/barkfam-hero):
+  a full-width photo with the brand word set huge in solid colour between the
+  background and a same-size cut-out of the dog, so the dog stands in front of
+  the letters. A copy card with a spinning sticker sits on the photo, a product
+  chip floats in a corner, and a band of short lines scrolls along the bottom.
 
-  Up to four pet photos cross-fade in turn, in CSS only (one keyframe set per
-  section, sized from the photo count and interval). They are the merchant's
-  uploads, or the four theme photos assets/barkfam-hero-pet*.webp until any is
-  chosen. Reduced motion shows the first photo only.
+  The photo and cut-out must share size and framing; both use object-fit: cover
+  on the same box. They are the merchant's uploads, or the theme's own
+  assets/workspaceartifactswallpaper_dog_4k.jpg and assets/barkfam-hero-dog.webp.
+  Band lines are section blocks, rendered four times for a seamless loop.
+  Reduced motion stops the sticker, chip and band.
 
   @example
-  <!-- First section of templates/index.json, with the main product and two card products picked -->
+  <!-- First section of templates/index.json, with the chip product picked -->
 {% endcomment %}
 
 {% render 'barkfam-ui' %}
 
 {%- liquid
-  assign hero_product = section.settings.product
-
-  # An uploaded image keeps its own alt text. The product's image is described by the
-  # product title, because imported catalogues often carry file hashes as alt text.
-  if section.settings.image != blank
-    assign hero_image = section.settings.image
-    assign hero_image_alt = section.settings.image.alt | default: hero_product.title | escape
-  else
-    assign hero_image = hero_product.featured_media.preview_image
-    assign hero_image_alt = hero_product.title | escape
-  endif
-
-  assign primary_link = section.settings.primary_link | default: hero_product.url | default: routes.all_products_collection_url
+  assign chip_product = section.settings.product
+  assign primary_link = section.settings.primary_link | default: routes.all_products_collection_url
   assign secondary_link = section.settings.secondary_link | default: routes.all_products_collection_url
+  assign sticker_path_id = 'BarkfamSticker-' | append: section.id
+  assign word_font = section.settings.wordmark_font
 
   assign image_loading = 'lazy'
   assign image_priority = 'auto'
@@ -41,428 +32,480 @@
     assign image_priority = 'high'
   endif
 
-  assign show_price = false
-  if section.settings.show_price and hero_product != blank
-    assign show_price = true
-  endif
-
-  # The word is sized from its length so it always fits the container whole
-  assign word_chars = section.settings.ghost_text | size | at_least: 1
-  assign card_sizes = '(min-width: 1200px) 200px, (min-width: 750px) 16vw, 30vw'
-
-  # The pet photo is the likely largest paint above the fold, so it gets the high priority
-  assign card_priority = image_priority
-  if section.settings.show_pet
-    assign card_priority = 'auto'
-  endif
-
-  # Uploaded pet photos win; with none uploaded, the theme's four photos are used
-  assign pet_uploads = 0
-  for position in (1..4)
-    assign pet_key = 'pet_image'
-    if position > 1
-      assign pet_key = 'pet_image_' | append: position
-    endif
-    if section.settings[pet_key] != blank
-      assign pet_uploads = pet_uploads | plus: 1
-    endif
-  endfor
-
-  assign pet_default_files = 'barkfam-hero-pet.webp,barkfam-hero-pet-2.webp,barkfam-hero-pet-3.webp,barkfam-hero-pet-4.webp' | split: ','
-  assign pet_default_sizes = '580x610,551x627,683x657,546x647' | split: ','
-  assign pet_count = pet_uploads
-  if pet_uploads == 0
-    assign pet_count = pet_default_files.size
-  endif
-
-  assign pet_interval = section.settings.pet_interval | default: 4
-  assign pet_cycle = pet_interval | times: pet_count
-  assign pet_fade_pct = 80.0 | divided_by: pet_cycle | round: 2
-  assign pet_show_pct = 100.0 | divided_by: pet_count | round: 2
-  assign pet_out_pct = pet_show_pct | plus: pet_fade_pct | round: 2
-  assign pet_animation = 'bf-hero-pet-' | append: section.id
+  assign default_bg = 'workspaceartifactswallpaper_dog_4k.jpg'
+  assign default_dog = 'barkfam-hero-dog.webp'
 -%}
 
-{%- if section.settings.show_pet and pet_count > 1 -%}
-  {% style %}
-    @keyframes {{ pet_animation }} {
-      0% { opacity: 0; }
-      {{ pet_fade_pct }}% { opacity: 1; }
-      {{ pet_show_pct }}% { opacity: 1; }
-      {{ pet_out_pct }}% { opacity: 0; }
-      100% { opacity: 0; }
-    }
+{% style %}
+  {{ word_font | font_face: font_display: 'swap' }}
 
-    @media (prefers-reduced-motion: no-preference) {
-      #shopify-section-{{ section.id }} .bf-hero__pet-image {
-        animation: {{ pet_animation }} {{ pet_cycle }}s linear infinite backwards;
-        animation-delay: calc(var(--bf-pet-index) * {{ pet_interval }}s - 0.8s);
-      }
-    }
-  {% endstyle %}
-{%- endif -%}
+  #shopify-section-{{ section.id }} .bf-hero__word {
+    font-family: {{ word_font.family }}, {{ word_font.fallback_families }};
+    font-weight: {{ word_font.weight }};
+  }
+{% endstyle %}
 
 <div
   class="bf-section bf-hero"
-  style="{% render 'barkfam-surface', background: section.settings.background_color %}"
+  style="
+    {% render 'barkfam-surface', background: section.settings.background_color %}
+    {% if section.settings.ghost_color != blank %}--bf-hero-word: {{ section.settings.ghost_color }};{% endif %}
+  "
 >
-  <div class="bf-container bf-hero__inner">
+  <div class="bf-hero__stage">
+    {%- if section.settings.background_image != blank -%}
+      {{
+        section.settings.background_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'bf-hero__bg',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          alt: '',
+          loading: image_loading,
+          fetchpriority: image_priority
+      }}
+    {%- else -%}
+      <img
+        class="bf-hero__bg"
+        src="{{ default_bg | asset_img_url: '2000x' }}"
+        srcset="
+          {{ default_bg | asset_img_url: '750x' }} 750w,
+          {{ default_bg | asset_img_url: '1100x' }} 1100w,
+          {{ default_bg | asset_img_url: '1500x' }} 1500w,
+          {{ default_bg | asset_img_url: '2000x' }} 2000w
+        "
+        sizes="100vw"
+        width="2000"
+        height="1125"
+        alt=""
+        loading="{{ image_loading }}"
+        fetchpriority="{{ image_priority }}"
+      >
+    {%- endif -%}
+
     {%- if section.settings.ghost_text != blank -%}
-      <div class="bf-hero__word-wrap" aria-hidden="true">
-        <div
-          class="bf-ghost bf-hero__word"
-          style="
-            --bf-hero-word-chars: {{ word_chars }};
-            {% if section.settings.ghost_color != blank %}--bf-hero-word-color: {{ section.settings.ghost_color }};{% endif %}
-            --bf-hero-word-opacity: {{ section.settings.ghost_opacity | divided_by: 100.0 }};
-          "
-        >
-          {{- section.settings.ghost_text | escape -}}
-        </div>
+      <p class="bf-hero__word" aria-hidden="true">{{ section.settings.ghost_text | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.cutout_image != blank -%}
+      {{
+        section.settings.cutout_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'bf-hero__dog',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          alt: section.settings.image_alt,
+          loading: image_loading
+      }}
+    {%- else -%}
+      <img
+        class="bf-hero__dog"
+        src="{{ default_dog | asset_url }}"
+        width="2000"
+        height="1125"
+        alt="{{ section.settings.image_alt | escape }}"
+        loading="{{ image_loading }}"
+      >
+    {%- endif -%}
+
+    {%- if section.settings.show_chip and chip_product != blank -%}
+      <a class="bf-hero__chip" href="{{ chip_product.url }}">
+        {%- if chip_product.featured_media != blank -%}
+          {{
+            chip_product.featured_media.preview_image
+            | image_url: width: 120
+            | image_tag: class: 'bf-hero__chip-image', widths: '60, 120', sizes: '52px', alt: '', loading: 'lazy'
+          }}
+        {%- endif -%}
+        <span class="bf-hero__chip-text">
+          <span class="bf-hero__chip-title">{{ chip_product.title | escape }}</span>
+          <strong>{{ chip_product.price | money }}</strong>
+        </span>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="bf-hero__card">
+    {%- if section.settings.show_sticker and section.settings.sticker_text != blank -%}
+      <div class="bf-hero__sticker" aria-hidden="true">
+        <svg class="bf-hero__sticker-ring" viewBox="0 0 150 150">
+          <defs>
+            <path id="{{ sticker_path_id }}" d="M75,75 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0"/>
+          </defs>
+          <circle cx="75" cy="75" r="74"/>
+          <text>
+            <textPath href="#{{ sticker_path_id }}" textLength="336" lengthAdjust="spacing">
+              {{- section.settings.sticker_text | upcase | escape -}}
+            </textPath>
+          </text>
+        </svg>
+        <span class="bf-hero__sticker-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+            <ellipse cx="7" cy="8" rx="2" ry="2.6"/><ellipse cx="12" cy="6" rx="2" ry="2.6"/><ellipse cx="17" cy="8" rx="2" ry="2.6"/><ellipse cx="4.6" cy="12.8" rx="1.8" ry="2.3"/><ellipse cx="19.4" cy="12.8" rx="1.8" ry="2.3"/><path d="M12 11c-3 0-6.2 4.1-6.2 6.6 0 1.9 1.6 2.6 3 2.6 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.4 0 3-.7 3-2.6C18.2 15.1 15 11 12 11z"/>
+          </svg>
+        </span>
       </div>
     {%- endif -%}
 
-    <div class="bf-hero__grid">
-      <div class="bf-hero__text">
-        {%- if section.settings.pill != blank -%}
-          <span class="bf-pill bf-pill--filled"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
-        {%- endif -%}
+    {%- if section.settings.pill != blank -%}
+      <span class="bf-pill"><span class="bf-pill__dot"></span>{{ section.settings.pill | escape }}</span>
+    {%- endif -%}
 
-        {%- if section.settings.heading != blank -%}
-          <h1 class="bf-hero__heading">{{ section.settings.heading | escape }}</h1>
-        {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h1 class="bf-hero__title">{{ section.settings.heading | escape }}</h1>
+    {%- endif -%}
 
-        {%- if section.settings.body != blank -%}
-          <p class="bf-hero__body bf-muted">{{ section.settings.body }}</p>
-        {%- endif -%}
+    {%- if section.settings.body != blank -%}
+      <p class="bf-hero__text">{{ section.settings.body }}</p>
+    {%- endif -%}
 
-        {%- if section.settings.primary_label != blank or section.settings.secondary_label != blank -%}
-          <div class="bf-hero__actions">
-            {%- if section.settings.primary_label != blank -%}
-              <a class="bf-btn bf-btn--primary" href="{{ primary_link }}">{{ section.settings.primary_label | escape }}</a>
-            {%- endif -%}
-            {%- if section.settings.secondary_label != blank -%}
-              <a class="bf-btn bf-btn--outline" href="{{ secondary_link }}">{{ section.settings.secondary_label | escape }}</a>
-            {%- endif -%}
-          </div>
+    {%- if section.settings.primary_label != blank or section.settings.secondary_label != blank -%}
+      <div class="bf-hero__actions">
+        {%- if section.settings.primary_label != blank -%}
+          <a class="bf-btn bf-btn--primary" href="{{ primary_link }}">{{ section.settings.primary_label | escape }}</a>
         {%- endif -%}
-
-        {%- if show_price or section.settings.meta != blank -%}
-          <p class="bf-hero__meta bf-muted">
-            {%- if show_price -%}{{ hero_product.price | money }}{%- endif -%}
-            {%- if show_price and section.settings.meta != blank %} · {% endif -%}
-            {{- section.settings.meta | escape -}}
-          </p>
+        {%- if section.settings.secondary_label != blank -%}
+          <a class="bf-btn bf-btn--outline" href="{{ secondary_link }}">{{ section.settings.secondary_label | escape }}</a>
         {%- endif -%}
       </div>
+    {%- endif -%}
+  </div>
 
-      <div class="bf-hero__showcase">
-        {%- if section.settings.show_pet -%}
-          <div class="bf-hero__pet">
-            {%- assign pet_index = 0 -%}
-            {%- for position in (1..4) -%}
-              {%- liquid
-                assign pet_key = 'pet_image'
-                if position > 1
-                  assign pet_key = 'pet_image_' | append: position
-                endif
-                assign pet_upload = section.settings[pet_key]
-                assign default_index = position | minus: 1
-
-                # Only the first photo loads up front; the rest wait their turn
-                assign pet_loading = 'lazy'
-                assign pet_priority = 'auto'
-                if pet_index == 0
-                  assign pet_loading = image_loading
-                  assign pet_priority = image_priority
-                endif
-                assign pet_style = '--bf-pet-index: ' | append: pet_index | append: ';'
-              -%}
-
-              {%- if pet_uploads > 0 -%}
-                {%- if pet_upload != blank -%}
-                  {{
-                    pet_upload
-                    | image_url: width: 900
-                    | image_tag:
-                      class: 'bf-hero__pet-image',
-                      style: pet_style,
-                      widths: '300, 450, 600, 900',
-                      sizes: '(min-width: 750px) 340px, 220px',
-                      alt: '',
-                      loading: pet_loading,
-                      fetchpriority: pet_priority
-                  }}
-                  {%- assign pet_index = pet_index | plus: 1 -%}
-                {%- endif -%}
-              {%- else -%}
-                {%- assign default_size = pet_default_sizes[default_index] | split: 'x' -%}
-                <img
-                  class="bf-hero__pet-image"
-                  style="{{ pet_style }}"
-                  src="{{ pet_default_files[default_index] | asset_url }}"
-                  width="{{ default_size[0] }}"
-                  height="{{ default_size[1] }}"
-                  alt=""
-                  loading="{{ pet_loading }}"
-                  fetchpriority="{{ pet_priority }}"
-                >
-                {%- assign pet_index = pet_index | plus: 1 -%}
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
+  {%- if section.blocks.size > 0 -%}
+    {%- capture band_items -%}
+      {%- for block in section.blocks -%}
+        {%- if block.settings.text != blank -%}
+          <span class="bf-hero__band-item">{{ block.settings.text | escape }}</span>
         {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
 
-        <div class="bf-hero__products">
-          <a class="bf-hero__card" href="{{ primary_link }}">
-            <span class="bf-hero__card-media">
-              {%- if hero_image != blank -%}
-                {{
-                  hero_image
-                  | image_url: width: 600
-                  | image_tag:
-                    class: 'bf-hero__card-image',
-                    widths: '160, 240, 320, 480, 600',
-                    sizes: card_sizes,
-                    alt: hero_image_alt,
-                    loading: image_loading,
-                    fetchpriority: card_priority
-                }}
-              {%- else -%}
-                {{ 'product-apparel-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
-              {%- endif -%}
-            </span>
-            {%- if hero_product != blank -%}
-              <span class="bf-hero__card-title">{{ hero_product.title | escape }}</span>
-              <span class="bf-hero__card-price">{{ hero_product.price | money }}</span>
-            {%- endif -%}
-          </a>
-
-          {%- for position in (1..2) -%}
-            {%- liquid
-              assign card_key = 'card_product_' | append: position
-              assign card_product = section.settings[card_key]
-            -%}
-            {%- if card_product != blank -%}
-              <a class="bf-hero__card" href="{{ card_product.url }}">
-                <span class="bf-hero__card-media">
-                  {%- if card_product.featured_media != blank -%}
-                    {{
-                      card_product.featured_media.preview_image
-                      | image_url: width: 600
-                      | image_tag:
-                        class: 'bf-hero__card-image',
-                        widths: '160, 240, 320, 480, 600',
-                        sizes: card_sizes,
-                        alt: '',
-                        loading: image_loading
-                    }}
-                  {%- else -%}
-                    {{ 'product-1' | placeholder_svg_tag: 'bf-hero__card-image' }}
-                  {%- endif -%}
-                </span>
-                <span class="bf-hero__card-title">{{ card_product.title | escape }}</span>
-                <span class="bf-hero__card-price">{{ card_product.price | money }}</span>
-              </a>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
+    <div class="bf-hero__band">
+      <p class="visually-hidden">
+        {%- for block in section.blocks -%}
+          <span {{ block.shopify_attributes }}>{{ block.settings.text | escape }}. </span>
+        {%- endfor -%}
+      </p>
+      <div class="bf-hero__track" aria-hidden="true">
+        <div class="bf-hero__group">{{ band_items }}{{ band_items }}</div>
+        <div class="bf-hero__group">{{ band_items }}{{ band_items }}</div>
       </div>
     </div>
-  </div>
+  {%- endif -%}
 </div>
 
 {% stylesheet %}
   .bf-hero {
+    --bf-hero-word-top: 22%;
+    --bf-hero-word-size: 23vw;
+    --bf-hero-gutter: clamp(24px, 3.4vw, 56px);
+    --bf-hero-band-height: 52px;
+
     position: relative;
+    /* The spinning sticker's corners sweep past the edge on phones; clip sideways only */
+    overflow-x: clip;
+    background-color: var(--bf-surface-bg, var(--bf-bg));
+  }
+
+  /* Photo stage: background, word and cut-out share one box */
+  .bf-hero__stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-    background-color: var(--bf-surface-bg, var(--bf-alt));
+    background-color: var(--bf-alt);
   }
 
-  .bf-hero__inner {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding-block: 32px 72px;
+  /* Two classes so Horizon's global img rules (height: auto, max-width) cannot resize the layers */
+  .bf-hero__stage .bf-hero__bg,
+  .bf-hero__stage .bf-hero__dog {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: 48% 50%;
   }
 
-  /* The word fills the container width: its size follows the width and its length */
-  .bf-hero__word-wrap {
-    container-type: inline-size;
+  .bf-hero__stage .bf-hero__dog {
+    z-index: 2;
+    pointer-events: none;
   }
 
   .bf-hero__word {
-    color: var(--bf-hero-word-color, var(--bf-accent));
-    font-size: min(var(--bf-ghost), calc(100cqi / (var(--bf-hero-word-chars) * 0.6)));
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: var(--bf-hero-word-top);
+    z-index: 1;
+    margin: 0;
+    color: var(--bf-hero-word, var(--bf-bg));
+    font-size: var(--bf-hero-word-size);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
     text-align: center;
-    opacity: var(--bf-hero-word-opacity, 1);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
   }
 
-  .bf-hero__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
-    align-items: center;
-  }
-
-  .bf-hero__text {
+  /* Copy card: below the photo on mobile, floating on it from tablet up */
+  .bf-hero__card {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    min-width: 0;
+    gap: 14px;
+    margin: -36px 16px 24px;
+    padding: 24px 22px;
+    border-radius: 24px;
+    background-color: var(--bf-bg);
+    box-shadow: 0 18px 40px rgb(30 30 30 / 0.18);
+    color: var(--bf-ink);
   }
 
-  .bf-hero__heading {
+  .bf-hero__title {
     margin: 0;
     font-family: var(--bf-font-display);
-    font-size: var(--bf-h1);
+    font-size: clamp(28px, 2.7vw, 40px);
     font-weight: 600;
     line-height: 1.08;
     letter-spacing: -0.025em;
     text-wrap: balance;
   }
 
-  .bf-hero__body {
-    max-width: 460px;
+  .bf-hero__text {
     margin: 0;
-    text-wrap: pretty;
+    color: var(--bf-muted);
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .bf-hero__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-block-start: 8px;
+    gap: 10px;
+    margin-block-start: 4px;
   }
 
-  .bf-hero__meta {
-    margin: 0;
-    font-size: var(--bf-small);
+  .bf-hero__actions .bf-btn {
+    padding-inline: 22px;
+    font-size: 15px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
-  /* The pet sits behind the cards, its cropped lower edge hidden under them */
-  .bf-hero__showcase {
-    --bf-hero-pet-width: 220px;
-    --bf-hero-pet-overlap: 40px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 0;
+  .bf-hero__actions .bf-btn:hover {
+    transform: translateY(-2px);
   }
 
-  /* Photos stack in one cell, bottom-aligned, so each one sits behind the cards */
-  .bf-hero__pet {
-    display: grid;
-    width: var(--bf-hero-pet-width);
-    max-width: 70%;
-    margin-block-end: calc(var(--bf-hero-pet-overlap) * -1);
+  /* Spinning sticker on the card's corner */
+  .bf-hero__sticker {
+    position: absolute;
+    z-index: 4;
+    inset-block-start: -78px;
+    inset-inline-end: -6px;
+    width: 104px;
+    height: 104px;
+    color: var(--bf-accent);
   }
 
-  .bf-hero__pet-image {
-    display: block;
-    grid-area: 1 / 1;
-    align-self: end;
-    width: 100%;
-    height: auto;
-  }
-
-  /* Without motion only the first shows; the keyframes in the section style take over otherwise */
-  .bf-hero__pet-image + .bf-hero__pet-image {
-    opacity: 0;
-  }
-
-  /* Three equal cards in one row */
-  .bf-hero__products {
-    position: relative;
-    width: 100%;
-    display: grid;
-    grid-auto-columns: minmax(0, 1fr);
-    grid-auto-flow: column;
-    gap: 12px;
-    min-width: 0;
-  }
-
-  .bf-hero__card {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 0;
-    padding: 8px;
-    border-radius: var(--bf-r-card);
-    background-color: var(--bf-surface);
-    box-shadow: var(--bf-shadow-float);
-    color: var(--bf-ink);
-    text-decoration: none;
-  }
-
-  .bf-hero__card-media {
-    display: block;
-    overflow: hidden;
-    aspect-ratio: 1;
-    border-radius: 10px;
-    background-color: var(--bf-surface);
-  }
-
-  .bf-hero__card-image {
+  .bf-hero__sticker-ring {
     display: block;
     width: 100%;
     height: 100%;
+    animation: bf-hero-spin 14s linear infinite;
+  }
+
+  .bf-hero__sticker-ring circle {
+    fill: var(--bf-surface);
+  }
+
+  .bf-hero__sticker-ring text {
+    fill: currentcolor;
+    font-family: var(--bf-font-display);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .bf-hero__sticker-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Floating product chip, desktop only */
+  .bf-hero__chip {
+    position: absolute;
+    z-index: 3;
+    inset-block-end: var(--bf-hero-gutter);
+    inset-inline-start: var(--bf-hero-gutter);
+    display: none;
+    align-items: center;
+    gap: 12px;
+    max-width: 300px;
+    padding: 8px 18px 8px 8px;
+    border-radius: 999px;
+    background-color: var(--bf-surface);
+    box-shadow: 0 12px 32px rgb(30 30 30 / 0.18);
+    color: var(--bf-ink);
+    text-decoration: none;
+    animation: bf-hero-float 5s ease-in-out infinite;
+  }
+
+  .bf-hero__chip .bf-hero__chip-image {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    background-color: var(--bf-alt);
     object-fit: cover;
   }
 
-  .bf-hero__card-title {
-    display: -webkit-box;
-    padding-inline: 2px;
-    overflow: hidden;
-    font-size: 12px;
-    font-weight: 500;
+  .bf-hero__chip-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    font-size: 13px;
     line-height: 1.3;
+  }
+
+  .bf-hero__chip-title {
+    display: -webkit-box;
+    overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
 
-  .bf-hero__card-price {
-    margin-block-start: auto;
-    padding: 0 2px 2px;
-    font-size: 12px;
+  .bf-hero__chip-text strong {
     font-weight: 600;
   }
 
+  /* Moving band */
+  .bf-hero__band {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    height: var(--bf-hero-band-height);
+    overflow: hidden;
+    background-color: var(--bf-accent);
+    color: var(--bf-bg);
+  }
+
+  .bf-hero__track {
+    display: flex;
+    width: max-content;
+    animation: bf-hero-marquee 28s linear infinite;
+  }
+
+  .bf-hero__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    font-family: var(--bf-font-display);
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .bf-hero__band-item {
+    padding-inline: 22px;
+  }
+
+  .bf-hero__band-item::after {
+    content: '✦';
+    margin-inline-start: 44px;
+    opacity: 0.7;
+  }
+
+  @keyframes bf-hero-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes bf-hero-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes bf-hero-float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(-1deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bf-hero__track,
+    .bf-hero__sticker-ring,
+    .bf-hero__chip {
+      animation: none;
+    }
+  }
+
   @media screen and (min-width: 750px) {
-    .bf-hero__inner {
-      gap: 40px;
-      padding-block: 48px 96px;
+    .bf-hero {
+      --bf-hero-word-top: 13%;
+      --bf-hero-word-size: clamp(110px, 22.5vw, 340px);
+      --bf-hero-band-height: 64px;
     }
 
-    .bf-hero__grid {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-      gap: 48px;
+    .bf-hero__stage {
+      aspect-ratio: 16 / 9;
+      min-height: 600px;
+      max-height: 860px;
     }
 
-    .bf-hero__showcase {
-      --bf-hero-pet-width: 340px;
-      --bf-hero-pet-overlap: 64px;
-    }
-
-    .bf-hero__products {
-      gap: 16px;
+    .bf-hero__stage .bf-hero__bg,
+    .bf-hero__stage .bf-hero__dog {
+      object-position: 50% 50%;
     }
 
     .bf-hero__card {
-      gap: 10px;
-      padding: 10px;
+      position: absolute;
+      inset-block-end: calc(var(--bf-hero-band-height) + var(--bf-hero-gutter));
+      inset-inline-end: var(--bf-hero-gutter);
+      width: min(400px, 46vw);
+      margin: 0;
+      padding: 28px;
     }
 
-    .bf-hero__card-media {
-      border-radius: 12px;
+    .bf-hero__sticker {
+      inset-block-start: -64px;
+      inset-inline: -64px auto;
+      width: 132px;
+      height: 132px;
     }
 
-    .bf-hero__card-title,
-    .bf-hero__card-price {
-      padding-inline: 4px;
-      font-size: 13px;
+    .bf-hero__chip {
+      display: flex;
+    }
+
+    .bf-hero__actions .bf-btn {
+      height: 50px;
+      padding-inline: 26px;
+    }
+
+    .bf-hero__group {
+      font-size: 19px;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .bf-hero__card {
+      width: min(440px, 36vw);
     }
   }
 {% endstylesheet %}
@@ -475,7 +518,44 @@
   "disabled_on": {
     "groups": ["header", "footer"]
   },
+  "blocks": [
+    {
+      "type": "band_item",
+      "name": "t:names.barkfam_band_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:settings.text",
+          "default": "t:text_defaults.barkfam_band_item"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
   "settings": [
+    {
+      "type": "header",
+      "content": "t:content.barkfam_hero_images"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:settings.barkfam_background_photo",
+      "info": "t:info.barkfam_background_photo"
+    },
+    {
+      "type": "image_picker",
+      "id": "cutout_image",
+      "label": "t:settings.barkfam_cutout",
+      "info": "t:info.barkfam_cutout"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "t:settings.barkfam_image_description",
+      "default": "t:text_defaults.barkfam_hero_image_alt"
+    },
     {
       "type": "header",
       "content": "t:content.backdrop_word"
@@ -491,33 +571,13 @@
       "type": "color",
       "id": "ghost_color",
       "label": "t:settings.color",
-      "default": "{{ settings.color_palette.color1 }}"
+      "default": "{{ settings.color_palette.background }}"
     },
     {
-      "type": "range",
-      "id": "ghost_opacity",
-      "label": "t:settings.opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "default": 100
-    },
-    {
-      "type": "header",
-      "content": "t:content.barkfam_featured_product"
-    },
-    {
-      "type": "product",
-      "id": "product",
-      "label": "t:settings.product",
-      "info": "t:info.barkfam_hero_product"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "t:settings.image",
-      "info": "t:info.barkfam_hero_image"
+      "type": "font_picker",
+      "id": "wordmark_font",
+      "label": "t:settings.font",
+      "default": "montserrat_n8"
     },
     {
       "type": "header",
@@ -542,18 +602,6 @@
       "default": "t:text_defaults.barkfam_hero_body"
     },
     {
-      "type": "checkbox",
-      "id": "show_price",
-      "label": "t:settings.barkfam_show_price",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "meta",
-      "label": "t:settings.barkfam_meta",
-      "default": "t:text_defaults.barkfam_hero_meta"
-    },
-    {
       "type": "header",
       "content": "t:content.barkfam_primary_button"
     },
@@ -567,7 +615,7 @@
       "type": "url",
       "id": "primary_link",
       "label": "t:settings.link",
-      "info": "t:info.barkfam_primary_link"
+      "default": "/collections/all"
     },
     {
       "type": "header",
@@ -587,64 +635,33 @@
     },
     {
       "type": "header",
-      "content": "t:content.barkfam_pet"
+      "content": "t:content.barkfam_hero_extras"
     },
     {
       "type": "checkbox",
-      "id": "show_pet",
-      "label": "t:settings.barkfam_show_pet",
+      "id": "show_sticker",
+      "label": "t:settings.barkfam_show_sticker",
       "default": true
     },
     {
-      "type": "image_picker",
-      "id": "pet_image",
-      "label": "t:settings.barkfam_pet_image_1",
-      "info": "t:info.barkfam_pet_image",
-      "visible_if": "{{ section.settings.show_pet }}"
+      "type": "text",
+      "id": "sticker_text",
+      "label": "t:settings.barkfam_sticker_text",
+      "info": "t:info.barkfam_sticker_text",
+      "default": "t:text_defaults.barkfam_hero_sticker",
+      "visible_if": "{{ section.settings.show_sticker }}"
     },
     {
-      "type": "image_picker",
-      "id": "pet_image_2",
-      "label": "t:settings.barkfam_pet_image_2",
-      "visible_if": "{{ section.settings.show_pet }}"
-    },
-    {
-      "type": "image_picker",
-      "id": "pet_image_3",
-      "label": "t:settings.barkfam_pet_image_3",
-      "visible_if": "{{ section.settings.show_pet }}"
-    },
-    {
-      "type": "image_picker",
-      "id": "pet_image_4",
-      "label": "t:settings.barkfam_pet_image_4",
-      "visible_if": "{{ section.settings.show_pet }}"
-    },
-    {
-      "type": "range",
-      "id": "pet_interval",
-      "label": "t:settings.barkfam_pet_interval",
-      "min": 2,
-      "max": 10,
-      "step": 1,
-      "unit": "s",
-      "default": 4,
-      "visible_if": "{{ section.settings.show_pet }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.barkfam_floating_card"
+      "type": "checkbox",
+      "id": "show_chip",
+      "label": "t:settings.barkfam_show_chip",
+      "info": "t:info.barkfam_show_chip",
+      "default": true
     },
     {
       "type": "product",
-      "id": "card_product_1",
-      "label": "t:settings.barkfam_card_product_1",
-      "info": "t:info.barkfam_floating_card"
-    },
-    {
-      "type": "product",
-      "id": "card_product_2",
-      "label": "t:settings.barkfam_card_product_2"
+      "id": "product",
+      "label": "t:settings.product"
     },
     {
       "type": "header",
@@ -654,13 +671,45 @@
       "type": "color",
       "id": "background_color",
       "label": "t:settings.background_color",
-      "default": "{{ settings.color_palette.color4 }}"
+      "default": "{{ settings.color_palette.background }}"
     }
   ],
   "presets": [
     {
       "name": "t:names.barkfam_hero",
-      "category": "t:categories.banners"
+      "category": "t:categories.banners",
+      "blocks": [
+        {
+          "type": "band_item",
+          "settings": {
+            "text": "t:text_defaults.barkfam_band_item"
+          }
+        },
+        {
+          "type": "band_item",
+          "settings": {
+            "text": "t:text_defaults.barkfam_band_delivery"
+          }
+        },
+        {
+          "type": "band_item",
+          "settings": {
+            "text": "t:text_defaults.barkfam_band_paws"
+          }
+        },
+        {
+          "type": "band_item",
+          "settings": {
+            "text": "t:text_defaults.barkfam_band_returns"
+          }
+        },
+        {
+          "type": "band_item",
+          "settings": {
+            "text": "t:text_defaults.barkfam_band_checkout"
+          }
+        }
+      ]
     }
   ]
 }

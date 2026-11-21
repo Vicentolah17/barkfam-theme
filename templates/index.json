@@ -11,22 +11,56 @@
   "sections": {
     "hero": {
       "type": "barkfam-hero",
+      "blocks": {
+        "band_together": {
+          "type": "band_item",
+          "settings": {
+            "text": "Better Days. Together."
+          }
+        },
+        "band_delivery": {
+          "type": "band_item",
+          "settings": {
+            "text": "Delivery in 5–10 days"
+          }
+        },
+        "band_paws": {
+          "type": "band_item",
+          "settings": {
+            "text": "Made for muddy paws"
+          }
+        },
+        "band_returns": {
+          "type": "band_item",
+          "settings": {
+            "text": "Easy returns"
+          }
+        },
+        "band_checkout": {
+          "type": "band_item",
+          "settings": {
+            "text": "Secure checkout"
+          }
+        }
+      },
+      "block_order": [
+        "band_together",
+        "band_delivery",
+        "band_paws",
+        "band_returns",
+        "band_checkout"
+      ],
       "settings": {
         "ghost_text": "barkfam",
-        "ghost_color": "{{ settings.color_palette.color1 }}",
-        "ghost_opacity": 100,
+        "ghost_color": "{{ settings.color_palette.background }}",
         "product": "pet-hair-remover-mitt-pet-hair-remover-gloves-deshedding-brush-glove-for-dog-cat-rabbit-with-long-short-curly-hair",
-        "pill": "Our best seller",
-        "heading": "Pet hair, handled.",
-        "body": "The Pet Hair Remover Glove picks up loose fur while you pet your dog or cat. Use it on the couch, car seats and clothes too.",
-        "show_price": true,
-        "meta": "Estimated delivery in 5–10 days",
-        "primary_label": "Shop the glove",
+        "pill": "Gear for the good days",
+        "heading": "Little things for their happiest days.",
+        "body": "Cozy, clean and ready for walks. The everyday stuff your dog will actually love.",
+        "primary_label": "Shop dogs",
         "primary_link": "",
         "secondary_label": "Shop all",
         "secondary_link": "shopify://collections/all",
-        "card_product_1": "stainless-steel-pet-grooming-brush-cat-dog-hair-removal-comb-with-massage-function-for-detangling-and-cleaning",
-        "card_product_2": "dog-licking-mat-slow-feeder-premium-lick-pad-with-suction-cups-for-dog-anxiety-relief-slow-feeder-dog-bowls-pet-placemat",
         "background_color": "{{ settings.color_palette.background }}"
       }
     },
