@@ -2,7 +2,9 @@
   Style owner that brings Horizon's announcement bar and header to the approved
   BarkFam design (_referencias/design/Header.dc.html). It only adjusts sizes and
   spacing the section settings cannot express; colours, fonts and logo height
-  stay in the header settings.
+  stay in the header settings. On the home page the header is transparent over
+  the hero photo (header settings), and on every page it fades out as the
+  visitor scrolls.
 
   Rendered from both header sections so the rules ship with whichever is on the page.
 
@@ -136,5 +138,55 @@
   /* The design lets the count overlap the bag instead of cutting a ring out of it */
   .header .header__columns .header-actions__cart-icon.header-actions__cart-icon--has-cart svg {
     mask: none;
+  }
+
+  /* Stronger header type: bolder logo and nav, heavier icon strokes */
+  .header .header-logo {
+    font-weight: 700;
+  }
+
+  .header .header-menu .menu-list__link {
+    font-weight: 600;
+  }
+
+  .header .header__columns {
+    --icon-stroke-width: 2px;
+  }
+
+  /* Transparent header over the home photo: no divider, and a soft shadow keeps the
+     white type crisp over sky, trees and lawn alike */
+  #header-component[transparent]:not([data-sticky-state='active'])
+    :is(.header__row--top, .header__row--top .header__columns) {
+    border-bottom-color: transparent;
+  }
+
+  #header-component[transparent]:not([data-sticky-state='active']):not(:has(header-menu[aria-expanded='true']))
+    .header__row {
+    text-shadow: 0 1px 12px rgb(0 0 0 / 0.35);
+  }
+
+  #header-component[transparent]:not([data-sticky-state='active']):not(:has(header-menu[aria-expanded='true']))
+    .header__row
+    svg {
+    filter: drop-shadow(0 1px 6px rgb(0 0 0 / 0.35));
+  }
+
+  /* The header fades out over the first 160px of scroll, where scroll-driven animations
+     exist; elsewhere it simply scrolls away with the page */
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      #header-component {
+        animation: bf-header-fade linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 0 160px;
+      }
+    }
+  }
+
+  @keyframes bf-header-fade {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 {% endstylesheet %}

@@ -205,6 +205,7 @@
     "disclosures": "Divulgações"
   },
   "settings": {
+    "barkfam_subject_top": "Topo do cachorro na foto",
     "barkfam_show_chip": "Mostrar produto flutuante",
     "barkfam_sticker_text": "Texto do selo",
     "barkfam_show_sticker": "Mostrar selo girando",
@@ -1277,6 +1278,7 @@
     "disclosures": "Divulgações"
   },
   "info": {
+    "barkfam_subject_top": "Em que altura da foto começa a cabeça do cachorro. A palavra fica logo acima, no tamanho que cabe entre o cabeçalho e a cabeça.",
     "barkfam_show_chip": "Aparece no tablet e no desktop.",
     "barkfam_sticker_text": "Cerca de 24 caracteres, terminando com ' · '.",
     "barkfam_cutout": "PNG ou WebP com fundo transparente, do mesmo tamanho e enquadramento da foto de fundo. Fica na frente da palavra.",
@@ -1301,7 +1303,7 @@
     "barkfam_hero_image": "Deixe vazio para usar a imagem principal do produto.",
     "barkfam_hero_product": "Preenche o preço e é o destino padrão do botão principal.",
     "barkfam_footer_logo": "Versão clara da logo para o rodapé escuro.",
-    "barkfam_backdrop_word": "Fica entre a foto e o recorte, então o cachorro aparece na frente dela. Uma palavra curta funciona melhor.",
+    "barkfam_backdrop_word": "Fica no céu acima do cachorro, no tamanho que cabe entre o cabeçalho e a cabeça dele. Uma palavra curta funciona melhor.",
     "barkfam_floating_card": "A imagem, o título e o preço vêm do produto que você selecionar.",
     "video_alt_text": "Descreva o vídeo para usuários de tecnologia assistiva",
     "video_autoplay": "Os vídeos ficarão sem som por padrão",

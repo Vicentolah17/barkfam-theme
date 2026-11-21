@@ -50,6 +50,7 @@
   style="
     {% render 'barkfam-surface', background: section.settings.background_color %}
     {% if section.settings.ghost_color != blank %}--bf-hero-word: {{ section.settings.ghost_color }};{% endif %}
+    --bf-hero-subject: {{ section.settings.subject_top | divided_by: 100.0 }};
   "
 >
   <div class="bf-hero__stage">
@@ -198,8 +199,9 @@
 
 {% stylesheet %}
   .bf-hero {
-    --bf-hero-word-top: 22%;
     --bf-hero-word-size: 23vw;
+    --bf-hero-word-gap: 12px;
+    --bf-hero-header-clear: 60px;
     --bf-hero-gutter: clamp(24px, 3.4vw, 56px);
     --bf-hero-band-height: 52px;
 
@@ -216,6 +218,7 @@
     aspect-ratio: 4 / 5;
     overflow: hidden;
     background-color: var(--bf-alt);
+    container-type: size;
   }
 
   /* Two classes so Horizon's global img rules (height: auto, max-width) cannot resize the layers */
@@ -236,14 +239,25 @@
     pointer-events: none;
   }
 
+  /* The word sits whole in the sky between the header and the dog's head.
+     The photo is a 16:9 frame covering the stage, so its rendered height is
+     max(stage height, 56.25% of stage width), and the head sits --bf-hero-subject
+     of the way down that frame. The word's glyphs end 0.83em below its box top and
+     stand about 0.77em tall; it shrinks only when that sky band is too short. */
   .bf-hero__word {
+    --bf-hero-frame: max(100cqh, 56.25cqw);
+    --bf-hero-head: calc((100cqh - var(--bf-hero-frame)) / 2 + var(--bf-hero-subject, 0.37) * var(--bf-hero-frame));
+    --bf-hero-word-fit: calc(
+      (var(--bf-hero-head) - var(--bf-hero-header-clear) - 2 * var(--bf-hero-word-gap)) / 0.77
+    );
+
     position: absolute;
     inset-inline: 0;
-    inset-block-start: var(--bf-hero-word-top);
+    inset-block-start: calc(var(--bf-hero-head) - var(--bf-hero-word-gap) - 0.83em);
     z-index: 1;
     margin: 0;
     color: var(--bf-hero-word, var(--bf-bg));
-    font-size: var(--bf-hero-word-size);
+    font-size: min(var(--bf-hero-word-size), var(--bf-hero-word-fit));
     line-height: 0.9;
     letter-spacing: -0.055em;
     text-align: center;
@@ -457,8 +471,9 @@
 
   @media screen and (min-width: 750px) {
     .bf-hero {
-      --bf-hero-word-top: 13%;
       --bf-hero-word-size: clamp(110px, 22.5vw, 340px);
+      --bf-hero-word-gap: 16px;
+      --bf-hero-header-clear: 76px;
       --bf-hero-band-height: 64px;
     }
 
@@ -578,6 +593,17 @@
       "id": "wordmark_font",
       "label": "t:settings.font",
       "default": "montserrat_n8"
+    },
+    {
+      "type": "range",
+      "id": "subject_top",
+      "label": "t:settings.barkfam_subject_top",
+      "info": "t:info.barkfam_subject_top",
+      "min": 10,
+      "max": 90,
+      "step": 1,
+      "unit": "%",
+      "default": 37
     },
     {
       "type": "header",
